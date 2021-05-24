@@ -19,4 +19,17 @@
         android:id="@+id/navigation_profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/routineExecutionExercise"
+        android:name="ar.edu.itba.example.gymateapp.view.fragments.RoutineExecutionFragment"
+        android:label="fragment_routine_execution_exercise"
+        tools:layout="@layout/fragment_routinerun">
+        <argument
+            android:name="title"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_routineExecutionExercise_to_routinesFragment"
+            app:destination="@id/navigation_routines" />
+    </fragment>
 </navigation>
