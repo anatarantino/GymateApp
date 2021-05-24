@@ -5,18 +5,18 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
-    <activity
+    <fragment
         android:id="@+id/navigation_home"
-        android:label="@string/title_home"
-        tools:layout="@layout/activity_main" />
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_routines"
-        android:label="@string/title_routines"
+        android:label="fragment_routines"
         tools:layout="@layout/fragment_routines" />
 
-    <activity
+    <fragment
         android:id="@+id/navigation_profile"
-        android:label="@string/title_profile"
+        android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

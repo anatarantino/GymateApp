@@ -10,12 +10,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".view.activities.LoginActivity">
 
     <EditText
         android:id="@+id/username"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:autofillHints="@string/prompt_user"
@@ -45,10 +45,13 @@
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
+        android:textColor="#FFFFFF"
         android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintVertical_bias="0.036" />
 
     <Button
         android:id="@+id/login"
@@ -84,7 +87,7 @@
         android:id="@+id/textView10"
         android:layout_width="0dp"
         android:layout_height="51dp"
-        android:text="Iniciar sesión"
+        android:text="@string/iniciar_sesion"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"

@@ -23,8 +23,6 @@
                 style="@style/Widget.AppCompat.RatingBar.Indicator"
                 android:layout_width="175dp"
                 android:layout_height="30dp"
-                android:layout_constraintBottom_toBottomOf="parent"
-                android:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:numStars="5"
