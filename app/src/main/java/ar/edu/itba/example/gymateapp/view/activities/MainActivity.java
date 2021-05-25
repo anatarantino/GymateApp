@@ -2,9 +2,18 @@ package ar.edu.itba.example.gymateapp.view.activities;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
 import ar.edu.itba.example.gymateapp.R;
+import ar.edu.itba.example.gymateapp.view.fragments.HomeFragment;
+import ar.edu.itba.example.gymateapp.view.fragments.MyRoutinesFragment;
+import ar.edu.itba.example.gymateapp.view.fragments.ProfileFragment;
+import ar.edu.itba.example.gymateapp.view.fragments.RoutinesFragment;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -12,91 +21,74 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.jetbrains.annotations.NotNull;
+
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
+    Fragment currentFragment = null;
+    FragmentTransaction ft;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch(item.getItemId()){
+                case R.id.navigation_home:
+                    currentFragment = new HomeFragment();
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.content,currentFragment);
+                    ft.commit();
+                    return true;
+                case R.id.navigation_routines:
+                    currentFragment = new RoutinesFragment();
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.content,currentFragment);
+                    ft.commit();
+                    return true;
+                case R.id.navigation_my_routines:
+                    currentFragment = new MyRoutinesFragment();
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.content,currentFragment);
+                    ft.commit();
+                    return true;
+                case R.id.navigation_profile:
+                    currentFragment = new ProfileFragment();
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.content,currentFragment);
+                    ft.commit();
+                    return true;
+            }
+            return false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setUpBottomNavigation();
-        setSupportActionBar(findViewById(R.id.appbar));
+
+        BottomNavigationView bottomNav = findViewById(R.id.nav_view);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
     }
 
-    public void setUpBottomNavigation() {
-        bottomNavigationView = findViewById(R.id.nav_view);
 
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.mainNavFragment);
-        assert navHostFragment != null;
-        NavigationUI.setupWithNavController(bottomNavigationView,
-                navHostFragment.getNavController());
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.mainNavFragment);
-        return navController.navigateUp();
-    }
-}
-
-//package ar.edu.itba.example.gymateapp;
+//    public void setUpBottomNavigation() {
+//        bottomNavigationView = findViewById(R.id.nav_view);
 //
-//import android.os.Bundle;
-//import android.view.Menu;
-//import android.view.MenuItem;
-//import android.widget.Toast;
-//
-//import com.google.android.material.bottomnavigation.BottomNavigationView;
-//
-//import androidx.appcompat.app.AppCompatActivity;
-//import androidx.navigation.NavController;
-//import androidx.navigation.Navigation;
-//import androidx.navigation.ui.AppBarConfiguration;
-//import androidx.navigation.ui.NavigationUI;
-//
-//import java.util.Objects;
-//
-//import ar.edu.itba.example.gymateapp.databinding.ActivityMainBinding;
-//
-//public class MainActivity extends AppCompatActivity {
-//
-//    private ActivityMainBinding binding;
+//        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.mainNavFragment);
+//        assert navHostFragment != null;
+//        NavigationUI.setupWithNavController(bottomNavigationView,
+//                navHostFragment.getNavController());
+//    }
 //
 //    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//        binding = ActivityMainBinding.inflate(getLayoutInflater());
-//        setContentView(binding.getRoot());
-//
-//        BottomNavigationView navView = findViewById(R.id.nav_view);
-//        // Passing each menu ID as a set of Ids because each
-//        // menu should be considered as top level destinations.
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.navigation_home, R.id.navigation_routines, R.id.navigation_profile)
-//                .build();
-//        NavController navController = Navigation.findNavController(this, R.id.navigation_home);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(binding.navView, navController);
-//
+//    public boolean onSupportNavigateUp() {
+//        NavController navController = Navigation.findNavController(this, R.id.mainNavFragment);
+//        return navController.navigateUp();
 //    }
-//
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.appbar, menu);
-//        return true;
-//    }
-//
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        if (id == R.id.navigation_home) {
-//            Toast.makeText(this, "Opción 1", Toast.LENGTH_SHORT).show();
-//        } else if (id == R.id.navigation_routines) {
-//            Toast.makeText(this, "Opción 2", Toast.LENGTH_SHORT).show();
-//        } else {
-//            Toast.makeText(this, "Opción 3", Toast.LENGTH_SHORT).show();
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-//
-//}
+
+
+
+
+}
+

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_routines"
             app:destination="@id/navigation_routines" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_my_routines"
+            app:destination="@id/navigation_my_routines" />
     </fragment>
 
     <fragment
@@ -29,6 +32,20 @@
         <action
             android:id="@+id/action_navigation_routines_to_navigation_home"
             app:destination="@id/navigation_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_my_routines"
+        android:label="fragment_my_routines"
+        android:name="ar.edu.itba.example.gymateapp.view.fragments.MyRoutinesFragment"
+        tools:layout="@layout/fragment_routines">
+
+        <action
+            android:id="@+id/action_navigation_my_routines_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_my_routines_to_routineExecutionExercise"
+            app:destination="@id/routineExecutionExercise" />
     </fragment>
 
     <fragment
@@ -55,5 +72,8 @@
         <action
             android:id="@+id/action_routineExecutionExercise_to_navigation_routines"
             app:destination="@id/navigation_routines" />
+        <action
+            android:id="@+id/action_routineExecutionExercise_to_navigation_my_routines"
+            app:destination="@id/navigation_my_routines" />
     </fragment>
 </navigation>

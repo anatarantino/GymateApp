@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#4DF000"
-        android:text="@string/mis_rutinas_favoritas"
+        android:text="@string/my_favoutite_routines"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textColorHighlight="#00BCD4"
@@ -30,23 +30,23 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="111dp"
         android:adjustViewBounds="false"
         android:contentDescription="@string/profile_pic"
+        android:src="@drawable/profile_pic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.227"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.222" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="34dp"
-        android:text="@string/nombre_de_usuario"
+        android:text="@string/user_name"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
