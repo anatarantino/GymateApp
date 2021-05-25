@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="#000000"
+    tools:context=".view.fragments.HomeFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -81,6 +82,7 @@
         android:layout_width="354dp"
         android:layout_height="155dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

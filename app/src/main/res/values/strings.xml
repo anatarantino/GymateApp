@@ -28,4 +28,6 @@
     <string name="listo">listo</string>
     <string name="reiniciar">reiniciar</string>
     <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="logo">Logo Gymate</string>
+    <string name="profile_pic">Foto de perfil</string>
 </resources>

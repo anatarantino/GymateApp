@@ -63,7 +63,8 @@
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="64dp"
         android:backgroundTint="#FFFFFF"
-        android:enabled="false"
+        android:clickable="true"
+        android:enabled="true"
         android:text="@string/action_sign_in"
         android:textColor="#000000"
         app:cornerRadius="24dp"
@@ -76,11 +77,13 @@
         android:id="@+id/imageView4"
         android:layout_width="363dp"
         android:layout_height="251dp"
+        android:contentDescription="@string/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
+        android:src="@drawable/logo"
         tools:srcCompat="@drawable/logo" />
 
     <TextView

@@ -1,6 +1,7 @@
 package ar.edu.itba.example.gymateapp.view.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import ar.edu.itba.example.gymateapp.R;
 import androidx.appcompat.app.AppCompatActivity;
