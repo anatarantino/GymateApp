@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,7 +31,7 @@ public class RoutinesFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_routines,container,false);
+        View view = inflater.inflate(R.layout.fragment_routines, container, false);
         routineList = new ArrayList<>();
         recyclerRoutine = view.findViewById(R.id.userRecyclerView);
         recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -42,19 +43,23 @@ public class RoutinesFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
-    private void seedRoutines(){
-        routineList.add(new RoutineData("Titulo","creador 1",R.drawable.fit,3));
-        routineList.add(new RoutineData("Titulo 2","creador 2",R.drawable.fit,4));
-        routineList.add(new RoutineData("Titulo 3","creador 3",R.drawable.fit,4));
-        routineList.add(new RoutineData("Titulo 4","creador 2",R.drawable.fit,4));
-        routineList.add(new RoutineData("Titulo 5","creador 2",R.drawable.fit,4));
-        routineList.add(new RoutineData("Titulo 6","creador 1",R.drawable.fit,4));
-        routineList.add(new RoutineData("Titulo 7","creador 1",R.drawable.fit,4));
+    private void seedRoutines() {
+        routineList.add(new RoutineData("Titulo", "creador 1", R.drawable.fit, 3));
+        routineList.add(new RoutineData("Titulo 2", "creador 2", R.drawable.fit, 4));
+        routineList.add(new RoutineData("Titulo 3", "creador 3", R.drawable.fit, 4));
+        routineList.add(new RoutineData("Titulo 4", "creador 2", R.drawable.fit, 4));
+        routineList.add(new RoutineData("Titulo 5", "creador 2", R.drawable.fit, 4));
+        routineList.add(new RoutineData("Titulo 6", "creador 1", R.drawable.fit, 4));
+        routineList.add(new RoutineData("Titulo 7", "creador 1", R.drawable.fit, 4));
     }
 
     @Override
     public void onClick(View v) {
-
+        Fragment fragment_sort_by = new SortByFragment();
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_routines, fragment_sort_by);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     public interface OnFragmentInteractionListener {

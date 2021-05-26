@@ -24,7 +24,6 @@ public class MyRoutinesFragment extends Fragment implements View.OnClickListener
     RecyclerView recyclerRoutine;
     ArrayList<RoutineData> myRoutineList;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +33,7 @@ public class MyRoutinesFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_routines,container,false);
         myRoutineList = new ArrayList<>();
-        recyclerRoutine = (RecyclerView) view.findViewById(R.id.userRecyclerView);
+        recyclerRoutine = view.findViewById(R.id.userRecyclerView);
         recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
         seedRoutines();
         RoutinesAdapter adapter = new RoutinesAdapter(myRoutineList);
