@@ -24,7 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
-public class MainActivity extends AppCompatActivity implements RoutinesFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements RoutinesFragment.OnFragmentInteractionListener, MyRoutinesFragment.OnFragmentInteractionListener{
 
     private BottomNavigationView bottomNavigationView;
     Fragment currentFragment = null;

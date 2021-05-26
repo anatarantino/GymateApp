@@ -21,8 +21,6 @@ public class RoutinesFragment extends Fragment {
     RecyclerView recyclerRoutine;
     ArrayList<RoutineData> routineList;
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
