@@ -41,8 +41,13 @@ public class RoutinesFragment extends Fragment {
     }
 
     private void seedRoutines(){
-        routineList.add(new RoutineData("Titulo","creador",R.drawable.fit,3));
+        routineList.add(new RoutineData("Titulo","creador 1",R.drawable.fit,3));
         routineList.add(new RoutineData("Titulo 2","creador 2",R.drawable.fit,4));
+        routineList.add(new RoutineData("Titulo 3","creador 3",R.drawable.fit,4));
+        routineList.add(new RoutineData("Titulo 4","creador 2",R.drawable.fit,4));
+        routineList.add(new RoutineData("Titulo 5","creador 2",R.drawable.fit,4));
+        routineList.add(new RoutineData("Titulo 6","creador 1",R.drawable.fit,4));
+        routineList.add(new RoutineData("Titulo 7","creador 1",R.drawable.fit,4));
     }
 
 
