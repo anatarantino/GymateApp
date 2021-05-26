@@ -1,4 +1,4 @@
-package ar.edu.itba.example.gymateapp.view.Adapter;
+package ar.edu.itba.example.gymateapp.view.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

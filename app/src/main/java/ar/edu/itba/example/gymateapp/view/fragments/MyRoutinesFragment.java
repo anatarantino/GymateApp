@@ -2,21 +2,24 @@ package ar.edu.itba.example.gymateapp.view.fragments;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import ar.edu.itba.example.gymateapp.R;
-import ar.edu.itba.example.gymateapp.view.Adapter.RoutinesAdapter;
+import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 
-public class MyRoutinesFragment extends Fragment {
+public class MyRoutinesFragment extends Fragment implements View.OnClickListener{
 
     RecyclerView recyclerRoutine;
     ArrayList<RoutineData> myRoutineList;
@@ -29,13 +32,15 @@ public class MyRoutinesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-         View view = inflater.inflate(R.layout.fragment_routines,container,false);
+        View view = inflater.inflate(R.layout.fragment_routines,container,false);
         myRoutineList = new ArrayList<>();
         recyclerRoutine = (RecyclerView) view.findViewById(R.id.userRecyclerView);
         recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
         seedRoutines();
         RoutinesAdapter adapter = new RoutinesAdapter(myRoutineList);
         recyclerRoutine.setAdapter(adapter);
+        Button sortBtn = view.findViewById(R.id.button5);
+        sortBtn.setOnClickListener(this);
         return view;
     }
 
@@ -47,6 +52,15 @@ public class MyRoutinesFragment extends Fragment {
         myRoutineList.add(new RoutineData("Titulo 5","creador 2",R.drawable.fit,4));
         myRoutineList.add(new RoutineData("Titulo 6","creador 1",R.drawable.fit,4));
         myRoutineList.add(new RoutineData("Titulo 7","creador 1",R.drawable.fit,4));
+    }
+
+    @Override
+    public void onClick(View v) {
+        Fragment fragment_sort_by = new SortByFragment();
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_routines,fragment_sort_by);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     public interface OnFragmentInteractionListener {
