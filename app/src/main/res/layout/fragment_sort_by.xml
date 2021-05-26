@@ -91,7 +91,7 @@
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="78dp"
-                android:layout_height="23dp"
+                android:layout_height="25dp"
                 android:text="@string/category"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
@@ -142,10 +142,10 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintHorizontal_bias="0.05"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.516" />
+                app:layout_constraintVertical_bias="0.52" />
 
             <Switch
                 android:id="@+id/switch2"
@@ -170,6 +170,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="60dp"
         app:cardBackgroundColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
@@ -180,16 +181,16 @@
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="78dp"
-                android:layout_height="23dp"
+                android:layout_height="25dp"
                 android:text="@string/difficulty"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintHorizontal_bias="0.05"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.516" />
+                app:layout_constraintVertical_bias="0.52" />
 
             <Switch
                 android:id="@+id/switch3"
@@ -214,7 +215,6 @@
         android:layout_marginTop="60dp"
         app:cardBackgroundColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView4">
 
@@ -225,16 +225,16 @@
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="137dp"
-                android:layout_height="22dp"
+                android:layout_height="25dp"
                 android:text="@string/date_created"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintHorizontal_bias="0.058"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.516" />
+                app:layout_constraintVertical_bias="0.52" />
 
             <Switch
                 android:id="@+id/switch4"
