@@ -1,5 +1,6 @@
 package ar.edu.itba.example.gymateapp.view.activities;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -23,7 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RoutinesFragment.OnFragmentInteractionListener{
 
     private BottomNavigationView bottomNavigationView;
     Fragment currentFragment = null;
@@ -71,24 +72,10 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
-//    public void setUpBottomNavigation() {
-//        bottomNavigationView = findViewById(R.id.nav_view);
-//
-//        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.mainNavFragment);
-//        assert navHostFragment != null;
-//        NavigationUI.setupWithNavController(bottomNavigationView,
-//                navHostFragment.getNavController());
-//    }
-//
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        NavController navController = Navigation.findNavController(this, R.id.mainNavFragment);
-//        return navController.navigateUp();
-//    }
-
-
-
+    }
 
 }
 
