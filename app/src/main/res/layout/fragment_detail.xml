@@ -10,7 +10,7 @@
         android:id="@+id/cardView8"
         android:layout_width="0dp"
         android:layout_height="62dp"
-        app:cardBackgroundColor="@color/light_grey"
+        app:cardBackgroundColor="@color/grey_darken_3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
