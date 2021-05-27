@@ -36,7 +36,15 @@
     <string name="rate">Puntuación</string>
     <string name="difficulty">Dificultad</string>
     <string name="date_created">Fecha de creación</string>
+<<<<<<< Updated upstream
     <string name="routine_name">nombre rutina</string>
     <string name="information_icon">icono de información</string>
     <string name="cycle_name">nombre ciclo</string>
+=======
+    <string name="description">DESCRIPCIÓN</string>
+    <string name="routine_description">Esta es la descripción de la rutina, quiero escribir algo largo asi veo bien como se ve en pantalla.</string>
+    <string name="execute">Ejecutar</string>
+    <string name="favorite">Favorito</string>
+    <string name="share">Compartir</string>
+>>>>>>> Stashed changes
 </resources>
