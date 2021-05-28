@@ -55,9 +55,14 @@ public class RoutinesFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Fragment fragment_sort_by = new SortByFragment();
+//        Fragment fragment_sort_by = new SortByFragment();
+//        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+//        transaction.replace(R.id.fragment_routines, fragment_sort_by);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+        Fragment fragment_detail = new RoutineDetailFragment();
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_routines, fragment_sort_by);
+        transaction.replace(R.id.fragment_routines, fragment_detail);
         transaction.addToBackStack(null);
         transaction.commit();
     }

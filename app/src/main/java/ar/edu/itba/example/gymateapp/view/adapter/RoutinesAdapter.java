@@ -49,6 +49,7 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.Routin
             txtTitle = (TextView) itemView.findViewById(R.id.title);
             txtCreator = (TextView) itemView.findViewById(R.id.creator);
             img = (ImageView) itemView.findViewById(R.id.image);
+
         }
     }
 }

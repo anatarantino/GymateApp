@@ -17,12 +17,4 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="GymateSwitch" parent="@style/Widget.AppCompat.CompoundButton.Switch">
-        <item name="android:textColorPrimaryDisableOnly">#FFFFFF</item>
-        <item name="android:colorControlActivated">#FF00FF</item>
-        <item name="android:colorForeground">@color/primaryColor</item>
-        <item name="android:textAppearance">@color/Gymate_green</item>
-        <item name="android:thumbTint">#FFFFFF</item>
-        <item name="android:trackTint">@color/primaryColor</item>
-    </style>
 </resources>
