@@ -39,7 +39,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="409dp"
+        android:layout_width="500dp"
         android:layout_height="612dp"
         android:layout_marginTop="120dp"
         android:layout_marginBottom="8dp"
@@ -49,8 +49,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ScrollView
-            android:layout_width="387dp"
-            android:layout_height="523dp"
+            android:layout_width="451dp"
+            android:layout_height="302dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
