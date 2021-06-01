@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import org.jetbrains.annotations.NotNull;
-
 import ar.edu.itba.example.gymateapp.R;
 
 public class HomeFragment extends Fragment {

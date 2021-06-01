@@ -1,12 +1,11 @@
 package ar.edu.itba.example.gymateapp.view.classes;
 
-import android.widget.ImageView;
-
 public class RoutineData {
-    private String title;
-    private String creator;
-    private int imgId;
-    private int rating;
+
+    public String title;
+    public String creator;
+    public int imgId;
+    public int rating;
     //meter toda la data necesaria
 
     public RoutineData(String title, String creator, int imgId, int rating) {

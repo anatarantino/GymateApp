@@ -32,6 +32,8 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.Routin
     @Override
     public void onBindViewHolder(@NonNull @NotNull RoutinesAdapter.RoutineViewHolder holder, int position) {
         //aca  van los datos que hay en routineData
+        holder.txtTitle.setText(routinesList.get(position).title);
+        holder.txtCreator.setText(routinesList.get(position).creator);
     }
 
     @Override
