@@ -5,10 +5,10 @@ public class RoutineData {
     public String title;
     public String creator;
     public int imgId;
-    public int rating;
+    public Integer rating;
     //meter toda la data necesaria
 
-    public RoutineData(String title, String creator, int imgId, int rating) {
+    public RoutineData(String title, String creator, int imgId, Integer rating) {
         this.title = title;
         this.creator = creator;
         this.imgId = imgId;

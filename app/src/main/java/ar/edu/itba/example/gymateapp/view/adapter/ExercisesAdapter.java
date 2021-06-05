@@ -31,7 +31,8 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.Exer
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ExercisesAdapter.ExerciseViewHolder holder, int position) {
-        //aca los datos de ExerciseData
+        holder.name.setText(exerciseList.get(position).getExName());
+        holder.duration.setText(exerciseList.get(position).getExDuration()); //check
     }
 
     @Override
@@ -40,7 +41,8 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.Exer
     }
 
     public class ExerciseViewHolder extends RecyclerView.ViewHolder {
-        TextView name,duration;
+        TextView name;
+        TextView duration;
 
         public ExerciseViewHolder(View itemView) {
             super(itemView);

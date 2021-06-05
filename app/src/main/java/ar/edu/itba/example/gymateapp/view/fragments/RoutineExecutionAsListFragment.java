@@ -46,18 +46,18 @@ public class RoutineExecutionAsListFragment extends Fragment {
 
         //esto lo hacemos ahora porque no tenemos la bdd
         ArrayList<ExerciseData> warmup = new ArrayList<>();
-        warmup.add(new ExerciseData("Ej W 1","20"));
-        warmup.add(new ExerciseData("Ej W 2", "30"));
+        warmup.add(new ExerciseData("Ej W 1",20));
+        warmup.add(new ExerciseData("Ej W 2", 30));
         ArrayList<ExerciseData> main = new ArrayList<>();
-        main.add(new ExerciseData("Ej M 1","20"));
-        main.add(new ExerciseData("Ej M 2", "30"));
-        main.add(new ExerciseData("Ej M 3", "30"));
-        main.add(new ExerciseData("Ej M 4", "30"));
+        main.add(new ExerciseData("Ej M 1",20));
+        main.add(new ExerciseData("Ej M 2", 30));
+        main.add(new ExerciseData("Ej M 3", 30));
+        main.add(new ExerciseData("Ej M 4", 30));
         ArrayList<ExerciseData> cooldown = new ArrayList<>();
-        cooldown.add(new ExerciseData("Ej C 1","20"));
-        cooldown.add(new ExerciseData("Ej C 2", "30"));
-        cooldown.add(new ExerciseData("Ej C 3", "30"));
-        cooldown.add(new ExerciseData("Ej C 4", "30"));
+        cooldown.add(new ExerciseData("Ej C 1",20));
+        cooldown.add(new ExerciseData("Ej C 2", 30));
+        cooldown.add(new ExerciseData("Ej C 3", 30));
+        cooldown.add(new ExerciseData("Ej C 4", 30));
 
         recyclerViewWarmup = view.findViewById(R.id.warmupExercises);
         recyclerViewMain = view.findViewById(R.id.mainExercises);
