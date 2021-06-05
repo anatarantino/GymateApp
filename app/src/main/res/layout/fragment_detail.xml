@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:id="@+id/routine_detail">
+    android:id="@+id/routine_detail"
+    tools:context=".view.fragments.RoutineDetailFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView8"

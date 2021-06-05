@@ -20,7 +20,7 @@ import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 
-public class RoutinesFragment extends Fragment implements View.OnClickListener {
+public class RoutinesFragment extends Fragment implements View.OnClickListener, RoutinesAdapter.ItemClickListener {
 
     RecyclerView recyclerRoutine;
     ArrayList<RoutineData> routineList;
@@ -37,14 +37,8 @@ public class RoutinesFragment extends Fragment implements View.OnClickListener {
         recyclerRoutine = view.findViewById(R.id.userRecyclerView);
         recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
         seedRoutines();
-        RoutinesAdapter adapter = new RoutinesAdapter(routineList);
+        RoutinesAdapter adapter = new RoutinesAdapter(routineList,this);
 
-        adapter.setOnClickListener(v -> {
-            Toast.makeText(getContext(),"Seleccion: " +
-                    routineList.get(recyclerRoutine.getChildAdapterPosition(view)).title,
-                    Toast.LENGTH_SHORT).show();
-            Log.i("click", "Se hizo click en");
-        });
         recyclerRoutine.setAdapter(adapter);
         Button sortBtn = view.findViewById(R.id.button5);
         sortBtn.setOnClickListener(this);
@@ -52,23 +46,28 @@ public class RoutinesFragment extends Fragment implements View.OnClickListener {
     }
 
     private void seedRoutines() {
-        routineList.add(new RoutineData("Titulo", "creador 1", R.drawable.fit, 1));
-        routineList.add(new RoutineData("Titulo 2", "creador 2", R.drawable.fit, 2));
-        routineList.add(new RoutineData("Titulo 3", "creador 3", R.drawable.fit, 3));
-        routineList.add(new RoutineData("Titulo 4", "creador 2", R.drawable.fit, 4));
-        routineList.add(new RoutineData("Titulo 5", "creador 2", R.drawable.fit, 5));
-        routineList.add(new RoutineData("Titulo 6", "creador 1", R.drawable.fit, 4));
-        routineList.add(new RoutineData("Titulo 7", "creador 1", R.drawable.fit, 3));
+        RoutineData.Category c1 = new RoutineData.Category(1,"cat 1", "det cat 1");
+        RoutineData.Category c2 = new RoutineData.Category(2,"cat 2", "det cat 2");
+        routineList.add(new RoutineData("1","Titulo", "creador 1", 1,c1));
+        routineList.add(new RoutineData("2","Titulo 2", "creador 2", 2,c1));
+        routineList.add(new RoutineData("3","Titulo 3", "creador 3", 3,c2));
+        routineList.add(new RoutineData("4","Titulo 4", "creador 2", 4,c1));
+        routineList.add(new RoutineData("5","Titulo 5", "creador 2", 5,c2));
+        routineList.add(new RoutineData("6","Titulo 6", "creador 1", 4,c2));
+        routineList.add(new RoutineData("7","Titulo 7", "creador 1", 3,c1));
     }
 
     @Override
     public void onClick(View v) {
-//        Fragment fragment_sort_by = new SortByFragment();
-//        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-//        transaction.replace(R.id.fragment_routines, fragment_sort_by);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-        //estamos poniendo que si haces click en sortBy te lleva a la visualización de la rutina para ver como queda nomas
+        Fragment fragment_sort_by = new SortByFragment();
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_routines, fragment_sort_by);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    @Override
+    public void onItemClick(RoutineData routineData) {
         Fragment fragment_detail = new RoutineDetailFragment();
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_routines, fragment_detail);

@@ -17,6 +17,11 @@ import ar.edu.itba.example.gymateapp.R;
 
 public class RoutineDetailFragment extends Fragment implements View.OnClickListener {
 
+    public static RoutineDetailFragment newInstance() {
+        RoutineDetailFragment fragment = new RoutineDetailFragment();
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
