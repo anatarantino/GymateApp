@@ -14,11 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import ar.edu.itba.example.gymateapp.R;
+import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 
 public class RoutineDetailFragment extends Fragment implements View.OnClickListener {
 
-    public static RoutineDetailFragment newInstance() {
+    private RoutineData routineData;
+    public static RoutineDetailFragment newInstance(RoutineData routineData) {
         RoutineDetailFragment fragment = new RoutineDetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Routine",routineData);
+        fragment.setArguments(bundle);
         return fragment;
     }
 

@@ -48,13 +48,13 @@ public class RoutinesFragment extends Fragment implements View.OnClickListener, 
     private void seedRoutines() {
         RoutineData.Category c1 = new RoutineData.Category(1,"cat 1", "det cat 1");
         RoutineData.Category c2 = new RoutineData.Category(2,"cat 2", "det cat 2");
-        routineList.add(new RoutineData("1","Titulo", "creador 1", 1,c1));
-        routineList.add(new RoutineData("2","Titulo 2", "creador 2", 2,c1));
-        routineList.add(new RoutineData("3","Titulo 3", "creador 3", 3,c2));
-        routineList.add(new RoutineData("4","Titulo 4", "creador 2", 4,c1));
-        routineList.add(new RoutineData("5","Titulo 5", "creador 2", 5,c2));
-        routineList.add(new RoutineData("6","Titulo 6", "creador 1", 4,c2));
-        routineList.add(new RoutineData("7","Titulo 7", "creador 1", 3,c1));
+        routineList.add(new RoutineData(1,"Titulo", "creador 1", 1,c1));
+        routineList.add(new RoutineData(2,"Titulo 2", "creador 2", 2,c1));
+        routineList.add(new RoutineData(3,"Titulo 3", "creador 3", 3,c2));
+        routineList.add(new RoutineData(4,"Titulo 4", "creador 2", 4,c1));
+        routineList.add(new RoutineData(5,"Titulo 5", "creador 2", 5,c2));
+        routineList.add(new RoutineData(6,"Titulo 6", "creador 1", 4,c2));
+        routineList.add(new RoutineData(7,"Titulo 7", "creador 1", 3,c1));
     }
 
     @Override
@@ -68,9 +68,9 @@ public class RoutinesFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void onItemClick(RoutineData routineData) {
-        Fragment fragment_detail = new RoutineDetailFragment();
+        Fragment fragment = RoutineDetailFragment.newInstance(routineData);
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_routines, fragment_detail);
+        transaction.replace(R.id.fragment_routines, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }

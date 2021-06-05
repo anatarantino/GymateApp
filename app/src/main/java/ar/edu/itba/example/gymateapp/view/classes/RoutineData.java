@@ -1,16 +1,33 @@
 package ar.edu.itba.example.gymateapp.view.classes;
 
-public class RoutineData {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    public String id;
+import java.io.Serializable;
+
+public class RoutineData implements Serializable {
+
+    @Expose
+    @SerializedName("id")
+    public Integer id;
+    @Expose
+    @SerializedName("title")
     public String title;
+    @Expose
+    @SerializedName("creator")
     public String creator;
+    @Expose
+    @SerializedName("img")
     public String img;
+    @Expose
+    @SerializedName("rating")
     public Integer rating;
+    @Expose
+    @SerializedName("cat")
     public Category cat;
     //meter toda la data necesaria
 
-    public RoutineData(String id, String title, String creator, Integer rating,Category cat) {
+    public RoutineData(Integer id, String title, String creator, Integer rating,Category cat) {
         this.id = id;
         this.title = title;
         this.creator = creator;
