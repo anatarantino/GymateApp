@@ -44,7 +44,7 @@
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginTop="16dp"
-        app:cardBackgroundColor="@color/primaryColorVariant"
+        app:cardBackgroundColor="@color/primaryColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
