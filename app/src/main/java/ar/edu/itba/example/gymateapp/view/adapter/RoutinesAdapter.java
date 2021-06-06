@@ -53,7 +53,7 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.Routin
                 routine.setImg(String.valueOf(R.drawable.fit2));
                 break;
         }
-        holder.id.setText(routinesList.get(position).id);
+        holder.id.setText(String.valueOf(routinesList.get(position).id));
         holder.txtTitle.setText(routinesList.get(position).title);
         holder.txtCreator.setText(routinesList.get(position).creator);
         holder.rating.setRating(routinesList.get(position).rating);

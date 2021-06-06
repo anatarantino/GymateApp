@@ -46,13 +46,13 @@ public class MyRoutinesFragment extends Fragment implements View.OnClickListener
     private void seedRoutines(){
         RoutineData.Category c1 = new RoutineData.Category(1,"cat 1", "det cat 1");
         RoutineData.Category c2 = new RoutineData.Category(2,"cat 2", "det cat 2");
-        myRoutineList.add(new RoutineData(1,"Titulo","creador 1",3, c1));
-        myRoutineList.add(new RoutineData(2,"Titulo 2","creador 2",4, c2));
-        myRoutineList.add(new RoutineData(3,"Titulo 3","creador 3",4, c1));
-        myRoutineList.add(new RoutineData(4,"Titulo 4","creador 2",4, c1));
-        myRoutineList.add(new RoutineData(5,"Titulo 5","creador 2",4, c2));
-        myRoutineList.add(new RoutineData(6,"Titulo 6","creador 1",4, c2));
-        myRoutineList.add(new RoutineData(7,"Titulo 7","creador 1",4, c1));
+        myRoutineList.add(new RoutineData(1,"Titulo","creador 1","Esta es la desc de la rutina numero  1.", 3, c1));
+        myRoutineList.add(new RoutineData(2,"Titulo 2","creador 2","Esta es la desc de la rutina numero 2." , 4, c2));
+        myRoutineList.add(new RoutineData(3,"Titulo 3","creador 3","Esta es la desc de la rutina numero  3.", 4, c1));
+        myRoutineList.add(new RoutineData(4,"Titulo 4","creador 2","Esta es la desc de la rutina numero  4.", 4, c1));
+        myRoutineList.add(new RoutineData(5,"Titulo 5","creador 2","Esta es la desc de la rutina numero 5.", 4, c2));
+        myRoutineList.add(new RoutineData(6,"Titulo 6","creador 1","Esta es la desc de la rutina numero  6.", 4, c2));
+        myRoutineList.add(new RoutineData(7,"Titulo 7","creador 1","Esta es la desc de la rutina numero  7.", 4, c1));
     }
 
     @Override

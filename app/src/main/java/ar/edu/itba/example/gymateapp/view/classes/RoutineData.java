@@ -17,6 +17,9 @@ public class RoutineData implements Serializable {
     @SerializedName("creator")
     public String creator;
     @Expose
+    @SerializedName("creator")
+    public String desc;
+    @Expose
     @SerializedName("img")
     public String img;
     @Expose
@@ -27,12 +30,13 @@ public class RoutineData implements Serializable {
     public Category cat;
     //meter toda la data necesaria
 
-    public RoutineData(Integer id, String title, String creator, Integer rating,Category cat) {
+    public RoutineData(Integer id, String title, String creator, String desc, Integer rating,Category cat) {
         this.id = id;
         this.title = title;
         this.creator = creator;
         this.rating = rating;
         this.cat = cat;
+        this.desc = desc;
     }
 
     public void setImg(String img) {
