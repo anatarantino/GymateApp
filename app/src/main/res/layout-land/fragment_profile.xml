@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:alpha="1"
     android:background="@drawable/background"
+    android:id="@+id/fragment_profile"
     tools:context=".view.fragments.ProfileFragment">
 
 
