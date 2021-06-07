@@ -43,4 +43,6 @@
     <string name="secs">"</string>
     <string name="number">45</string>
     <string name="recent_routines">Rutinas recientes</string>
+    <string name="play_as_list">Reproducir como lista</string>
+    <string name="play_with_detail">Reproducir con detalle</string>
 </resources>
