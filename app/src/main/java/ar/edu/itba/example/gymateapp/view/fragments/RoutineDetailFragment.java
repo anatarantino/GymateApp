@@ -30,7 +30,7 @@ import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 import ar.edu.itba.example.gymateapp.view.viewModel.RoutinesViewModel;
 
 
-public class RoutineDetailFragment extends Fragment implements View.OnClickListener {
+public class RoutineDetailFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "title";
     private static final String ARG_PARAM2 = "desc";
@@ -89,19 +89,32 @@ public class RoutineDetailFragment extends Fragment implements View.OnClickListe
         Bitmap bm = BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
         img.setImageBitmap(bm);
 
-        FloatingActionButton playBtn = view.findViewById(R.id.playBtn);
-        playBtn.setOnClickListener(this);
+        Button listBtn = view.findViewById(R.id.listBtn);
+        listBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment_routinerun_as_list = new RoutineExecutionAsListFragment();
+                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                transaction.replace(R.id.routine_detail, fragment_routinerun_as_list);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        Button detailBtn = view.findViewById(R.id.detailBtn);
+        detailBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment_routinerun = new RoutineExecutionFragment();
+                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                transaction.replace(R.id.routine_detail, fragment_routinerun);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
         return view;
     }
 
-    @Override
-    public void onClick(View v) {
-        Fragment fragment_routinerun_as_list = new RoutineExecutionAsListFragment();
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.routine_detail, fragment_routinerun_as_list);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 
 //    @Override
 //    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
