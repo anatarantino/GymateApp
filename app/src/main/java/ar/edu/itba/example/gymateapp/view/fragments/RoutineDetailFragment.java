@@ -1,5 +1,6 @@
 package ar.edu.itba.example.gymateapp.view.fragments;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,8 +39,9 @@ public class RoutineDetailFragment extends Fragment {
     private static final String ARG_PARAM2 = "desc";
     private static final String ARG_PARAM3 = "creator";
     private static final String ARG_PARAM4 = "img";
+    private static final String ARG_PARAM5 = "id";
 
-    private String titleParam,creatorParam,descParam,imgParam;
+    private String titleParam,creatorParam,descParam,imgParam,id;
     private RoutinesViewModel routinesViewModel;
     private RoutineData routineData;
     private TextView title;
@@ -55,6 +59,7 @@ public class RoutineDetailFragment extends Fragment {
         bundle.putString(ARG_PARAM2,routineData.desc);
         bundle.putString(ARG_PARAM3,routineData.creator);
         bundle.putString(ARG_PARAM4,routineData.img);
+        bundle.putString(ARG_PARAM5, String.valueOf(routineData.id));
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -67,6 +72,7 @@ public class RoutineDetailFragment extends Fragment {
             descParam = getArguments().getString(ARG_PARAM2);
             creatorParam = getArguments().getString(ARG_PARAM3);
             imgParam = getArguments().getString(ARG_PARAM4);
+            id = getArguments().getString(ARG_PARAM5);
         }
     }
 
@@ -90,27 +96,31 @@ public class RoutineDetailFragment extends Fragment {
         img.setImageBitmap(bm);
 
         Button listBtn = view.findViewById(R.id.listBtn);
-        listBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment_routinerun_as_list = new RoutineExecutionAsListFragment();
-                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                transaction.replace(R.id.routine_detail, fragment_routinerun_as_list);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
+        listBtn.setOnClickListener(v -> {
+//            Fragment fragment_routinerun_as_list = new RoutineExecutionAsListFragment();
+//            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+//
+//            transaction.replace(R.id.routine_detail, fragment_routinerun_as_list);
+//            transaction.addToBackStack(null);
+//            transaction.commit();
+
+            Fragment fragment_routinerun_as_list = new RoutineExecutionAsListFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+            transaction.replace(R.id.routine_detail, fragment_routinerun_as_list);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
+
         });
 
         Button detailBtn = view.findViewById(R.id.detailBtn);
-        detailBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment_routinerun = new RoutineExecutionFragment();
-                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                transaction.replace(R.id.routine_detail, fragment_routinerun);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
+        detailBtn.setOnClickListener(v -> {
+            Fragment fragment_routinerun = new RoutineExecutionFragment();
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            transaction.replace(R.id.routine_detail, fragment_routinerun);
+            transaction.addToBackStack(null);
+            transaction.commit();
         });
         return view;
     }

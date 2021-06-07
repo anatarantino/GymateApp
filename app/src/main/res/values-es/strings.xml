@@ -45,4 +45,6 @@
     <string name="recent_routines">Rutinas recientes</string>
     <string name="play_as_list">Reproducir como lista</string>
     <string name="play_with_detail">Reproducir con detalle</string>
+    <string name="main">Ejercitación</string>
+    <string name="cooldown">Enfriamiento</string>
 </resources>

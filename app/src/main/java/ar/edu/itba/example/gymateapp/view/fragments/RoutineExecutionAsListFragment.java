@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.view.adapter.ExercisesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.ExerciseData;
+import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 
 public class RoutineExecutionAsListFragment extends Fragment {
 
@@ -25,6 +27,12 @@ public class RoutineExecutionAsListFragment extends Fragment {
 //    private ExercisesAdapter warmupAdapter = new ExercisesAdapter(new ArrayList<>());
 //    private ExercisesAdapter mainAdapter = new ExercisesAdapter(new ArrayList<>());
 //    private ExercisesAdapter cooldownAdapter = new ExercisesAdapter(new ArrayList<>());
+
+    private static final String ARG_PARAM1 = "title";
+    private static final String ARG_PARAM2 = "id";
+
+    private String titleParam, id;
+
     private ExercisesAdapter warmupAdapter;
     private ExercisesAdapter mainAdapter;
     private ExercisesAdapter cooldownAdapter;
@@ -35,29 +43,48 @@ public class RoutineExecutionAsListFragment extends Fragment {
     private RecyclerView recyclerViewMain;
     private RecyclerView recyclerViewCooldown;
 
+    public RoutineExecutionAsListFragment() {
+    }
+
+    public static RoutineExecutionAsListFragment newInstance(RoutineData routineData){
+        RoutineExecutionAsListFragment fragment = new RoutineExecutionAsListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(ARG_PARAM1,routineData.title);
+        bundle.putString(ARG_PARAM2, String.valueOf(routineData.id));
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(getArguments() != null){
+            titleParam = getArguments().getString(ARG_PARAM1);
+            id = getArguments().getString(ARG_PARAM2);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_routinerun_as_list,container,false);
 
+        TextView title = view.findViewById(R.id.title);
+        title.setText(titleParam);
+
         //esto lo hacemos ahora porque no tenemos la bdd
         ArrayList<ExerciseData> warmup = new ArrayList<>();
-        warmup.add(new ExerciseData("Ej W 1",20));
-        warmup.add(new ExerciseData("Ej W 2", 30));
+        warmup.add(new ExerciseData("Ej W 1","20"));
+        warmup.add(new ExerciseData("Ej W 2", "30"));
         ArrayList<ExerciseData> main = new ArrayList<>();
-        main.add(new ExerciseData("Ej M 1",20));
-        main.add(new ExerciseData("Ej M 2", 30));
-        main.add(new ExerciseData("Ej M 3", 30));
-        main.add(new ExerciseData("Ej M 4", 30));
+        main.add(new ExerciseData("Ej M 1","20"));
+        main.add(new ExerciseData("Ej M 2", "30"));
+        main.add(new ExerciseData("Ej M 3", "30"));
+        main.add(new ExerciseData("Ej M 4", "30"));
         ArrayList<ExerciseData> cooldown = new ArrayList<>();
-        cooldown.add(new ExerciseData("Ej C 1",20));
-        cooldown.add(new ExerciseData("Ej C 2", 30));
-        cooldown.add(new ExerciseData("Ej C 3", 30));
-        cooldown.add(new ExerciseData("Ej C 4", 30));
+        cooldown.add(new ExerciseData("Ej C 1","20"));
+        cooldown.add(new ExerciseData("Ej C 2", "30"));
+        cooldown.add(new ExerciseData("Ej C 3", "30"));
+        cooldown.add(new ExerciseData("Ej C 4", "30"));
 
         recyclerViewWarmup = view.findViewById(R.id.warmupExercises);
         recyclerViewMain = view.findViewById(R.id.mainExercises);

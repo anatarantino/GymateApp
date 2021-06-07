@@ -59,6 +59,7 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
 
     @Override
     public void onItemClick(RoutineData routineData) {
+        Log.i("profile","listener");
         Fragment fragment = RoutineDetailFragment.newInstance(routineData);
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_profile, fragment);

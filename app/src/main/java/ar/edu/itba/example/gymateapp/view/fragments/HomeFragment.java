@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.Console;
 import java.util.ArrayList;
 
 import ar.edu.itba.example.gymateapp.R;
@@ -24,9 +25,7 @@ public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickL
     RecyclerView recyclerRoutine;
     ArrayList<RoutineData> routineList;
 
-    public HomeFragment(){
-
-    }
+    public HomeFragment(){ }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +64,7 @@ public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickL
 
     @Override
     public void onItemClick(RoutineData routineData) {
+        Log.i("home","listener");
         Fragment fragment = RoutineDetailFragment.newInstance(routineData);
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_home, fragment);

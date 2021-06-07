@@ -45,4 +45,6 @@
     <string name="recent_routines">Recent routines</string>
     <string name="play_as_list">Play as list</string>
     <string name="play_with_detail">Play with detail</string>
+    <string name="main">Main</string>
+    <string name="cooldown">Cooldown</string>
 </resources>

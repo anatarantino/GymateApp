@@ -2,9 +2,9 @@ package ar.edu.itba.example.gymateapp.view.classes;
 
 public class ExerciseData {
     private String exName;
-    private Integer exDuration;
+    private String exDuration;
 
-    public ExerciseData(String exName, Integer exDuration) {
+    public ExerciseData(String exName, String exDuration) {
         this.exName = exName;
         this.exDuration = exDuration;
     }
@@ -13,7 +13,7 @@ public class ExerciseData {
         return exName;
     }
 
-    public Integer getExDuration() {
+    public String getExDuration() {
         return exDuration;
     }
 }
