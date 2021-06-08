@@ -117,7 +117,7 @@ public class RoutineDetailFragment extends Fragment {
         Button detailBtn = view.findViewById(R.id.detailBtn);
         detailBtn.setOnClickListener(v -> {
             Fragment fragment_routinerun = new RoutineExecutionFragment();
-            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.routine_detail, fragment_routinerun);
             transaction.addToBackStack(null);
             transaction.commit();

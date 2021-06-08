@@ -7,14 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.NavHostController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.Console;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
@@ -42,6 +48,10 @@ public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickL
         DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(recyclerRoutine.getContext(), LinearLayoutManager.VERTICAL);
         recyclerRoutine.addItemDecoration(mDividerItemDecoration);
 
+//        recyclerRoutine.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+//        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+//        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.r));
+
         seedRoutines(); //aca pondriamos las ultimas rutinas globales
         RoutinesAdapter adapter = new RoutinesAdapter(routineList,this);
 
@@ -64,11 +74,11 @@ public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickL
 
     @Override
     public void onItemClick(RoutineData routineData) {
-        Log.i("home","listener");
         Fragment fragment = RoutineDetailFragment.newInstance(routineData);
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_home, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+
     }
 }

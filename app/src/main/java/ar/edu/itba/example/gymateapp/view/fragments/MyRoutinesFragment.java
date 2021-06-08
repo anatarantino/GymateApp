@@ -58,7 +58,7 @@ public class MyRoutinesFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         Fragment fragment_sort_by = new SortByFragment();
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_routines,fragment_sort_by);
         transaction.addToBackStack(null);
         transaction.commit();
