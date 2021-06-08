@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import ar.edu.itba.example.gymateapp.R;
+import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 
@@ -40,6 +41,7 @@ public class MyRoutinesFragment extends Fragment implements View.OnClickListener
         recyclerRoutine.setAdapter(adapter);
         Button sortBtn = view.findViewById(R.id.button5);
         sortBtn.setOnClickListener(this);
+        ((MainActivity) getActivity()).setNavigationVisibility(true);
         return view;
     }
 

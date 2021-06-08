@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import ar.edu.itba.example.gymateapp.R;
+import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 
@@ -36,6 +37,7 @@ public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickL
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -56,6 +58,9 @@ public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickL
         RoutinesAdapter adapter = new RoutinesAdapter(routineList,this);
 
         recyclerRoutine.setAdapter(adapter);
+
+        ((MainActivity) getActivity()).setNavigationVisibility(true);
+
         return view;
 
     }

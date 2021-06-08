@@ -36,7 +36,6 @@
     <string name="routine_name">routine name</string>
     <string name="cycle_name">cycle name</string>
     <string name="description">DESCRIPTION</string>
-    <string name="routine_description">Esta es la descripción de la rutina, quiero escribir algo largo asi veo bien como se ve en pantalla.</string>
     <string name="execute">Execute</string>
     <string name="favorite">Favorite</string>
     <string name="share">Share</string>
@@ -47,4 +46,9 @@
     <string name="play_with_detail">Play with detail</string>
     <string name="main">Main</string>
     <string name="cooldown">Cooldown</string>
+    <string name="subject">Try this routine!</string>
+    <string name="RateRoutineDialog">Rate this routine</string>
+    <string name="Rate">Rate</string>
+    <string name="Close">close</string>
+
 </resources>

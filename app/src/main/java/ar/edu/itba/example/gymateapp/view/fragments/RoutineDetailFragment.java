@@ -6,6 +6,9 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,6 +32,7 @@ import org.jetbrains.annotations.NotNull;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.databinding.FragmentDetailBinding;
+import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 import ar.edu.itba.example.gymateapp.view.viewModel.RoutinesViewModel;
 
@@ -47,6 +51,11 @@ public class RoutineDetailFragment extends Fragment {
     private TextView title;
     private int routineId;
     private FragmentDetailBinding binding;
+
+    private MenuItem fav;
+    private MenuItem unfav;
+
+    private MainActivity main;
 
     public RoutineDetailFragment() {
     }
@@ -122,6 +131,10 @@ public class RoutineDetailFragment extends Fragment {
             transaction.addToBackStack(null);
             transaction.commit();
         });
+
+        main = (MainActivity) getActivity();
+        main.showUpButton();
+        main.setNavigationVisibility(false);
         return view;
     }
 
@@ -134,4 +147,69 @@ public class RoutineDetailFragment extends Fragment {
 //        }
 //
 //    }
+
+
+    @Override
+    public void onDestroyView() {
+        main.hideUpButton();
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.findItem(R.id.app_bar_share).setVisible(true);
+        menu.findItem(R.id.app_bar_rate).setVisible(true);
+        menu.findItem(R.id.app_bar_favorite_filled).setVisible(true);
+        menu.findItem(R.id.app_bar_favorite_outlined).setVisible(true);
+
+        fav = menu.findItem(R.id.app_bar_favorite_filled);
+        unfav = menu.findItem(R.id.app_bar_favorite_outlined);
+
+        //mandar data a la api
+
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.app_bar_favorite_filled){
+            //llamar api
+            unfavRoutine();
+        }else if(id == R.id.app_bar_favorite_outlined){
+            //llamar api
+            favRoutine();
+        }else if(id == R.id.app_bar_rate){
+            openRateDialog();
+        }else if(id == R.id.app_bar_share){
+            share();
+        }else{
+            return super.onOptionsItemSelected(item);
+        }
+        return true;
+    }
+
+    public void favRoutine(){
+        fav.setVisible(true);
+        unfav.setVisible(false);
+    }
+
+    public void unfavRoutine(){
+        fav.setVisible(false);
+        unfav.setVisible(true);
+    }
+
+    public void openRateDialog(){
+        RateDialog rateDialog = new RateDialog(routineId, getActivity());
+        rateDialog.show(getParentFragmentManager(),"Example dialog");
+    }
+
+    public void share(){
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, routineData.title);
+        sharingIntent.putExtra("RoutineId", routineId);
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.subject) + ": http://www.gymate.com/Routines/" + routineId);
+        startActivity(Intent.createChooser(sharingIntent, "Share Rutine"));
+    }
 }

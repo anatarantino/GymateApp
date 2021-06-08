@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -15,6 +16,7 @@ import ar.edu.itba.example.gymateapp.view.fragments.ProfileFragment;
 import ar.edu.itba.example.gymateapp.view.fragments.RoutinesFragment;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -65,16 +67,20 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //    };
 
+    private BottomNavigationView bottomNav;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNav = findViewById(R.id.nav_view);
+        bottomNav = findViewById(R.id.nav_view);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
                 findFragmentById(R.id.mainNavFragment);
         assert navHostFragment != null;
         NavigationUI.setupWithNavController(bottomNav,navHostFragment.getNavController());
+
+        setSupportActionBar(findViewById(R.id.appbar));
 
     }
 
@@ -82,6 +88,32 @@ public class MainActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this,R.id.mainNavFragment);
         return navController.navigateUp();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayShowTitleEnabled(false);
+        getMenuInflater().inflate(R.menu.appbar,menu);
+        return true;
+    }
+
+    public void setNavigationVisibility(boolean b){
+        if(b){
+            bottomNav.setVisibility(View.VISIBLE);
+        }else{
+            bottomNav.setVisibility(View.GONE);
+        }
+    }
+
+    public void showUpButton(){
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    public void hideUpButton(){
+                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 }
 

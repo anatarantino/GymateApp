@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.databinding.FragmentRoutinerunBinding;
+import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 
@@ -61,6 +62,7 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
             transaction.addToBackStack(null);
             transaction.commit();
         });
+        ((MainActivity) getActivity()).setNavigationVisibility(true);
         return view;
     }
 
