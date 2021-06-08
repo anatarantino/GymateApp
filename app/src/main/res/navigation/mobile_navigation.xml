@@ -16,7 +16,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_routines"
+        android:id="@+id/routinesFragment"
         android:label="fragment_routines"
         android:name="ar.edu.itba.example.gymateapp.view.fragments.RoutinesFragment"
         tools:layout="@layout/fragment_routines">
@@ -69,6 +69,10 @@
         <action
             android:id="@+id/action_routineDetailFragment_to_routineExecutionExercise"
             app:destination="@id/routineExecutionExercise" />
+        <argument
+            android:name="routineId"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
 
 </navigation>

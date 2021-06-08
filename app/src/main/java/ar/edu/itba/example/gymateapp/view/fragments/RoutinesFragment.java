@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,13 +20,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import ar.edu.itba.example.gymateapp.R;
+import ar.edu.itba.example.gymateapp.databinding.FragmentRoutinerunBinding;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 
-public class RoutinesFragment extends Fragment implements View.OnClickListener, RoutinesAdapter.ItemClickListener {
+
+public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemClickListener {
 
     RecyclerView recyclerRoutine;
     ArrayList<RoutineData> routineList;
+    private FragmentRoutinerunBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +38,10 @@ public class RoutinesFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_routines, container, false);
+        binding = FragmentRoutinerunBinding.inflate(getLayoutInflater());
+
+        View view = binding.getRoot();
+
         routineList = new ArrayList<>();
         recyclerRoutine = view.findViewById(R.id.userRecyclerView);
         recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -47,7 +54,13 @@ public class RoutinesFragment extends Fragment implements View.OnClickListener, 
 
         recyclerRoutine.setAdapter(adapter);
         Button sortBtn = view.findViewById(R.id.button5);
-        sortBtn.setOnClickListener(this);
+        sortBtn.setOnClickListener(v -> {
+            Fragment fragment_sort_by = new SortByFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_routines, fragment_sort_by);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        });
         return view;
     }
 
@@ -63,15 +76,8 @@ public class RoutinesFragment extends Fragment implements View.OnClickListener, 
         routineList.add(new RoutineData(7,"Titulo 7", "creador 1","Esta es la desc de la rutina numero  7.", 3,c1));
     }
 
-    @Override
-    public void onClick(View v) {
-        Fragment fragment_sort_by = new SortByFragment();
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_routines, fragment_sort_by);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 
+    //Al hacer click en una rutina
     @Override
     public void onItemClick(RoutineData routineData) {
         Fragment fragment = RoutineDetailFragment.newInstance(routineData);
@@ -79,6 +85,7 @@ public class RoutinesFragment extends Fragment implements View.OnClickListener, 
         transaction.replace(R.id.fragment_routines, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+
     }
 
     public interface OnFragmentInteractionListener {

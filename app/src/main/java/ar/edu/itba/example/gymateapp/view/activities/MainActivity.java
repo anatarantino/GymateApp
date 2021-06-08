@@ -1,5 +1,6 @@
 package ar.edu.itba.example.gymateapp.view.activities;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import ar.edu.itba.example.gymateapp.R;
+import ar.edu.itba.example.gymateapp.databinding.ActivityMainBinding;
 import ar.edu.itba.example.gymateapp.view.fragments.HomeFragment;
 import ar.edu.itba.example.gymateapp.view.fragments.MyRoutinesFragment;
 import ar.edu.itba.example.gymateapp.view.fragments.ProfileFragment;
@@ -25,44 +27,43 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
-public class MainActivity extends AppCompatActivity implements RoutinesFragment.OnFragmentInteractionListener, MyRoutinesFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity {
 
-    private BottomNavigationView bottomNavigationView;
-    Fragment currentFragment = null;
-    FragmentTransaction ft;
+//    Fragment currentFragment = null;
+//    FragmentTransaction ft;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch(item.getItemId()){
-                case R.id.navigation_home:
-                    currentFragment = new HomeFragment();
-                    ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.content,currentFragment);
-                    ft.commit();
-                    return true;
-                case R.id.navigation_routines:
-                    currentFragment = new RoutinesFragment();
-                    ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.content,currentFragment);
-                    ft.commit();
-                    return true;
-                case R.id.navigation_my_routines:
-                    currentFragment = new MyRoutinesFragment();
-                    ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.content,currentFragment);
-                    ft.commit();
-                    return true;
-                case R.id.navigation_profile:
-                    currentFragment = new ProfileFragment();
-                    ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.content,currentFragment);
-                    ft.commit();
-                    return true;
-            }
-            return false;
-        }
-    };
+//    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+//        @Override
+//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//            switch(item.getItemId()){
+//                case R.id.navigation_home:
+//                    currentFragment = new HomeFragment();
+//                    ft = getSupportFragmentManager().beginTransaction();
+//                    ft.replace(R.id.content,currentFragment);
+//                    ft.commit();
+//                    return true;
+//                case R.id.navigation_routines:
+//                    currentFragment = new RoutinesFragment();
+//                    ft = getSupportFragmentManager().beginTransaction();
+//                    ft.replace(R.id.content,currentFragment);
+//                    ft.commit();
+//                    return true;
+//                case R.id.navigation_my_routines:
+//                    currentFragment = new MyRoutinesFragment();
+//                    ft = getSupportFragmentManager().beginTransaction();
+//                    ft.replace(R.id.content,currentFragment);
+//                    ft.commit();
+//                    return true;
+//                case R.id.navigation_profile:
+//                    currentFragment = new ProfileFragment();
+//                    ft = getSupportFragmentManager().beginTransaction();
+//                    ft.replace(R.id.content,currentFragment);
+//                    ft.commit();
+//                    return true;
+//            }
+//            return false;
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -70,13 +71,17 @@ public class MainActivity extends AppCompatActivity implements RoutinesFragment.
         setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNav = findViewById(R.id.nav_view);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
+                findFragmentById(R.id.mainNavFragment);
+        assert navHostFragment != null;
+        NavigationUI.setupWithNavController(bottomNav,navHostFragment.getNavController());
+
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this,R.id.mainNavFragment);
+        return navController.navigateUp();
     }
-
 }
 
