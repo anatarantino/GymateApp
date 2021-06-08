@@ -16,4 +16,23 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
     </style>
+
+    <style name="PopUp" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/primaryColor</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@color/primaryColor</item>
+        <item name="android:background">@color/secondColorVariant</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/primaryColor</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/primaryColor</item>
+    </style>
+
 </resources>
