@@ -53,11 +53,18 @@
         <argument
             android:name="title"
             app:argType="string"/>
+        <action
+            android:id="@+id/action_routineExecutionExercise_to_routineDetailFragment"
+            app:destination="@id/routineDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/routineExecutionAsListFragment"
         android:name="ar.edu.itba.example.gymateapp.view.fragments.RoutineExecutionAsListFragment"
-        android:label="RoutineExecutionAsListFragment" />
+        android:label="RoutineExecutionAsListFragment" >
+        <action
+            android:id="@+id/action_routineExecutionAsListFragment_to_routineDetailFragment"
+            app:destination="@id/routineDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/routineDetailFragment"
         android:name="ar.edu.itba.example.gymateapp.view.fragments.RoutineDetailFragment"
@@ -73,6 +80,18 @@
             android:name="routineId"
             app:argType="integer"
             android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_routineDetailFragment_to_routinesFragment"
+            app:destination="@id/routinesFragment" />
+        <action
+            android:id="@+id/action_routineDetailFragment_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+        <action
+            android:id="@+id/action_routineDetailFragment_to_navigation_my_routines"
+            app:destination="@id/navigation_my_routines" />
+        <action
+            android:id="@+id/action_routineDetailFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
 
 </navigation>

@@ -51,6 +51,7 @@ public class RoutineDetailFragment extends Fragment {
     private TextView title;
     private int routineId;
     private FragmentDetailBinding binding;
+    private View view;
 
     private MenuItem fav;
     private MenuItem unfav;
@@ -83,11 +84,13 @@ public class RoutineDetailFragment extends Fragment {
             imgParam = getArguments().getString(ARG_PARAM4);
             id = getArguments().getString(ARG_PARAM5);
         }
+        setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detail, container, false);
+        binding = FragmentDetailBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
 
         TextView title = view.findViewById(R.id.title);
         title.setText(titleParam);
@@ -159,12 +162,15 @@ public class RoutineDetailFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.findItem(R.id.app_bar_share).setVisible(true);
         menu.findItem(R.id.app_bar_rate).setVisible(true);
-        menu.findItem(R.id.app_bar_favorite_filled).setVisible(true);
+        //cambiar a true despues
+        menu.findItem(R.id.app_bar_favorite_filled).setVisible(false);
+//        menu.findItem(R.id.app_bar_favorite_filled).setVisible(true);
         menu.findItem(R.id.app_bar_favorite_outlined).setVisible(true);
 
         fav = menu.findItem(R.id.app_bar_favorite_filled);
         unfav = menu.findItem(R.id.app_bar_favorite_outlined);
 
+        //arrancan los dos corazones en true y despues te fijas en la api si esta true o false
         //mandar data a la api
 
         super.onCreateOptionsMenu(menu,inflater);
@@ -207,9 +213,11 @@ public class RoutineDetailFragment extends Fragment {
     public void share(){
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, routineData.title);
+        //sharingIntent.putExtra(Intent.EXTRA_SUBJECT, routineData.title);
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT,"Titulo prueba");
         sharingIntent.putExtra("RoutineId", routineId);
         sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.subject) + ": http://www.gymate.com/Routines/" + routineId);
         startActivity(Intent.createChooser(sharingIntent, "Share Rutine"));
     }
 }
+

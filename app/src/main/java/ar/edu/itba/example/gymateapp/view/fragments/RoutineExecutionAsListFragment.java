@@ -37,6 +37,10 @@ public class RoutineExecutionAsListFragment extends Fragment {
     private ExercisesAdapter mainAdapter;
     private ExercisesAdapter cooldownAdapter;
 
+    private static final int WARMUP_CYCLE = 0;
+    private static final int MAIN_CYCLE = 1;
+    private static final int COOLDOWN_CYCLE = 2;
+
     private ExercisesAdapter[] adapters = new ExercisesAdapter[3];
 
     private RecyclerView recyclerViewWarmup;
@@ -62,6 +66,7 @@ public class RoutineExecutionAsListFragment extends Fragment {
             titleParam = getArguments().getString(ARG_PARAM1);
             id = getArguments().getString(ARG_PARAM2);
         }
+        setHasOptionsMenu(true);
     }
 
     @Override

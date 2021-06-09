@@ -54,7 +54,9 @@ public class MyRoutinesFragment extends Fragment implements View.OnClickListener
         myRoutineList.add(new RoutineData(4,"Titulo 4","creador 2","Esta es la desc de la rutina numero  4.", 4, c1));
         myRoutineList.add(new RoutineData(5,"Titulo 5","creador 2","Esta es la desc de la rutina numero 5.", 4, c2));
         myRoutineList.add(new RoutineData(6,"Titulo 6","creador 1","Esta es la desc de la rutina numero  6.", 4, c2));
-        myRoutineList.add(new RoutineData(7,"Titulo 7","creador 1","Esta es la desc de la rutina numero  7.", 4, c1));
+        myRoutineList.add(new RoutineData(7,"Titulo 7","creador 1","Esta es la desc de la rutina numero  7 y rs muy muy muy muy larga. Mira anita tendria que bjar un poco!!! Se ve? Me ven? se sigue viendo? Ya se fueron todos? Estoy exhausta me duelen las mejillas necesito descansar..", 4, c1));
+        myRoutineList.add(new RoutineData(8,"me ven?","creador 1"," las mejillas necesito descansar..", 4, c1));
+
     }
 
     @Override
