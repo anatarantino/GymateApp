@@ -6,27 +6,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/background">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="228dp"
-        android:layout_height="54dp"
-        android:backgroundTint="#4DF000"
-        android:text="@string/next_ex"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        app:cornerRadius="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.836" />
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
-        android:layout_width="375dp"
-        android:layout_height="238dp"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
         android:indeterminateTint="@color/Gymate_green"
         android:progressTint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -95,21 +79,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.675" />
+        app:layout_constraintVertical_bias="0.684" />
 
     <TextView
         android:id="@+id/exDesc"
         android:layout_width="0dp"
-        android:layout_height="35dp"
+        android:layout_height="0dp"
         android:text="@string/ex_description"
         android:textAlignment="center"
         android:textColor="#FDFDFD"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/executionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.739" />
+        app:layout_constraintTop_toBottomOf="@+id/exTitle" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -118,5 +101,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/executionBar"
+        layout="@layout/execution_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
