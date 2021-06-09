@@ -3,7 +3,7 @@
     <style name="Theme.GymateApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryVariant">@color/primaryColorVariant</item>
+        <item name="colorPrimaryVariant">@color/primaryColor</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/Gymate_green</item>
@@ -16,7 +16,6 @@
 
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <!-- Customize color of navigation drawer icon and back arrow -->
-        <item name="searchViewStyle">@color/black</item>
         <item name="colorControlNormal">@color/white</item>
     </style>
 
