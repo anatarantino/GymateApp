@@ -9,6 +9,7 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+
     <style name="Titles.RoutineTitle">
         <item name="android:textSize">22sp</item>
     </style>

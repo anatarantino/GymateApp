@@ -31,42 +31,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity {
 
-//    Fragment currentFragment = null;
-//    FragmentTransaction ft;
-
-//    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-//        @Override
-//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//            switch(item.getItemId()){
-//                case R.id.navigation_home:
-//                    currentFragment = new HomeFragment();
-//                    ft = getSupportFragmentManager().beginTransaction();
-//                    ft.replace(R.id.content,currentFragment);
-//                    ft.commit();
-//                    return true;
-//                case R.id.navigation_routines:
-//                    currentFragment = new RoutinesFragment();
-//                    ft = getSupportFragmentManager().beginTransaction();
-//                    ft.replace(R.id.content,currentFragment);
-//                    ft.commit();
-//                    return true;
-//                case R.id.navigation_my_routines:
-//                    currentFragment = new MyRoutinesFragment();
-//                    ft = getSupportFragmentManager().beginTransaction();
-//                    ft.replace(R.id.content,currentFragment);
-//                    ft.commit();
-//                    return true;
-//                case R.id.navigation_profile:
-//                    currentFragment = new ProfileFragment();
-//                    ft = getSupportFragmentManager().beginTransaction();
-//                    ft.replace(R.id.content,currentFragment);
-//                    ft.commit();
-//                    return true;
-//            }
-//            return false;
-//        }
-//    };
-
     private BottomNavigationView bottomNav;
 
     @Override
@@ -115,5 +79,6 @@ public class MainActivity extends AppCompatActivity {
     public void hideUpButton(){
                 getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
+
 }
 

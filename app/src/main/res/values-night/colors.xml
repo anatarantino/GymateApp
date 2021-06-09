@@ -7,4 +7,18 @@
     <color name="primaryColorVariant">#424242</color> <!-- grey_darken_3 -->
     <color name="secondaryColor">#616161</color> <!-- grey_darken_2 -->
     <color name="secondColorVariant">#757575</color> <!-- grey_darken_1 -->
+
+    <color name="title1">@color/white</color>
+    <color name="titleBg">@color/black</color>
+    <color name="cardBg">@color/black</color>
+    <color name="starColor">@color/white</color>
+    <color name="Appbar">@color/primaryColor</color>
+    <color name="icon">@color/white</color>
+    <color name="MainTitleBg">@color/primaryColor</color>
+    <color name="MainTitle">@color/white</color>
+    <color name="playBtn">@color/primaryColor</color>
+    <color name="playBtnTxt">@color/white</color>
+    <color name="ListTitleBg">@color/primaryColor</color>
+    <color name="ListTitle">@color/white</color>
+
 </resources>

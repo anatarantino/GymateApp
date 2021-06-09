@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,8 +23,9 @@ import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 
 public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemClickListener {
 
-    RecyclerView recyclerRoutine;
-    ArrayList<RoutineData> routineList;
+    private RecyclerView recyclerRoutine;
+    private ArrayList<RoutineData> routineList;
+    private View view;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile,container,false);
+        view = inflater.inflate(R.layout.fragment_profile,container,false);
         routineList = new ArrayList<>();
         recyclerRoutine = view.findViewById(R.id.userRecyclerView);
         recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -62,11 +64,8 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
 
     @Override
     public void onItemClick(RoutineData routineData) {
-        Log.i("profile","listener");
-        Fragment fragment = RoutineDetailFragment.newInstance(routineData);
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_profile, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        ProfileFragmentDirections.ActionNavigationProfileToRoutineDetailFragment action = ProfileFragmentDirections.actionNavigationProfileToRoutineDetailFragment();
+        action.setRoutineId(routineData.id);
+        Navigation.findNavController(view).navigate(action);
     }
 }

@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import ar.edu.itba.example.gymateapp.R;
-import ar.edu.itba.example.gymateapp.databinding.FragmentRoutinerunBinding;
+import ar.edu.itba.example.gymateapp.databinding.FragmentRoutinesBinding;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
@@ -30,7 +29,8 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
 
     RecyclerView recyclerRoutine;
     ArrayList<RoutineData> routineList;
-    private FragmentRoutinerunBinding binding;
+    private FragmentRoutinesBinding binding;
+    private View view;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,9 +39,9 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentRoutinerunBinding.inflate(getLayoutInflater());
+        binding = FragmentRoutinesBinding.inflate(getLayoutInflater());
 
-        View view = binding.getRoot();
+        view = binding.getRoot();
 
         routineList = new ArrayList<>();
         recyclerRoutine = view.findViewById(R.id.userRecyclerView);
@@ -55,13 +55,7 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
 
         recyclerRoutine.setAdapter(adapter);
         Button sortBtn = view.findViewById(R.id.button5);
-        sortBtn.setOnClickListener(v -> {
-            Fragment fragment_sort_by = new SortByFragment();
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_routines, fragment_sort_by);
-            transaction.addToBackStack(null);
-            transaction.commit();
-        });
+        sortBtn.setOnClickListener(v -> Navigation.findNavController(view).navigate(RoutinesFragmentDirections.actionNavigationRoutinesToSortByFragment()));
         ((MainActivity) getActivity()).setNavigationVisibility(true);
         return view;
     }
@@ -82,12 +76,9 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
     //Al hacer click en una rutina
     @Override
     public void onItemClick(RoutineData routineData) {
-        Fragment fragment = RoutineDetailFragment.newInstance(routineData);
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_routines, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-
+        RoutinesFragmentDirections.ActionNavigationRoutinesToRoutineDetailFragment action1 = RoutinesFragmentDirections.actionNavigationRoutinesToRoutineDetailFragment();
+        action1.setRoutineId(routineData.id);
+        Navigation.findNavController(view).navigate(action1);
     }
 
     public interface OnFragmentInteractionListener {

@@ -22,7 +22,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="125dp"
-            android:background="@color/black">
+            android:background="@color/cardBg">
 
             <TextView
                 android:id="@+id/routineId"
@@ -40,8 +40,8 @@
                 android:layout_height="30dp"
                 android:layout_marginBottom="4dp"
                 android:numStars="5"
-                android:progressBackgroundTint="#FFFFFF"
-                android:progressTint="@color/white"
+                android:progressBackgroundTint="@color/starColor"
+                android:progressTint="@color/icon"
                 android:rating="4"
                 android:secondaryProgressTint="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="34dp"
 
-                android:textColor="#FFFFFF"
+                android:textColor="@color/title1"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/creator"
                 app:layout_constraintStart_toEndOf="@+id/image"
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
 
-                android:textColor="#FFFFFF"
+                android:textColor="@color/title1"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toTopOf="@+id/routineRatingBar"
                 app:layout_constraintStart_toStartOf="@+id/title" />

@@ -22,7 +22,7 @@
         android:id="@+id/cardView10"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        app:cardBackgroundColor="@color/primaryColor"
+        app:cardBackgroundColor="@color/MainTitleBg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6">
@@ -35,12 +35,12 @@
 
             <TextView
                 android:id="@+id/textView11"
+                style="@style/Titles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/recent_routines"
-                style="@style/Titles"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/MainTitle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

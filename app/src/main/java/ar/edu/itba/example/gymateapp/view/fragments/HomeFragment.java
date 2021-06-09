@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.NavHostController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,8 +30,9 @@ import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 
 public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickListener {
 
-    RecyclerView recyclerRoutine;
-    ArrayList<RoutineData> routineList;
+    private RecyclerView recyclerRoutine;
+    private ArrayList<RoutineData> routineList;
+    private View view;
 
     public HomeFragment(){ }
 
@@ -42,7 +44,7 @@ public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickL
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home,container,false);
+        view = inflater.inflate(R.layout.fragment_home,container,false);
         routineList = new ArrayList<>();
         recyclerRoutine = view.findViewById(R.id.userRecyclerView);
         recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -79,11 +81,8 @@ public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickL
 
     @Override
     public void onItemClick(RoutineData routineData) {
-        Fragment fragment = RoutineDetailFragment.newInstance(routineData);
-        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_home, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-
+        HomeFragmentDirections.ActionNavigationHomeToRoutineDetailFragment action = HomeFragmentDirections.actionNavigationHomeToRoutineDetailFragment();
+        action.setRoutineId(routineData.id);
+        Navigation.findNavController(view).navigate(action);
     }
 }
