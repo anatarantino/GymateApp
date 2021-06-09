@@ -50,5 +50,8 @@
     <string name="RateRoutineDialog">Rate this routine</string>
     <string name="Rate">Rate</string>
     <string name="Close">close</string>
-
+    <string name="pause">pause</string>
+    <string name="next">next</string>
+    <string name="play">play</string>
+    <string name="previous">previous</string>
 </resources>

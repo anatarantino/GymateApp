@@ -50,4 +50,8 @@
     <string name="RateRoutineDialog">Califica esta rutina</string>
     <string name="Rate">Calificar</string>
     <string name="Close">Cerrar</string>
+    <string name="pause">pausa</string>
+    <string name="next">siguiente</string>
+    <string name="play">ejecutar</string>
+    <string name="previous">previo</string>
 </resources>
