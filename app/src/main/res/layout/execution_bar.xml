@@ -10,11 +10,11 @@
 
     <ImageButton
         android:id="@+id/previous"
+        style="@style/executionBarButtom"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:background="@android:color/transparent"
-        style="@style/executionBarButtom"
         android:contentDescription="@string/previous"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,20 +31,20 @@
 
         <ImageButton
             android:id="@+id/play"
+            style="@style/executionBarButtom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            style="@style/executionBarButtom"
-            android:visibility="visible"
             android:contentDescription="@string/play"
+            android:visibility="visible"
             app:srcCompat="@drawable/ic_play" />
 
         <ImageButton
             android:id="@+id/pause"
+            style="@style/executionBarButtom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            style="@style/executionBarButtom"
             android:contentDescription="@string/pause"
             android:visibility="invisible"
             app:srcCompat="@drawable/ic_baseline_pause" />
@@ -52,11 +52,11 @@
 
     <ImageButton
         android:id="@+id/next"
+        style="@style/executionBarButtom"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:background="@android:color/transparent"
-        style="@style/executionBarButtom"
         android:contentDescription="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
