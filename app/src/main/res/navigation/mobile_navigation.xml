@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_navigation_routines_to_routineDetailFragment"
             app:destination="@id/routineDetailFragment" />
+        <action
+            android:id="@+id/action_routinesFragment_to_sortByFragment"
+            app:destination="@id/sortByFragment" />
     </fragment>
 
     <fragment
@@ -33,6 +36,9 @@
         <action
             android:id="@+id/action_navigation_my_routines_to_routineDetailFragment"
             app:destination="@id/routineDetailFragment" />
+        <action
+            android:id="@+id/action_navigation_my_routines_to_sortByFragment"
+            app:destination="@id/sortByFragment" />
     </fragment>
 
     <fragment
@@ -93,5 +99,9 @@
             android:id="@+id/action_routineDetailFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/sortByFragment"
+        android:name="ar.edu.itba.example.gymateapp.view.fragments.SortByFragment"
+        android:label="SortByFragment" />
 
 </navigation>
