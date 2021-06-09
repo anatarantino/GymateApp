@@ -18,7 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".view.activities.LoginActivity" />
+
         <activity
             android:name=".view.activities.MainActivity"
             android:launchMode="singleTop" />

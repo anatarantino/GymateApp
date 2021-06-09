@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
@@ -43,7 +44,7 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
         RoutinesAdapter adapter = new RoutinesAdapter(routineList,this);
 
         recyclerRoutine.setAdapter(adapter);
-        ((MainActivity) getActivity()).setNavigationVisibility(true);
+        ((MainActivity) requireActivity()).setNavigationVisibility(true);
         return view;
     }
 
