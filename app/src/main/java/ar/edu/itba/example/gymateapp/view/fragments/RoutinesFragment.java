@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -45,10 +46,11 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
 
         routineList = new ArrayList<>();
         recyclerRoutine = view.findViewById(R.id.userRecyclerView);
-        recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(recyclerRoutine.getContext(), LinearLayoutManager.VERTICAL);
-        recyclerRoutine.addItemDecoration(mDividerItemDecoration);
+        recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
+        recyclerRoutine.addItemDecoration(itemDecorator);
 
         seedRoutines();
         RoutinesAdapter adapter = new RoutinesAdapter(routineList,this);

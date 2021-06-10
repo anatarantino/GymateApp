@@ -48,13 +48,9 @@ public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickL
         routineList = new ArrayList<>();
         recyclerRoutine = view.findViewById(R.id.userRecyclerView);
         recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(recyclerRoutine.getContext(), LinearLayoutManager.VERTICAL);
-        recyclerRoutine.addItemDecoration(mDividerItemDecoration);
-
-//        recyclerRoutine.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-//        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
-//        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.r));
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
+        recyclerRoutine.addItemDecoration(itemDecorator);
 
         seedRoutines(); //aca pondriamos las ultimas rutinas globales
         RoutinesAdapter adapter = new RoutinesAdapter(routineList,this);

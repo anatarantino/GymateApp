@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
@@ -38,9 +39,9 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
         routineList = new ArrayList<>();
         recyclerRoutine = view.findViewById(R.id.userRecyclerView);
         recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(recyclerRoutine.getContext(), LinearLayoutManager.VERTICAL);
-        recyclerRoutine.addItemDecoration(mDividerItemDecoration);
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
+        recyclerRoutine.addItemDecoration(itemDecorator);
 
         seedRoutines(); //aca hay que solo cargar las favoritas
         RoutinesAdapter adapter = new RoutinesAdapter(routineList,this);
