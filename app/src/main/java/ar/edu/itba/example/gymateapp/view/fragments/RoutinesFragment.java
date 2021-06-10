@@ -56,8 +56,9 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
         RoutinesAdapter adapter = new RoutinesAdapter(routineList,this);
 
         recyclerRoutine.setAdapter(adapter);
-        Button sortBtn = view.findViewById(R.id.button5);
-        sortBtn.setOnClickListener(v -> Navigation.findNavController(view).navigate(RoutinesFragmentDirections.actionNavigationRoutinesToSortByFragment()));
+//        Button sortBtn = view.findViewById(R.id.button5);
+//        sortBtn.setOnClickListener(v -> Navigation.findNavController(view).navigate(RoutinesFragmentDirections.actionNavigationRoutinesToSortByFragment()));
+
         ((MainActivity) getActivity()).setNavigationVisibility(true);
         return view;
     }
