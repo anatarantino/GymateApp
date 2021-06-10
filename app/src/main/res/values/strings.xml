@@ -54,4 +54,12 @@
     <string name="next">next</string>
     <string name="play">play</string>
     <string name="previous">previous</string>
+    <string name="desc">DESC</string>
+    <string name="asc">ASC</string>
+    <string-array name="spinner_array">
+        <item>Category</item>
+        <item>Creation date</item>
+        <item>Difficulty</item>
+        <item>Rating</item>
+    </string-array>
 </resources>

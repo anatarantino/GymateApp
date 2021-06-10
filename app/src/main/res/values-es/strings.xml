@@ -54,4 +54,12 @@
     <string name="next">siguiente</string>
     <string name="play">ejecutar</string>
     <string name="previous">previo</string>
+    <string name="desc">DESC</string>
+    <string name="asc">ASC</string>
+    <string-array name="spinner_array">
+        <item>Categoría</item>
+        <item>Fecha de creación</item>
+        <item>Dificultad</item>
+        <item>Puntuación</item>
+    </string-array>
 </resources>
