@@ -1,11 +1,10 @@
 package ar.edu.itba.example.gymateapp.view.fragments;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import ar.edu.itba.example.gymateapp.R;
-import ar.edu.itba.example.gymateapp.view.viewModel.RoutinesViewModel;
+import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 
 public class ClickOnRoutine implements View.OnClickListener {
 

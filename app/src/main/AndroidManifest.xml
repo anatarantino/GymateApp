@@ -5,6 +5,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logosinnombre"
+        android:name=".model.App"
         android:label="@string/app_name"
         android:roundIcon="@drawable/logosinnombre"
         android:supportsRtl="true"
