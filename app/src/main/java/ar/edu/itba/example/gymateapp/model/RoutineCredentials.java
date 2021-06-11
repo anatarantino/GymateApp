@@ -3,7 +3,7 @@ package ar.edu.itba.example.gymateapp.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RoutinesCredentials {
+public class RoutineCredentials {
     @SerializedName("name")
     @Expose
     private String name;
