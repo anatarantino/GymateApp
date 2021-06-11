@@ -6,15 +6,15 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-public interface ApiUserService {
+public interface UserApiService {
 
     @POST("users/login")
-    LiveData<ApiResponse<Token>> login(@Body UserCredentials credentials);
+    LiveData<ApiResponse<AuthToken>> login(@Body UserCredentials credentials);
 
     @POST("users/logout")
     LiveData<ApiResponse<Void>> logout();
 
     @GET("users/current")
-    LiveData<ApiResponse<User>> getCurrent();
+    LiveData<ApiResponse<UserCredentials>> getCurrentUser();
 
 }

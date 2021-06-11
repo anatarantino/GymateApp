@@ -20,7 +20,7 @@ public class ApiClient {
     public static final int READ_TIMEOUT = 60;
     public static final int WRITE_TIMEOUT = 60;
 
-    private ApiClient() {
+    public ApiClient() {
     }
 
     public static <S> S create(Context context, Class<S> serviceClass) {
