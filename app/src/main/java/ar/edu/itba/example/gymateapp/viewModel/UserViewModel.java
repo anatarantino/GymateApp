@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import ar.edu.itba.example.gymateapp.model.ApiClient;
 import ar.edu.itba.example.gymateapp.model.ApiError;
+import ar.edu.itba.example.gymateapp.model.ApiResponse;
 import ar.edu.itba.example.gymateapp.model.AppPreferences;
 import ar.edu.itba.example.gymateapp.model.AuthToken;
 import ar.edu.itba.example.gymateapp.model.UserApi;
@@ -80,6 +81,7 @@ public class UserViewModel extends AndroidViewModel {
                 })
         );
     }
+
 
     public MutableLiveData<UserInfo> getUserInfo() {
         return userInfo;
