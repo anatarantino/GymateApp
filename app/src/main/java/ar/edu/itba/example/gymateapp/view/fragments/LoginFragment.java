@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDeepLinkBuilder;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -22,6 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.databinding.ActivityLoginBinding;
+import ar.edu.itba.example.gymateapp.databinding.FragmentLoginBinding;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.viewModel.UserViewModel;
 
@@ -33,7 +35,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        ActivityLoginBinding binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        FragmentLoginBinding binding = FragmentLoginBinding.inflate(getLayoutInflater());
         username = binding.username;
         password = binding.password;
 
@@ -47,6 +49,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        viewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
     }
 
     private void tryLogin() {
