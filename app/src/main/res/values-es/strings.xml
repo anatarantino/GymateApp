@@ -62,4 +62,6 @@
         <item>Dificultad</item>
         <item>Puntuación</item>
     </string-array>
+    <string name="wrong_credentials">Usuario o contraseña inválido. Por favor intenta nuevamente.</string>
+    <string name="default_error">Ocurrió un error inesperado, inténtalo denuevo.</string>
 </resources>

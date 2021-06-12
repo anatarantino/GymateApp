@@ -16,20 +16,17 @@ import ar.edu.itba.example.gymateapp.R;
 public class LoginActivity extends AppCompatActivity {
 
     Button loginBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        setContentView(R.layout.activity_login);
+//        loginBtn = findViewById(R.id.login);
+//        loginBtn.setOnClickListener(v -> {
+//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//            startActivity(intent);
+//        });
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        loginBtn = findViewById(R.id.login);
-        loginBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-        });
     }
-
-//    public void loginAction(View view){
-//        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//        startActivity(intent);
-//    }
 
 }
