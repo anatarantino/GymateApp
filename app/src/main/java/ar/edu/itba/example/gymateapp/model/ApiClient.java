@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
@@ -19,8 +20,18 @@ public class ApiClient {
     public static final int CONNECT_TIMEOUT = 60;
     public static final int READ_TIMEOUT = 60;
     public static final int WRITE_TIMEOUT = 60;
+    private static String authToken = null;
+
 
     public ApiClient() {
+    }
+
+    public static String getAuthToken() {
+        return authToken;
+    }
+
+    public static void setAuthToken(String authToken) {
+        APIService.authToken = authToken;
     }
 
     public static <S> S create(Context context, Class<S> serviceClass) {
@@ -46,7 +57,7 @@ public class ApiClient {
                 .baseUrl(BASE_URL)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(new LiveDataCallAdapterFactory())
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .build();
 
         return retrofit.create(serviceClass);

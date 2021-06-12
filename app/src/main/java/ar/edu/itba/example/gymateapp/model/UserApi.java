@@ -4,6 +4,8 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
+import io.reactivex.rxjava3.core.Single;
+
 public class UserApi implements UserApiService {
 
     private UserApi userApi;
@@ -13,17 +15,17 @@ public class UserApi implements UserApiService {
     }
 
     @Override
-    public LiveData<ApiResponse<AuthToken>> login(UserCredentials credentials) {
+    public Single<ApiResponse<AuthToken>> login(UserCredentials credentials) {
         return userApi.login(credentials);
     }
 
     @Override
-    public LiveData<ApiResponse<Void>> logout() {
+    public Single<ApiResponse<Void>> logout() {
         return userApi.logout();
     }
 
     @Override
-    public LiveData<ApiResponse<UserCredentials>> getCurrentUser() {
+    public Single<ApiResponse<UserCredentials>> getCurrentUser() {
         return userApi.getCurrentUser();
     }
 }

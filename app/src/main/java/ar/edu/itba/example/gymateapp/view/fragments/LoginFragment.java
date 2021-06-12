@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
-
+//
 //public class LoginFragment extends Fragment {
 //    private TextInputLayout username,password;
 //
