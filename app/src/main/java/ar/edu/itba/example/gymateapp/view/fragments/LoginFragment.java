@@ -3,6 +3,7 @@ package ar.edu.itba.example.gymateapp.view.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void tryLogin() {
+        Log.i("Login","Entre al login veremossss");
         if (!validateUsername() | !validatePassword()) {
             return;
         }
@@ -95,6 +97,7 @@ public class LoginFragment extends Fragment {
                 getActivity().finish();
             }
         });
+        Log.i("login","Me estoy yendo del login bss");
     }
 
     private boolean validateUsername() {
