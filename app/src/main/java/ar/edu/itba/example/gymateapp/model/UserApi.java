@@ -15,17 +15,17 @@ public class UserApi implements UserApiService {
     }
 
     @Override
-    public Single<ApiResponse<AuthToken>> login(UserCredentials credentials) {
+    public Single<AuthToken> login(UserCredentials credentials) {
         return userApi.login(credentials);
     }
 
     @Override
-    public Single<ApiResponse<Void>> logout() {
+    public Single<Void> logout() {
         return userApi.logout();
     }
 
     @Override
-    public Single<ApiResponse<UserCredentials>> getCurrentUser() {
+    public Single<UserCredentials> getCurrentUser() {
         return userApi.getCurrentUser();
     }
 }

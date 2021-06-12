@@ -31,7 +31,7 @@ public class ApiClient {
     }
 
     public static void setAuthToken(String authToken) {
-        APIService.authToken = authToken;
+        ApiClient.authToken = authToken;
     }
 
     public static <S> S create(Context context, Class<S> serviceClass) {

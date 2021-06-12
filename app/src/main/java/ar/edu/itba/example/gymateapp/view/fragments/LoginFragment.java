@@ -28,6 +28,7 @@ public class LoginFragment extends Fragment {
     private EditText username, password;
     private UserViewModel viewModel;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -57,19 +58,19 @@ public class LoginFragment extends Fragment {
             if (error != null) {
                 switch (error.getCode()) {
                     case 4:
-                        errorMessage.setText(R.string.wrong_credentials);
+                        //errorMessage.setText(R.string.wrong_credentials);
                         password.setError(" ");
                         username.setError(" ");
                         new Handler().postDelayed(() -> {
                             password.setError(null);
                             username.setError(null);
-                            errorMessage.setText("");
+                            //errorMessage.setText("");
                         }, 3000);
                         viewModel.setLoginErrorCode(null);
                         break;
                     default:
-                        errorMessage.setText(R.string.default_error);
-                        new Handler().postDelayed(() -> errorMessage.setText(""), 3000);
+                        //errorMessage.setText(R.string.default_error);
+                        //new Handler().postDelayed(() -> errorMessage.setText(""), 3000);
                         break;
                 }
             }
@@ -82,7 +83,11 @@ public class LoginFragment extends Fragment {
                 if (aux.get("RoutineId") != null) {
                     Bundle bundle = new Bundle();
                     bundle.putInt("routineId", Integer.parseInt(aux.getString("RoutineId")));
-                    new NavDeepLinkBuilder(getActivity()).setComponentName(MainActivity.class).setGraph(R.navigation.mobile_navigation).setDestination(R.id.routineFragment).setArguments(bundle).createTaskStackBuilder().startActivities();
+                    new NavDeepLinkBuilder(getActivity())
+                            .setComponentName(MainActivity.class)
+                            .setGraph(R.navigation.mobile_navigation)
+                            .setDestination(R.id.routine_detail)
+                            .setArguments(bundle).createTaskStackBuilder().startActivities();
                 } else {
                     startActivity(intent);
                 }
@@ -129,4 +134,4 @@ public class LoginFragment extends Fragment {
         }
     }
 }
->>>>>>> Stashed changes
+
