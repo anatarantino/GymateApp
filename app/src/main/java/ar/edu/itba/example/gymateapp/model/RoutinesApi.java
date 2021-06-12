@@ -6,13 +6,33 @@ import android.content.Context;
 import java.util.Map;
 
 import io.reactivex.rxjava3.core.Single;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RoutinesApi implements RoutinesApiService{
+import static ar.edu.itba.example.gymateapp.model.ApiClient.BASE_URL;
 
-    private RoutinesApi routinesApi;
+public class RoutinesApi implements RoutinesApiService {
 
-    public RoutinesApi(Context context){
-        this.routinesApi=ApiClient.create(context,RoutinesApi.class);
+    private RoutinesApiService routinesApi;
+
+    public RoutinesApi(Context context) {
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .addInterceptor(httpLoggingInterceptor)
+                .addInterceptor(new AuthInterceptor(context))
+                .build();
+
+        routinesApi = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .client(httpClient)
+                .build()
+                .create(RoutinesApiService.class);
     }
 
     @Override
@@ -37,17 +57,17 @@ public class RoutinesApi implements RoutinesApiService{
 
     @Override
     public Single<PagedList<RoutineCycleCredentials>> getRoutineCycles(Integer routineId, Map<String, String> options) {
-        return routinesApi.getRoutineCycles(routineId,options);
+        return routinesApi.getRoutineCycles(routineId, options);
     }
 
     @Override
     public Single<PagedList<ExerciseCredentials>> getExercises(Integer cycleId, Map<String, String> options) {
-        return routinesApi.getExercises(cycleId,options);
+        return routinesApi.getExercises(cycleId, options);
     }
 
     @Override
     public Single<PagedList<ExerciseCredentials>> getExercisesById(Integer cycleId, Integer exerciseId, Map<String, String> options) {
-        return routinesApi.getExercisesById(cycleId,exerciseId,options);
+        return routinesApi.getExercisesById(cycleId, exerciseId, options);
     }
 
     @Override
@@ -62,7 +82,7 @@ public class RoutinesApi implements RoutinesApiService{
 
     @Override
     public Single<RoutineCredentials> addRoutineExecution(Integer routineId, RoutineCredentials routineExecution) {
-        return routinesApi.addRoutineExecution(routineId,routineExecution);
+        return routinesApi.addRoutineExecution(routineId, routineExecution);
     }
 
     @Override

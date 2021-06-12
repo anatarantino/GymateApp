@@ -34,32 +34,32 @@ public class ApiClient {
         ApiClient.authToken = authToken;
     }
 
-    public static <S> S create(Context context, Class<S> serviceClass) {
-        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor()
-                .setLevel(HttpLoggingInterceptor.Level.BODY);
-
-        //canal de comunicación
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(httpLoggingInterceptor)
-                .addInterceptor(new AuthInterceptor(context))
-                .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
-                .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
-                .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
-                .build();
-
-        //formato de los datos que viajan en el canal de comunicación
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Date.class, new ApiDateTypeConverter())
-                .create();
-
-        //junto todo con retrofit
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-                .build();
-
-        return retrofit.create(serviceClass);
-    }
+//    public static <S> S create(Context context, Class<S> serviceClass) {
+//        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor()
+//                .setLevel(HttpLoggingInterceptor.Level.BODY);
+//
+//        //canal de comunicación
+//        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+//                .addInterceptor(httpLoggingInterceptor)
+//                .addInterceptor(new AuthInterceptor(context))
+//                .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+//                .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
+//                .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+//                .build();
+//
+//        //formato de los datos que viajan en el canal de comunicación
+//        Gson gson = new GsonBuilder()
+//                .registerTypeAdapter(Date.class, new ApiDateTypeConverter())
+//                .create();
+//
+//        //junto todo con retrofit
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl(BASE_URL)
+//                .client(okHttpClient)
+//                .addConverterFactory(GsonConverterFactory.create(gson))
+//                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+//                .build();
+//
+//        return retrofit.create(serviceClass);
+//    }
 }
