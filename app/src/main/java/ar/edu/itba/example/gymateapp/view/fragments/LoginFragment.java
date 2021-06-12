@@ -51,7 +51,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        viewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
     }
 
     private void tryLogin() {
@@ -87,10 +87,11 @@ public class LoginFragment extends Fragment {
             if (authToken != null) {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 Bundle aux = getArguments();
+                assert aux != null;
                 if (aux.get("RoutineId") != null) {
                     Bundle bundle = new Bundle();
                     bundle.putInt("routineId", Integer.parseInt(aux.getString("RoutineId")));
-                    new NavDeepLinkBuilder(getActivity())
+                    new NavDeepLinkBuilder(requireActivity())
                             .setComponentName(MainActivity.class)
                             .setGraph(R.navigation.mobile_navigation)
                             .setDestination(R.id.routine_detail)
@@ -98,8 +99,8 @@ public class LoginFragment extends Fragment {
                 } else {
                     startActivity(intent);
                 }
-                getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                getActivity().finish();
+                requireActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                requireActivity().finish();
             }
         });
         Log.i("login","Me estoy yendo del login bss");
