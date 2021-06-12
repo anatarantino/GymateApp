@@ -21,6 +21,8 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.databinding.ActivityLoginBinding;
 import ar.edu.itba.example.gymateapp.databinding.FragmentLoginBinding;
@@ -49,7 +51,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
+//        viewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
     }
 
     private void tryLogin() {
