@@ -1,6 +1,7 @@
 package ar.edu.itba.example.gymateapp.viewModel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
@@ -75,6 +76,8 @@ public class FavouritesRoutinesViewModel extends AndroidViewModel {
         Map<String,String> options = new HashMap<>();
         options.put("page", String.valueOf(0));
         options.put("size", String.valueOf(100));
+        options.put("orderBy", "averageRating");
+        options.put("direction", "desc");
 
         disposable.add(routinesApi.getFavouriteRoutines(options)
                     .subscribeOn(Schedulers.newThread())
@@ -82,7 +85,11 @@ public class FavouritesRoutinesViewModel extends AndroidViewModel {
                     .subscribeWith(new DisposableSingleObserver<PagedList<RoutineCredentials>>() {
                         @Override
                         public void onSuccess(@NonNull PagedList<RoutineCredentials> favourites) {
+                            Log.e("onSuccess","ok");
+                            Log.e("..",String.valueOf(favourites.getTotalCount()));
+                            Log.e("..",favourites.toString());
                             favouriteRoutines.setValue(favourites.getEntries());
+                            //Log.e("En el favRoutinesViewModel","entries: " + favourites.getEntries().size());
                         }
 
                         @Override

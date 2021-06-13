@@ -1,5 +1,6 @@
 package ar.edu.itba.example.gymateapp.view.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +23,11 @@ import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 
 public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.FavouriteViewHolder> {
 
-    private ArrayList<RoutineCredentials> favouriteList;
-    private RoutinesViewModel routinesViewModel;
+    private List<RoutineCredentials> favouriteList;
     private ItemClickListener listener;
 
-    public FavouriteAdapter(ArrayList<RoutineCredentials> favouriteList, RoutinesViewModel routinesViewModel, ItemClickListener listener) {
+    public FavouriteAdapter(List<RoutineCredentials> favouriteList, ItemClickListener listener) {
         this.favouriteList = favouriteList;
-        this.routinesViewModel = routinesViewModel;
         this.listener = listener;
     }
 

@@ -82,10 +82,9 @@ public class ProfileFragment extends Fragment implements FavouriteAdapter.ItemCl
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        favouritesRoutinesViewModel = new ViewModelProvider(getActivity()).get(FavouritesRoutinesViewModel.class);
+        favouritesRoutinesViewModel = new ViewModelProvider(requireActivity()).get(FavouritesRoutinesViewModel.class);
         favouritesRoutinesViewModel.updateData();
-
-        favouriteAdapter = new FavouriteAdapter(new ArrayList<>(), new ViewModelProvider(getActivity()).get(RoutinesViewModel.class),this);
+        favouriteAdapter = new FavouriteAdapter(new ArrayList<>(),this);
 
         userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
 
@@ -93,6 +92,7 @@ public class ProfileFragment extends Fragment implements FavouriteAdapter.ItemCl
         recyclerRoutine.setAdapter(favouriteAdapter);
 
         seedProfile();
+
     }
 
     private void seedProfile() {
