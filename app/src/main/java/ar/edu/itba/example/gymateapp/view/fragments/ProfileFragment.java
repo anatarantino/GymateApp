@@ -82,10 +82,10 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
         userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
 
 
+
         //favoriteCardsList.setLayoutManager(new LinearLayoutManager(getContext()));
         //favoriteCardsList.setAdapter(favoriteAdapter);
 
-        Log.e("Profile - obnViewCreated","antes del seed");
         seedProfile();
     }
 
