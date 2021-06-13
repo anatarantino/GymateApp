@@ -2,6 +2,7 @@ package ar.edu.itba.example.gymateapp.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 public class AppPreferences {
     private final SharedPreferences sharedPreferences;

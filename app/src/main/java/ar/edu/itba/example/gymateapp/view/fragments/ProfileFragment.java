@@ -80,9 +80,7 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
         //favoriteAdapter = new FavoriteAdapter(new ArrayList<>(), new ViewModelProvider(getActivity()).get(RoutinesViewModel.class));
 
         userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
-
-
-
+        
         //favoriteCardsList.setLayoutManager(new LinearLayoutManager(getContext()));
         //favoriteCardsList.setAdapter(favoriteAdapter);
 
@@ -90,7 +88,6 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
     }
 
     private void seedProfile() {
-        Log.e("seedProfile","Entre al seed");
         userViewModel.getUserInfo().observe(getViewLifecycleOwner(), userInfo -> {
             if(userInfo != null) {
                 binding.setUserInfo(userInfo);

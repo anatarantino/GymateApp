@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         userViewModel.setUserData();
-        Log.e("main",userViewModel.getUserInfo().toString());
+
 
     }
 
