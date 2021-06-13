@@ -14,12 +14,14 @@ import ar.edu.itba.example.gymateapp.view.fragments.HomeFragment;
 import ar.edu.itba.example.gymateapp.view.fragments.MyRoutinesFragment;
 import ar.edu.itba.example.gymateapp.view.fragments.ProfileFragment;
 import ar.edu.itba.example.gymateapp.view.fragments.RoutinesFragment;
+import ar.edu.itba.example.gymateapp.viewModel.UserViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -32,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNav;
+    private UserViewModel userViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -45,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(bottomNav,navHostFragment.getNavController());
 
         setSupportActionBar(findViewById(R.id.appbar));
+
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        userViewModel.setUserData();
 
     }
 

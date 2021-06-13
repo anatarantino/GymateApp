@@ -55,7 +55,6 @@ public class LoginFragment extends Fragment {
     }
 
     private void tryLogin() {
-        Log.i("Login","Entre al login veremossss");
         if (!validateUsername() | !validatePassword()) {
             return;
         }
@@ -87,15 +86,17 @@ public class LoginFragment extends Fragment {
             if (authToken != null) {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 Bundle aux = getArguments();
-                assert aux != null;
-                if (aux.get("RoutineId") != null) {
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("routineId", Integer.parseInt(aux.getString("RoutineId")));
-                    new NavDeepLinkBuilder(requireActivity())
-                            .setComponentName(MainActivity.class)
-                            .setGraph(R.navigation.mobile_navigation)
-                            .setDestination(R.id.routine_detail)
-                            .setArguments(bundle).createTaskStackBuilder().startActivities();
+                //appassert aux != null;
+                if(aux != null){
+                    if (aux.get("RoutineId") != null) {
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("routineId", Integer.parseInt(aux.getString("RoutineId")));
+                        new NavDeepLinkBuilder(requireActivity())
+                                .setComponentName(MainActivity.class)
+                                .setGraph(R.navigation.mobile_navigation)
+                                .setDestination(R.id.routine_detail)
+                                .setArguments(bundle).createTaskStackBuilder().startActivities();
+                    }
                 } else {
                     startActivity(intent);
                 }
@@ -103,7 +104,7 @@ public class LoginFragment extends Fragment {
                 requireActivity().finish();
             }
         });
-        Log.i("login","Me estoy yendo del login bss");
+
     }
 
     private boolean validateUsername() {

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -36,6 +39,7 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
     private View view;
     private FragmentProfileBinding binding;
     private TextView username;
+    private ImageView profilePic;
     private UserViewModel userViewModel;
 
     @Override
@@ -48,6 +52,7 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
         binding = FragmentProfileBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         username = binding.username;
+        profilePic = binding.profilePic;
 
 //        view = inflater.inflate(R.layout.fragment_profile,container,false);
 //        routineList = new ArrayList<>();
@@ -74,23 +79,28 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
 
         //favoriteAdapter = new FavoriteAdapter(new ArrayList<>(), new ViewModelProvider(getActivity()).get(RoutinesViewModel.class));
 
-        userViewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
+        userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
+
 
         //favoriteCardsList.setLayoutManager(new LinearLayoutManager(getContext()));
         //favoriteCardsList.setAdapter(favoriteAdapter);
 
+        Log.e("Profile - obnViewCreated","antes del seed");
         seedProfile();
     }
 
     private void seedProfile() {
+        Log.e("seedProfile","Entre al seed");
         userViewModel.getUserInfo().observe(getViewLifecycleOwner(), userInfo -> {
-            if (userInfo != null) {
+            if(userInfo != null) {
                 binding.setUserInfo(userInfo);
-//                if (!userInfo.getAvatarUrl().equals("")) {
-//                    Glide.with(binding.getRoot()).load(userInfo.getAvatarUrl()).into(binding.profileImage);
-//                }
+                if (!userInfo.getAvatarUrl().equals("")) {
+                    Glide.with(binding.getRoot()).load(userInfo.getAvatarUrl()).into(binding.profilePic);
+                }
             }
         });
+
+
     }
 
 //    private void seedRoutines() {

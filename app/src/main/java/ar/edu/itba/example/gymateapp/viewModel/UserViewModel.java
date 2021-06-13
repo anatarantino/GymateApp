@@ -44,7 +44,21 @@ public class UserViewModel extends AndroidViewModel {
     }
 
     public void setUserData() {
+        disposable.add(userApi.getCurrentUser()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<UserInfo>() {
+                    @Override
+                    public void onSuccess(@NonNull UserInfo info) {
+                        userInfo.setValue(info);
+                    }
 
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        e.printStackTrace();
+                    }
+                })
+        );
     }
 
     public void tryLogin(String username, String password){

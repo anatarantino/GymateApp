@@ -17,6 +17,6 @@ public interface UserApiService {
     Single<Response<Void>> logout();
 
     @GET("users/current")
-    Single<UserCredentials> getCurrentUser();
+    Single<UserInfo> getCurrentUser();
 
 }

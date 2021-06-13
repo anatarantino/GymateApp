@@ -1,6 +1,7 @@
 package ar.edu.itba.example.gymateapp.model;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -47,7 +48,7 @@ public class UserApi extends ApiClient implements UserApiService {
     }
 
     @Override
-    public Single<UserCredentials> getCurrentUser() {
+    public Single<UserInfo> getCurrentUser() {
         return userApi.getCurrentUser();
     }
 }
