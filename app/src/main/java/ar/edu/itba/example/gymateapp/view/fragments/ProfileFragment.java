@@ -27,20 +27,26 @@ import java.util.Objects;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.databinding.FragmentProfileBinding;
+import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
+import ar.edu.itba.example.gymateapp.view.adapter.FavouriteAdapter;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
+import ar.edu.itba.example.gymateapp.viewModel.FavouritesRoutinesViewModel;
+import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 import ar.edu.itba.example.gymateapp.viewModel.UserViewModel;
 
-public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemClickListener {
+public class ProfileFragment extends Fragment implements FavouriteAdapter.ItemClickListener {
 
     private RecyclerView recyclerRoutine;
-    private ArrayList<RoutineData> routineList;
+
     private View view;
     private FragmentProfileBinding binding;
     private TextView username;
     private ImageView profilePic;
     private UserViewModel userViewModel;
+    private FavouritesRoutinesViewModel favouritesRoutinesViewModel;
+    private FavouriteAdapter favouriteAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,8 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
         view = binding.getRoot();
         username = binding.username;
         profilePic = binding.profilePic;
+        recyclerRoutine = binding.favouriteRoutines;
+
 
 //        view = inflater.inflate(R.layout.fragment_profile,container,false);
 //        routineList = new ArrayList<>();
@@ -74,15 +82,15 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-       //favRoutinesViewModel = new ViewModelProvider(getActivity()).get(FavouritesRoutinesViewModel.class);
-       //favRoutinesViewModel.updateData();
+        favouritesRoutinesViewModel = new ViewModelProvider(getActivity()).get(FavouritesRoutinesViewModel.class);
+        favouritesRoutinesViewModel.updateData();
 
-        //favoriteAdapter = new FavoriteAdapter(new ArrayList<>(), new ViewModelProvider(getActivity()).get(RoutinesViewModel.class));
+        favouriteAdapter = new FavouriteAdapter(new ArrayList<>(), new ViewModelProvider(getActivity()).get(RoutinesViewModel.class),this);
 
         userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
-        
-        //favoriteCardsList.setLayoutManager(new LinearLayoutManager(getContext()));
-        //favoriteCardsList.setAdapter(favoriteAdapter);
+
+        recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerRoutine.setAdapter(favouriteAdapter);
 
         seedProfile();
     }
@@ -97,6 +105,12 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
             }
         });
 
+        favouritesRoutinesViewModel.getFavouriteRoutines().observe(getViewLifecycleOwner(), favourites -> {
+            if(favourites != null){
+                recyclerRoutine.setVisibility(View.VISIBLE);
+                favouriteAdapter.updateFavouriteList(favourites);
+            }
+        });
 
     }
 
@@ -113,9 +127,9 @@ public class ProfileFragment extends Fragment implements RoutinesAdapter.ItemCli
 //    }
 
     @Override
-    public void onItemClick(RoutineData routineData) {
+    public void onItemClick(RoutineCredentials routineCredentials) {
         ProfileFragmentDirections.ActionNavigationProfileToRoutineDetailFragment action = ProfileFragmentDirections.actionNavigationProfileToRoutineDetailFragment();
-        action.setRoutineId(routineData.id);
+        action.setRoutineId(routineCredentials.getId());
         Navigation.findNavController(view).navigate(action);
     }
 }

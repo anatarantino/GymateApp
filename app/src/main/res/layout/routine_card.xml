@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="RoutineData"
-            type="ar.edu.itba.example.gymateapp.view.classes.RoutineData" />
+            name="RoutineCredentials"
+            type="ar.edu.itba.example.gymateapp.model.RoutineCredentials" />
         <variable
             name="clickOnRoutine"
             type="ar.edu.itba.example.gymateapp.view.fragments.ClickOnRoutine" />
@@ -28,7 +28,7 @@
                 android:id="@+id/routineId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.valueOf(RoutineData.id)}"
+                android:text="@{String.valueOf(RoutineCredentials.id)}"
                 android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

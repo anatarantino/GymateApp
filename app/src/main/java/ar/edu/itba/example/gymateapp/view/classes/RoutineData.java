@@ -8,25 +8,25 @@ import java.io.Serializable;
 public class RoutineData implements Serializable {
 
     @Expose
-    @SerializedName("id")
+    @SerializedName("id2")
     public Integer id;
     @Expose
-    @SerializedName("title")
+    @SerializedName("title2")
     public String title;
     @Expose
-    @SerializedName("creator")
+    @SerializedName("creator2")
     public String creator;
     @Expose
-    @SerializedName("creator")
+    @SerializedName("desc2")
     public String desc;
     @Expose
-    @SerializedName("img")
+    @SerializedName("img2")
     public String img;
     @Expose
-    @SerializedName("rating")
+    @SerializedName("rating2")
     public Integer rating;
     @Expose
-    @SerializedName("cat")
+    @SerializedName("cat2")
     public Category cat;
     //meter toda la data necesaria
 

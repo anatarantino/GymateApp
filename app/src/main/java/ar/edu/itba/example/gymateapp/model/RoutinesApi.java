@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static ar.edu.itba.example.gymateapp.model.ApiClient.BASE_URL;
 
-public class RoutinesApi implements RoutinesApiService {
+public class RoutinesApi extends ApiClient implements RoutinesApiService {
 
     private RoutinesApiService routinesApi;
 

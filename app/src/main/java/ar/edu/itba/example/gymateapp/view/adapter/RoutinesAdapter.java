@@ -59,7 +59,7 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.Routin
         holder.rating.setRating(routinesList.get(position).rating);
 
         //listener de la rutina clickeada
-        Log.d("Routines Adapter","onBindViewHolder: called");
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
