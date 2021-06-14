@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import java.util.Map;
 
 import io.reactivex.rxjava3.core.Single;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -39,11 +40,11 @@ public interface RoutinesApiService {
     Single<PagedList<RoutineCredentials>> getFavouriteRoutines(@QueryMap Map<String, String> options);
 
     @POST("favourites/{routineId}")
-    Single<ApiResponse<Void>> favRoutine(@Path("routineId") Integer routineId);
+    Single<Response<Void>> favRoutine(@Path("routineId") Integer routineId);
 
     @POST("executions/{routineId}")
     Single<RoutineCredentials> addRoutineExecution(@Path("routineId") Integer routineId, @Body RoutineCredentials routineExecution);
 
     @DELETE("favourites/{routineId}")
-    Single<ApiResponse<Void>> unfavRoutine(@Path("routineId") Integer routineId);
+    Single<Response<Void>> unfavRoutine(@Path("routineId") Integer routineId);
 }

@@ -23,27 +23,42 @@ public class RoutineCredentials {
     @Expose
     private Category category;
     @Expose
-    @SerializedName("creator")
-    private RoutineCreator author;
+    @SerializedName("user")
+    private User user;
+    @Expose
+    @SerializedName("date")
+    private Long date;
     @Expose
     @SerializedName("averageRating")
-    private float averageRating;
-    @SerializedName("metadata")
-    @Expose
-    private Object metadata;
+    private Float averageRating;
+//    @SerializedName("metadata")
+//    @Expose
+//    private Object metadata;
 
     private String image;
 
-    public RoutineCredentials(Integer id, String name, String detail, Boolean isPublic, String difficulty, Category category, RoutineCreator author, float averageRating, String image) {
+//    public RoutineCredentials(Integer id, String name, String detail, Boolean isPublic, String difficulty, Category category, User user, Integer date, Number averageRating) {
+//        this.id = id;
+//        this.name = name;
+//        this.detail = detail;
+//        this.isPublic = isPublic;
+//        this.difficulty = difficulty;
+//        this.category = category;
+//        //this.user = user;
+//        this.date = date;
+//        this.averageRating = averageRating;
+//    }
+    public RoutineCredentials(Integer id, String name, String detail, Boolean isPublic, String difficulty, Integer catId,String catName,String catDetail, User user, Long date, Float averageRating) {
         this.id = id;
         this.name = name;
         this.detail = detail;
         this.isPublic = isPublic;
         this.difficulty = difficulty;
-        this.category = category;
-        this.author = author;
+        Category cat = new Category(catId,catName,catDetail);
+        this.category = cat;
+        this.user = user;
+        this.date = date;
         this.averageRating = averageRating;
-        this.image = image;
     }
 
     public String getName() {
@@ -70,8 +85,8 @@ public class RoutineCredentials {
         this.detail = detail;
     }
 
-    public RoutineCreator getAuthor() {
-        return author;
+    public User getUser() {
+        return user;
     }
 
     public Boolean getIsPublic() {
@@ -98,13 +113,6 @@ public class RoutineCredentials {
         this.category = category;
     }
 
-    public Object getMetadata() {
-        return metadata;
-    }
-
-    public void setMetadata(Object metadata) {
-        this.metadata = metadata;
-    }
 
     public String getImage() {
         return image;
@@ -142,22 +150,21 @@ public class RoutineCredentials {
         }
     }
 
-    public static class RoutineCreator {
+    public static class User {
         private String username;
         private String gender;
         private String avatarUrl;
-        private String dateCreated;
+        private Long date;
         private Integer id;
-        private String dateLastActive;
+        private Long lastActivity;
 
-
-        public RoutineCreator(String username, String gender, String avatarUrl, String dateCreated, Integer id, String dateLastActive) {
+        public User(String username, String gender, String avatarUrl, Long date, Integer id, Long lastActivity) {
             this.username = username;
             this.gender = gender;
             this.avatarUrl = avatarUrl;
-            this.dateCreated = dateCreated;
+            this.date = date;
             this.id = id;
-            this.dateLastActive = dateLastActive;
+            this.lastActivity = lastActivity;
         }
 
         public String getUsername() {
@@ -172,16 +179,16 @@ public class RoutineCredentials {
             return avatarUrl;
         }
 
-        public String getDateCreated() {
-            return dateCreated;
+        public Long getDate() {
+            return date;
         }
 
-        public Integer getid() {
+        public Integer getId() {
             return id;
         }
 
-        public String getDateLastActive() {
-            return dateLastActive;
+        public Long getLastActivity() {
+            return lastActivity;
         }
     }
 }

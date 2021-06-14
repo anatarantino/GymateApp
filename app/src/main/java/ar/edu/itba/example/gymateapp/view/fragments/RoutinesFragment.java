@@ -25,7 +25,10 @@ import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 
+public class RoutinesFragment extends Fragment{
 
+}
+/*
 public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemClickListener {
 
     RecyclerView recyclerRoutine;
@@ -89,3 +92,5 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
         void onFragmentInteraction(Uri uri);
     }
 }
+
+ */

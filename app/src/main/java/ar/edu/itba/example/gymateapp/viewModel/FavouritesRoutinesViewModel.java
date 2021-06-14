@@ -33,9 +33,9 @@ public class FavouritesRoutinesViewModel extends AndroidViewModel {
         disposable.add(routinesApi.favRoutine(routineId)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<ApiResponse<Void>>(){
+                    .subscribeWith(new DisposableSingleObserver<Response<Void>>(){
                         @Override
-                        public void onSuccess(@NotNull ApiResponse<Void> voidResponse) {
+                        public void onSuccess(@NotNull Response<Void> voidResponse) {
 
                         }
 
@@ -50,9 +50,9 @@ public class FavouritesRoutinesViewModel extends AndroidViewModel {
         disposable.add(routinesApi.unfavRoutine(routineId)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<ApiResponse<Void>>() {
+                    .subscribeWith(new DisposableSingleObserver<Response<Void>>() {
                         @Override
-                        public void onSuccess(@NonNull ApiResponse<Void> voidApiResponse) {
+                        public void onSuccess(@NonNull Response<Void> voidApiResponse) {
 
                         }
 

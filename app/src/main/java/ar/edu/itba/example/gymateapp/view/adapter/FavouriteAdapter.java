@@ -66,7 +66,8 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
 
         holder.id.setText(String.valueOf(favouriteList.get(position).getId()));
         holder.txtTitle.setText(favouriteList.get(position).getName());
-        holder.txtCreator.setText(favouriteList.get(position).getAuthor().getUsername());
+//        holder.txtCreator.setText(favouriteList.get(position).getUser().getUsername());
+        holder.txtCreator.setText("aca iria el usuario");
         holder.rating.setRating(favouriteList.get(position).getAverageRating());
 
        // holder.itemView.setRoutineCredentials(favouriteList.get(position));

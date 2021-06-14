@@ -20,7 +20,7 @@ public class PagedList<T> {
     private String direction;
 
     @Expose
-    @SerializedName("results")
+    @SerializedName("content")
     private List<T> entries;
 
     @Expose
