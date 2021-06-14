@@ -52,8 +52,8 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="401dp"
-        android:layout_height="429dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="420dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +90,7 @@
                 android:id="@+id/warmupTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/grey_darken_1"
+                android:background="@color/cardBg"
                 android:text="@string/warmup"
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -98,13 +98,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/warmupExercises"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/mainTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/grey_darken_1"
+                android:background="@color/cardBg"
                 android:text="@string/main"
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -112,13 +112,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mainExercises"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/cooldownTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/grey_darken_1"
+                android:background="@color/cardBg"
                 android:text="@string/cooldown"
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -126,7 +126,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cooldownExercises"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 
