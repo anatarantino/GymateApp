@@ -2,6 +2,7 @@ package ar.edu.itba.example.gymateapp.view.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,12 +16,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import org.jetbrains.annotations.NotNull;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.databinding.FragmentDetailBinding;
+import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
@@ -29,7 +32,7 @@ import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 public class RoutineDetailFragment extends Fragment {
 
     private RoutinesViewModel routinesViewModel;
-    private RoutineData routineData;
+    private RoutineCredentials routineCredentials;
     private TextView title,creator,desc;
     private ImageView img;
     private int routineId;
@@ -80,7 +83,19 @@ public class RoutineDetailFragment extends Fragment {
             routineId = getArguments().getInt("routineId");
         }
 
-        //obtener la rutina con la api
+        routinesViewModel = new ViewModelProvider(getActivity()).get(RoutinesViewModel.class);
+        routinesViewModel.getRoutineById(routineId);
+
+        routinesViewModel.getCurrentRoutine().observe(getViewLifecycleOwner(), routine -> {
+            if(routine != null) {
+                this.routineCredentials = routine;
+                Log.e("image",routine.getImage());
+                //img.setImageResource(Integer.parseInt(routine.getImage()));
+                title.setText(routine.getName());
+                creator.setText(routine.getUser().getUsername());
+                desc.setText(routine.getDetail());
+            }
+        });
 
         Button listBtn = view.findViewById(R.id.listBtn);
         listBtn.setOnClickListener(v -> {

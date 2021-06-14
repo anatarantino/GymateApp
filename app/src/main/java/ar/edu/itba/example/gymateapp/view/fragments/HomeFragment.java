@@ -78,25 +78,18 @@ public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickL
 //
 //        return view;
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
+        view = binding.getRoot();
         scrollView = binding.scrollView;
         recyclerView = binding.userRecyclerView;
+
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
+        recyclerView.addItemDecoration(itemDecorator);
 
         ((MainActivity) getActivity()).setNavigationVisibility(true);
         return view;
     }
 
-//    private void seedRoutines() {
-//        RoutineData.Category c1 = new RoutineData.Category(1,"cat 1", "det cat 1");
-//        RoutineData.Category c2 = new RoutineData.Category(2,"cat 2", "det cat 2");
-//        routineList.add(new RoutineData(1,"Titulo 1", "creador 1","Esta es la desc de la rutina numero  1.", 1,c1));
-//        routineList.add(new RoutineData(2,"Titulo 2", "creador 2","Esta es la desc de la rutina numero  2.", 2,c1));
-//        routineList.add(new RoutineData(3,"Titulo 3", "creador 3","Esta es la desc de la rutina numero  3.", 3,c2));
-//        routineList.add(new RoutineData(4,"Titulo 4", "creador 2","Esta es la desc de la rutina numero  4.", 4,c1));
-//        routineList.add(new RoutineData(5,"Titulo 5", "creador 2","Esta es la desc de la rutina numero  5.", 5,c2));
-//        routineList.add(new RoutineData(6,"Titulo 6", "creador 1","Esta es la desc de la rutina numero  6.", 4,c2));
-//        routineList.add(new RoutineData(7,"Titulo 7", "creador 1","Esta es la desc de la rutina numero  7.", 3,c1));
-//    }
 
 
     @Override

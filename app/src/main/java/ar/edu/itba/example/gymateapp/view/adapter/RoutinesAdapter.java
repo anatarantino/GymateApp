@@ -121,20 +121,27 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.Routin
         int id = routine.getCategory().getId();
         switch(id) {
             //aca vamos a tener que elegir una img para cada cat
-            case 1:
-                holder.img.setImageResource(R.drawable.fit);
+            case 1: //brazos
+                holder.img.setImageResource(R.drawable.c1);
                 routine.setImage(String.valueOf(R.drawable.fit));
                 break;
-            case 2:
+            case 2: //gluteos
                 holder.img.setImageResource(R.drawable.fit2);
                 routine.setImage(String.valueOf(R.drawable.fit2));
                 break;
+            case 3: //Absominales
+                holder.img.setImageResource(R.drawable.fit2);
+                routine.setImage(String.valueOf(R.drawable.fit2));
+                break;
+            case 4: //Funcional
+                holder.img.setImageResource(R.drawable.fit2);
+                routine.setImage(String.valueOf(R.drawable.fit2));
+                break;
+
         }
         holder.id.setText(String.valueOf(routinesList.get(position).getId()));
         holder.txtTitle.setText(routinesList.get(position).getName());
-        //silencie lo del usuario porque la api no lo estaba devolviendo
-//        holder.txtCreator.setText(routinesList.get(position).getUser().getUsername());
-        holder.txtCreator.setText("aca iria el creator");
+        holder.txtCreator.setText(routinesList.get(position).getUser().getUsername());
         holder.rating.setRating(routinesList.get(position).getAverageRating());
 
         //listener de la rutina clickeada
