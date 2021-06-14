@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="ExerciseData"
-            type="ar.edu.itba.example.gymateapp.view.classes.ExerciseData" />
+            name="ExerciseCredentials"
+            type="ar.edu.itba.example.gymateapp.model.ExerciseCredentials" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,6 +12,7 @@
         android:layout_marginBottom="10dp">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/exerciseCard"
             android:layout_width="0dp"
             android:layout_height="50dp"
             app:cardBackgroundColor="@color/cardBg"
@@ -27,6 +28,7 @@
 
                 <TextView
                     android:id="@+id/exName"
+                    android:text="@{ExerciseCredentials.Exercise.name}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -43,6 +45,7 @@
 
                 <TextView
                     android:id="@+id/exDuration"
+                    android:text="@{String.valueOf(ExerciseCredentials.duration)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"

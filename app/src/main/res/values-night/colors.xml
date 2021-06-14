@@ -20,5 +20,5 @@
     <color name="playBtnTxt">@color/white</color>
     <color name="ListTitleBg">@color/primaryColor</color>
     <color name="ListTitle">@color/white</color>
-
+    <color name="exerciseColor">@color/grey_darken_1</color>
 </resources>

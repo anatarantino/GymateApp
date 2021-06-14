@@ -18,20 +18,37 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.databinding.FragmentDetailBinding;
 import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
+import ar.edu.itba.example.gymateapp.view.adapter.ExercisesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
+import ar.edu.itba.example.gymateapp.viewModel.ExercisesViewModel;
 import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 
 
 public class RoutineDetailFragment extends Fragment {
 
     private RoutinesViewModel routinesViewModel;
+
+    private ExercisesViewModel exercisesViewModel;
+
+    private ExercisesAdapter warmupAdapter = new ExercisesAdapter(new ArrayList<>());
+    private ExercisesAdapter mainAdapter = new ExercisesAdapter(new ArrayList<>());
+    private ExercisesAdapter cooldownAdapter = new ExercisesAdapter(new ArrayList<>());
+
+    private RecyclerView recyclerViewWarmup;
+    private RecyclerView recyclerViewMain;
+    private RecyclerView recyclerViewCooldown;
+
     private RoutineCredentials routineCredentials;
     private TextView title,creator,desc;
     private ImageView img;
@@ -64,6 +81,10 @@ public class RoutineDetailFragment extends Fragment {
         desc = binding.detailReadAll;
         img = binding.imageView;
 
+        recyclerViewWarmup = binding.warmupExercises;
+        recyclerViewMain = binding.mainExercises;
+        recyclerViewCooldown = binding.cooldownExercises;
+
         listBtn = binding.listBtn;
         detailBtn = binding.detailBtn;
 
@@ -89,8 +110,7 @@ public class RoutineDetailFragment extends Fragment {
         routinesViewModel.getCurrentRoutine().observe(getViewLifecycleOwner(), routine -> {
             if(routine != null) {
                 this.routineCredentials = routine;
-                Log.e("image",routine.getImage());
-                //img.setImageResource(Integer.parseInt(routine.getImage()));
+                img.setImageResource(Integer.parseInt(routine.getImage()));
                 title.setText(routine.getName());
                 creator.setText(routine.getUser().getUsername());
                 desc.setText(routine.getDetail());
@@ -111,8 +131,41 @@ public class RoutineDetailFragment extends Fragment {
             Navigation.findNavController(view).navigate(action);
         });
 
+        exercisesViewModel = new ViewModelProvider(getActivity()).get(ExercisesViewModel.class);
+        exercisesViewModel.refresh(routineId);
+
+        recyclerViewWarmup.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewWarmup.setAdapter(warmupAdapter);
+
+        recyclerViewMain.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewMain.setAdapter(mainAdapter);
+
+        recyclerViewCooldown.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewCooldown.setAdapter(cooldownAdapter);
+
+        observeExerciseViewModel();
+
     }
 
+    private void observeExerciseViewModel(){
+        exercisesViewModel.getWarmupExercises().observe(getViewLifecycleOwner(), warmupExercises -> {
+            if(warmupExercises != null){
+                warmupAdapter.updateExercises(warmupExercises);
+            }
+        });
+
+        exercisesViewModel.getMainExercises().observe(getViewLifecycleOwner(), mainExercises -> {
+            if(mainExercises != null){
+                mainAdapter.updateExercises(mainExercises);
+            }
+        });
+
+        exercisesViewModel.getCooldownExercises().observe(getViewLifecycleOwner(), cooldownExercises -> {
+            if(cooldownExercises != null){
+                cooldownAdapter.updateExercises(cooldownExercises);
+            }
+        });
+    }
 
     @Override
     public void onDestroyView() {

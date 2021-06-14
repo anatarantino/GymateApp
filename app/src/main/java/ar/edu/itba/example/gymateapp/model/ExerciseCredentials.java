@@ -4,25 +4,35 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class ExerciseCredentials {
-    @SerializedName("name")
+    @SerializedName("exercise")
     @Expose
-    private String name;
+    private Exercise exercise;
     @SerializedName("detail")
     @Expose
     private String detail;
     @SerializedName("type")
     @Expose
     private String type;
-    @SerializedName("metadata")
+    @SerializedName("duration")
     @Expose
-    private Object metadata;
+    private Integer duration;
 
-    public String getName() {
-        return name;
+    private boolean isRunning;
+
+    public ExerciseCredentials(Exercise exercise, String detail, String type, Integer duration) {
+        this.exercise = exercise;
+        this.detail = detail;
+        this.type = type;
+        this.duration = duration;
+        isRunning = false;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Exercise getExercise() {
+        return exercise;
+    }
+
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
     }
 
     public String getDetail() {
@@ -41,11 +51,55 @@ public class ExerciseCredentials {
         this.type = type;
     }
 
-    public Object getMetadata() {
-        return metadata;
+    public Integer getDuration() {
+        return duration;
     }
 
-    public void setMetadata(Object metadata) {
-        this.metadata = metadata;
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    public void setRunning(boolean state) {
+        isRunning = state;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
+    }
+
+    public class Exercise {
+        private Integer id;
+        private String name;
+        private String detail;
+
+        public Exercise(Integer id, String name, String detail) {
+            this.id = id;
+            this.name = name;
+            this.detail = detail;
+        }
+
+        public Integer getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getDetail() {
+            return detail;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setDetail(String detail) {
+            this.detail = detail;
+        }
     }
 }

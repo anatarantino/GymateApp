@@ -23,6 +23,8 @@ import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 
 public class RoutineExecutionAsListFragment extends Fragment {
 
+    /*
+
     //esto lo haria con la bdd ahora solo los declaro y los agrego a mano
 //    private ExercisesAdapter warmupAdapter = new ExercisesAdapter(new ArrayList<>());
 //    private ExercisesAdapter mainAdapter = new ExercisesAdapter(new ArrayList<>());
@@ -119,4 +121,6 @@ public class RoutineExecutionAsListFragment extends Fragment {
         recyclerViewCooldown.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewCooldown.setAdapter(cooldownAdapter);
     }
+
+     */
 }

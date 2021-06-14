@@ -66,7 +66,7 @@ public class RoutinesViewModel extends AndroidViewModel {
                 .subscribeWith(new DisposableSingleObserver<RoutineCredentials>() {
                     @Override
                     public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull RoutineCredentials routineCredentials) {
-                        int id = routineCredentials.getId();
+                        int id = routineCredentials.getCategory().getId();
                         switch (id) {
                             case 1:
                                 routineCredentials.setImage(String.valueOf(R.drawable.c1));

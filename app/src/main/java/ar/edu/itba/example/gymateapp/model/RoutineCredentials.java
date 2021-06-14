@@ -37,17 +37,6 @@ public class RoutineCredentials {
 
     private String image;
 
-//    public RoutineCredentials(Integer id, String name, String detail, Boolean isPublic, String difficulty, Category category, User user, Integer date, Number averageRating) {
-//        this.id = id;
-//        this.name = name;
-//        this.detail = detail;
-//        this.isPublic = isPublic;
-//        this.difficulty = difficulty;
-//        this.category = category;
-//        //this.user = user;
-//        this.date = date;
-//        this.averageRating = averageRating;
-//    }
     public RoutineCredentials(Integer id, String name, String detail, Boolean isPublic, String difficulty, Integer catId,String catName,String catDetail, User user, Long date, Float averageRating) {
         this.id = id;
         this.name = name;

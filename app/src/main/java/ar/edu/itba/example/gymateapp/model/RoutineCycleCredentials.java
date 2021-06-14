@@ -4,6 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class RoutineCycleCredentials {
+
+    @SerializedName("id")
+    @Expose
+    private Integer id;
     @SerializedName("name")
     @Expose
     private String name;
@@ -19,9 +23,15 @@ public class RoutineCycleCredentials {
     @SerializedName("repetitions")
     @Expose
     private Integer repetitions;
-    @SerializedName("metadata")
-    @Expose
-    private Object metadata;
+
+    public RoutineCycleCredentials(Integer id, String name, String detail, String type, Integer order, Integer repetitions) {
+        this.id = id;
+        this.name = name;
+        this.detail = detail;
+        this.type = type;
+        this.order = order;
+        this.repetitions = repetitions;
+    }
 
     public String getName() {
         return name;
@@ -63,12 +73,11 @@ public class RoutineCycleCredentials {
         this.repetitions = repetitions;
     }
 
-    public Object getMetadata() {
-        return metadata;
+    public Integer getId() {
+        return id;
     }
 
-    public void setMetadata(Object metadata) {
-        this.metadata = metadata;
+    public void setId(Integer id) {
+        this.id = id;
     }
-
 }
