@@ -122,7 +122,7 @@ public class RoutineCredentials {
         this.image = image;
     }
 
-    public float getAverageRating() {
+    public Float getAverageRating() {
         return averageRating;
     }
 

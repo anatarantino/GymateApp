@@ -42,13 +42,13 @@
                 android:numStars="5"
                 android:progressBackgroundTint="@color/starColor"
                 android:progressTint="@color/icon"
-                android:rating="@{Integer.valueOf((Integer) RoutineCredentials.averageRating)}"
+                android:rating="@{RoutineCredentials.averageRating.intValue()}"
                 android:secondaryProgressTint="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.733"
                 app:layout_constraintStart_toStartOf="@+id/creator" />
-<!--                android:rating="4"-->
+
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="100dp"
