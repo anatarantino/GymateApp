@@ -43,7 +43,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
 //        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 //        RoutineCardBinding view = DataBindingUtil.inflate(inflater, R.layout.routine_card, parent, false);
 //        return new FavouriteAdapter.FavouriteViewHolder(view);
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.routine_card,null,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.routine_card, null, false);
         return new FavouriteViewHolder(view);
     }
 
@@ -52,15 +52,23 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
         RoutineCredentials routine = favouriteList.get(position);
 
         int id = routine.getCategory().getId();
-        switch(id) {
+        switch (id) {
             //aca vamos a tener que elegir una img para cada cat
             case 1:
-                holder.img.setImageResource(R.drawable.fit);
-                routine.setImage(String.valueOf(R.drawable.fit));
+                holder.img.setImageResource(R.drawable.c1);
+                routine.setImage(String.valueOf(R.drawable.c1));
                 break;
             case 2:
-                holder.img.setImageResource(R.drawable.fit2);
-                routine.setImage(String.valueOf(R.drawable.fit2));
+                holder.img.setImageResource(R.drawable.c2);
+                routine.setImage(String.valueOf(R.drawable.c2));
+                break;
+            case 3:
+                holder.img.setImageResource(R.drawable.c3);
+                routine.setImage(String.valueOf(R.drawable.c3));
+                break;
+            case 4:
+                holder.img.setImageResource(R.drawable.c4);
+                routine.setImage(String.valueOf(R.drawable.c4));
                 break;
         }
 
@@ -70,7 +78,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
         holder.txtCreator.setText("aca iria el usuario");
         holder.rating.setRating(favouriteList.get(position).getAverageRating());
 
-       // holder.itemView.setRoutineCredentials(favouriteList.get(position));
+        // holder.itemView.setRoutineCredentials(favouriteList.get(position));
         holder.itemView.setOnClickListener(v -> listener.onItemClick(favouriteList.get(position)));
 
         //holder.itemView.setClickOnRoutine(new ClickOnRoutine(routinesViewModel,));
@@ -83,7 +91,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
 
     public static class FavouriteViewHolder extends RecyclerView.ViewHolder {
         //public RoutineCardBinding itemView;
-        TextView id,txtTitle,txtCreator;
+        TextView id, txtTitle, txtCreator;
         ImageView img;
         RatingBar rating;
 
@@ -98,7 +106,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
         }
     }
 
-    public interface ItemClickListener{
+    public interface ItemClickListener {
         public void onItemClick(RoutineCredentials routineCredentials);
     }
 

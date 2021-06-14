@@ -48,43 +48,50 @@ public class RoutinesViewModel extends AndroidViewModel {
         routinesApi = new RoutinesApi(application);
     }
 
-    public void resetData(){
+    public void resetData() {
         routineCards.setValue(new ArrayList<>());
         updateData();
     }
 
-    public void updateData(){
-        if(!isLastPage){
+    public void updateData() {
+        if (!isLastPage) {
             fetchFromRemote();
         }
     }
 
-    public void getRoutineById(int id){
+    public void getRoutineById(int id) {
         disposable.add(routinesApi.getRoutineById(id)
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<RoutineCredentials>(){
-                        @Override
-                        public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull RoutineCredentials routineCredentials) {
-                            int id = routineCredentials.getId();
-                            switch (id) {
-                                case 1:
-                                    routineCredentials.setImage(String.valueOf(R.drawable.fit));
-                                    break;
-                                case 2:
-                                    routineCredentials.setImage(String.valueOf(R.drawable.fit2));
-                                    break;
-                            }
-                            currentRoutine.setValue(routineCredentials);
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<RoutineCredentials>() {
+                    @Override
+                    public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull RoutineCredentials routineCredentials) {
+                        int id = routineCredentials.getId();
+                        switch (id) {
+                            case 1:
+                                routineCredentials.setImage(String.valueOf(R.drawable.c1));
+                                break;
+                            case 2:
+                                routineCredentials.setImage(String.valueOf(R.drawable.c2));
+                                break;
+                            case 3:
+                                routineCredentials.setImage(String.valueOf(R.drawable.c3));
+                                break;
+                            case 4:
+                                routineCredentials.setImage(String.valueOf(R.drawable.c4));
+                                break;
                         }
+                        currentRoutine.setValue(routineCredentials);
+                    }
 
-                        @Override
-                        public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                            e.printStackTrace();
-                        }
-                    })
+                    @Override
+                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                        e.printStackTrace();
+                    }
+                })
         );
     }
+
     public void orderRoutines(int option) {
         directionId = option;
         switch (option) {
@@ -120,7 +127,7 @@ public class RoutinesViewModel extends AndroidViewModel {
         applyChanges();
     }
 
-     private void applyChanges() {
+    private void applyChanges() {
         routineCards.setValue(new ArrayList<>());
         currentPage = 0;
         isLastPage = false;
@@ -129,39 +136,39 @@ public class RoutinesViewModel extends AndroidViewModel {
     }
 
     private void fetchFromRemote() {
-        Map<String,String> options = new HashMap<>();
+        Map<String, String> options = new HashMap<>();
         options.put("page", String.valueOf(currentPage));
         options.put("orderBy", orderBy);
         options.put("direction", direction);
         options.put("size", String.valueOf(itemsPerRequest));
 
         disposable.add(routinesApi.getRoutines(options)
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<PagedList<RoutineCredentials>>(){
-                        @Override
-                        public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull PagedList<RoutineCredentials> routinesEntries) {
-                            isLastPage = routinesEntries.getLastPage();
-                            noMoreEntries.setValue(isLastPage);
-                            currentPage++;
-                            Log.e("RoutinesViewModel","on success: " + routinesEntries.toString());
-                            List<RoutineCredentials> aux = new ArrayList<>();
-                            if(routineCards.getValue() != null){
-                                aux = routineCards.getValue();
-                            }
-                            //comento esta linea porque me crashea la app pues ES NULL SIEMPRE NO SE POR QUEE
-                            aux.addAll(routinesEntries.getEntries());
-                            routineCards.setValue(aux);
-                            totalPages = (int) Math.ceil(routinesEntries.getTotalCount() / (double) itemsPerRequest);
-
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<PagedList<RoutineCredentials>>() {
+                    @Override
+                    public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull PagedList<RoutineCredentials> routinesEntries) {
+                        isLastPage = routinesEntries.getLastPage();
+                        noMoreEntries.setValue(isLastPage);
+                        currentPage++;
+                        Log.e("RoutinesViewModel", "on success: " + routinesEntries.toString());
+                        List<RoutineCredentials> aux = new ArrayList<>();
+                        if (routineCards.getValue() != null) {
+                            aux = routineCards.getValue();
                         }
+                        //comento esta linea porque me crashea la app pues ES NULL SIEMPRE NO SE POR QUEE
+                        aux.addAll(routinesEntries.getEntries());
+                        routineCards.setValue(aux);
+                        totalPages = (int) Math.ceil(routinesEntries.getTotalCount() / (double) itemsPerRequest);
 
-                        @Override
-                        public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                            Log.e("on error","mal ahi hubo error");
-                            e.printStackTrace();
-                        }
-                    }));
+                    }
+
+                    @Override
+                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                        Log.e("on error", "mal ahi hubo error");
+                        e.printStackTrace();
+                    }
+                }));
     }
 
     @Override
@@ -193,6 +200,7 @@ public class RoutinesViewModel extends AndroidViewModel {
     public void setOrderBy(String orderBy) {
         this.orderBy = orderBy;
     }
+
     public void setOrderById(int option) {
         orderById = option;
         switch (option) {
@@ -225,6 +233,7 @@ public class RoutinesViewModel extends AndroidViewModel {
     public int getDirectionId() {
         return directionId;
     }
+
     public MutableLiveData<Boolean> getRoutinesFirstLoad() {
         return routinesFirstLoad;
     }

@@ -123,19 +123,19 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.Routin
             //aca vamos a tener que elegir una img para cada cat
             case 1: //brazos
                 holder.img.setImageResource(R.drawable.c1);
-                routine.setImage(String.valueOf(R.drawable.fit));
+                routine.setImage(String.valueOf(R.drawable.c1));
                 break;
             case 2: //gluteos
-                holder.img.setImageResource(R.drawable.fit2);
-                routine.setImage(String.valueOf(R.drawable.fit2));
+                holder.img.setImageResource(R.drawable.c2);
+                routine.setImage(String.valueOf(R.drawable.c2));
                 break;
             case 3: //Absominales
-                holder.img.setImageResource(R.drawable.fit2);
-                routine.setImage(String.valueOf(R.drawable.fit2));
+                holder.img.setImageResource(R.drawable.c3);
+                routine.setImage(String.valueOf(R.drawable.c3));
                 break;
             case 4: //Funcional
-                holder.img.setImageResource(R.drawable.fit2);
-                routine.setImage(String.valueOf(R.drawable.fit2));
+                holder.img.setImageResource(R.drawable.c4);
+                routine.setImage(String.valueOf(R.drawable.c4));
                 break;
 
         }
