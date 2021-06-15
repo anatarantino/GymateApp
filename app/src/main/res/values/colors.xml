@@ -13,7 +13,7 @@
 
     <color name="title1">@color/black</color>
     <color name="titleBg">@color/white</color>
-    <color name="cardBg">#BDBDBD</color>
+    <color name="cardBg">@color/grey_lighten_5</color>
     <color name="starColor">@color/black</color>
     <color name="Appbar">@color/grey_darken_2</color>
     <color name="icon">@color/black</color>
