@@ -13,13 +13,14 @@
         android:id="@+id/cardView8"
         android:layout_width="0dp"
         android:layout_height="62dp"
+        android:layout_marginTop="16dp"
         app:cardBackgroundColor="@color/MainTitleBg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01999998">
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -42,12 +43,13 @@
         android:id="@+id/imageView"
         android:layout_width="221dp"
         android:layout_height="206dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/ex_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView8"
-        app:layout_constraintVertical_bias="0.069" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -175,6 +177,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/listBtn"
-        app:layout_constraintVertical_bias="0.357" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

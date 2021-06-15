@@ -29,6 +29,7 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="62dp"
+                    android:layout_marginTop="16dp"
                     android:background="@color/ListTitleBg"
                     android:gravity="center"
                     android:text="@string/routine_name"

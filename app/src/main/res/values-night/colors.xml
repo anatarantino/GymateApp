@@ -7,6 +7,7 @@
     <color name="primaryColorVariant">#424242</color> <!-- grey_darken_3 -->
     <color name="secondaryColor">#616161</color> <!-- grey_darken_2 -->
     <color name="secondColorVariant">#757575</color> <!-- grey_darken_1 -->
+    <color name="grey_lighten_5">#FAFAFA</color>
 
     <color name="title1">@color/white</color>
     <color name="titleBg">@color/black</color>
@@ -21,4 +22,5 @@
     <color name="ListTitleBg">@color/primaryColor</color>
     <color name="ListTitle">@color/white</color>
     <color name="exerciseColor">@color/grey_darken_1</color>
+    <color name="exColor">@color/grey_lighten_5</color>
 </resources>
