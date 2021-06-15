@@ -40,8 +40,7 @@
                 android:id="@+id/routineRatingBar"
                 style="@style/Widget.AppCompat.RatingBar.Indicator"
                 android:layout_width="175dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="4dp"
+                android:layout_height="0dp"
                 android:numStars="5"
                 android:progressBackgroundTint="@color/starColor"
                 android:progressTint="@color/icon"
@@ -49,19 +48,19 @@
                 android:secondaryProgressTint="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.733"
+                app:layout_constraintHorizontal_bias="0.72"
                 app:layout_constraintStart_toStartOf="@+id/creator" />
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="128dp"
-                android:layout_height="135dp"
+                android:layout_width="175dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="4dp"
                 android:contentDescription="@string/ex_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/fit" />
+                app:srcCompat="@drawable/c1" />
 
             <TextView
                 android:id="@+id/title"
