@@ -18,6 +18,8 @@ import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.model.PagedList;
 import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
 import ar.edu.itba.example.gymateapp.model.RoutinesApi;
+import ar.edu.itba.example.gymateapp.model.UserApi;
+import ar.edu.itba.example.gymateapp.model.UserInfo;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -30,6 +32,7 @@ public class RoutinesViewModel extends AndroidViewModel {
     private MutableLiveData<RoutineCredentials> currentRoutine = new MutableLiveData<>();
     private MutableLiveData<Boolean> noMoreEntries = new MutableLiveData<>();
     private RoutinesApi routinesApi;
+    private UserApi userApi;
     private CompositeDisposable disposable = new CompositeDisposable();
     private MutableLiveData<Boolean> routinesFirstLoad = new MutableLiveData<>(true);
 
@@ -42,6 +45,7 @@ public class RoutinesViewModel extends AndroidViewModel {
     private int currentPage = 0;
     private int totalPages = 0;
     private int itemsPerRequest = 15;
+
 
     public RoutinesViewModel(@NonNull @NotNull Application application) {
         super(application);
@@ -255,7 +259,12 @@ public class RoutinesViewModel extends AndroidViewModel {
                         .subscribeWith(new DisposableSingleObserver<PagedList<RoutineCredentials>>() {
                             @Override
                             public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull PagedList<RoutineCredentials> routinesEntries) {
+                                for(RoutineCredentials r : routinesEntries.getEntries()){
+                                    //setear el usuario con el current
+                                    r.setUser(new RoutineCredentials.User("el current","f","a",(long)1626354127,1,(long)1625641577));
+                                }
                                 userRoutines.setValue(routinesEntries.getEntries());
+
                             }
 
                             @Override

@@ -61,32 +61,16 @@ public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickL
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        view = inflater.inflate(R.layout.fragment_home,container,false);
-//        routineList = new ArrayList<>();
-//        recyclerRoutine = view.findViewById(R.id.userRecyclerView);
-//        recyclerRoutine.setLayoutManager(new LinearLayoutManager(getContext()));
-//        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
-//        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
-//        recyclerRoutine.addItemDecoration(itemDecorator);
-//
-//        seedRoutines(); //aca pondriamos las ultimas rutinas globales
-//        RoutinesAdapter adapter = new RoutinesAdapter(routineList,this);
-//
-//        recyclerRoutine.setAdapter(adapter);
-//
-//        ((MainActivity) getActivity()).setNavigationVisibility(true);
-//
-//        return view;
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         scrollView = binding.scrollView;
         recyclerView = binding.userRecyclerView;
 
-        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
-        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(requireContext(), R.drawable.divider)));
         recyclerView.addItemDecoration(itemDecorator);
 
-        ((MainActivity) getActivity()).setNavigationVisibility(true);
+        ((MainActivity) requireActivity()).setNavigationVisibility(true);
         return view;
     }
 

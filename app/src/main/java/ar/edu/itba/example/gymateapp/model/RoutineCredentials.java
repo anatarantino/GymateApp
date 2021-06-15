@@ -78,6 +78,10 @@ public class RoutineCredentials {
         return user;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Boolean getIsPublic() {
         return isPublic;
     }

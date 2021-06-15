@@ -60,6 +60,9 @@ public class ProfileFragment extends Fragment implements FavouriteAdapter.ItemCl
         username = binding.username;
         profilePic = binding.profilePic;
         recyclerRoutine = binding.favouriteRoutines;
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(requireContext(), R.drawable.divider)));
+        recyclerRoutine.addItemDecoration(itemDecorator);
 
 
 //        view = inflater.inflate(R.layout.fragment_profile,container,false);
