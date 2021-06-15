@@ -1,6 +1,7 @@
 package ar.edu.itba.example.gymateapp.viewModel;
 
 import android.app.Application;
+import android.os.CountDownTimer;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -17,6 +18,7 @@ import ar.edu.itba.example.gymateapp.model.ExerciseCredentials;
 import ar.edu.itba.example.gymateapp.model.PagedList;
 import ar.edu.itba.example.gymateapp.model.RoutineCycleCredentials;
 import ar.edu.itba.example.gymateapp.model.RoutinesApi;
+import ar.edu.itba.example.gymateapp.view.fragments.Timer;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.observers.DisposableSingleObserver;
@@ -30,6 +32,7 @@ public class ExercisesViewModel extends AndroidViewModel {
     private RoutinesApi routinesApi;
     private CompositeDisposable disposable = new CompositeDisposable();
 
+    private boolean executed;
     private int currentCycle;
     private String cycleTitle;
     private int currentExercise;
@@ -37,6 +40,8 @@ public class ExercisesViewModel extends AndroidViewModel {
     private boolean finished;
     private int status;
     private ArrayList<ExerciseCredentials> currCycle;
+
+    private Timer countDownTimer;
 
     public ExercisesViewModel(@NonNull @NotNull Application application) {
         super(application);
@@ -111,6 +116,10 @@ public class ExercisesViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<ExerciseCredentials>> getCooldownExercises() {return cooldownExercises;}
 
+    public void setFirstTime(boolean firstTime) {
+        isFirstTime = firstTime;
+    }
+
     public boolean getIsFirstTime(){
         return isFirstTime;
     }
@@ -123,6 +132,31 @@ public class ExercisesViewModel extends AndroidViewModel {
         return currentExercise;
     }
 
+    public void setCurrentCycle(int currentCycle) {
+        this.currentCycle = currentCycle;
+    }
 
+    public void setCurrentExercise(int currentExercise) {
+        this.currentExercise = currentExercise;
+    }
 
+    public boolean isExecuted() {
+        return executed;
+    }
+
+    public void setExecuted(boolean executed) {
+        this.executed = executed;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Timer getCountDownTimer() {
+        return countDownTimer;
+    }
 }
