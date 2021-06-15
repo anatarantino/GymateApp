@@ -119,8 +119,9 @@ public class RoutineDetailFragment extends Fragment {
 
         Button listBtn = view.findViewById(R.id.listBtn);
         listBtn.setOnClickListener(v -> {
-            RoutineExecutionAsListFragmentDirections.ActionRoutineExecutionAsListFragmentToRoutineDetailFragment action = RoutineExecutionAsListFragmentDirections.actionRoutineExecutionAsListFragmentToRoutineDetailFragment();
-            action.setRoutineId(routineId);
+            RoutineDetailFragmentDirections.ActionRoutineDetailFragmentToRoutineExecutionAsListFragment action = RoutineDetailFragmentDirections.actionRoutineDetailFragmentToRoutineExecutionAsListFragment(routineCredentials.getName(), routineId);
+            //RoutineExecutionAsListFragmentDirections.ActionRoutineExecutionAsListFragmentToRoutineDetailFragment action = RoutineExecutionAsListFragmentDirections.actionRoutineExecutionAsListFragmentToRoutineDetailFragment();
+            //action.setRoutineId(routineId);
             Navigation.findNavController(view).navigate(action);
         });
 

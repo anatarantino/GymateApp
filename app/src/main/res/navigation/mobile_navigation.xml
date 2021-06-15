@@ -67,9 +67,15 @@
         android:id="@+id/routineExecutionAsListFragment"
         android:name="ar.edu.itba.example.gymateapp.view.fragments.RoutineExecutionAsListFragment"
         android:label="RoutineExecutionAsListFragment" >
+        <argument
+            android:name="Title"
+            app:argType="string"/>
         <action
             android:id="@+id/action_routineExecutionAsListFragment_to_routineDetailFragment"
             app:destination="@id/routineDetailFragment" />
+        <argument
+            android:name="RoutineId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/routineDetailFragment"
