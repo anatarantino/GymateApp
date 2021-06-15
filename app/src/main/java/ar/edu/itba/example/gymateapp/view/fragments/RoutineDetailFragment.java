@@ -50,7 +50,7 @@ public class RoutineDetailFragment extends Fragment {
     private RecyclerView recyclerViewCooldown;
 
     private RoutineCredentials routineCredentials;
-    private TextView title,creator,desc;
+    private TextView title, creator, desc;
     private ImageView img;
     private int routineId;
     private FragmentDetailBinding binding;
@@ -60,7 +60,7 @@ public class RoutineDetailFragment extends Fragment {
     private MenuItem unfav;
 
     private MainActivity main;
-    private Button listBtn,detailBtn;
+    private Button listBtn, detailBtn;
 
     public RoutineDetailFragment() {
     }
@@ -100,7 +100,7 @@ public class RoutineDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments() != null) {
+        if (getArguments() != null) {
             routineId = getArguments().getInt("routineId");
         }
 
@@ -108,7 +108,7 @@ public class RoutineDetailFragment extends Fragment {
         routinesViewModel.getRoutineById(routineId);
 
         routinesViewModel.getCurrentRoutine().observe(getViewLifecycleOwner(), routine -> {
-            if(routine != null) {
+            if (routine != null) {
                 this.routineCredentials = routine;
                 img.setImageResource(Integer.parseInt(routine.getImage()));
                 title.setText(routine.getName());
@@ -147,21 +147,21 @@ public class RoutineDetailFragment extends Fragment {
 
     }
 
-    private void observeExerciseViewModel(){
+    private void observeExerciseViewModel() {
         exercisesViewModel.getWarmupExercises().observe(getViewLifecycleOwner(), warmupExercises -> {
-            if(warmupExercises != null){
+            if (warmupExercises != null) {
                 warmupAdapter.updateExercises(warmupExercises);
             }
         });
 
         exercisesViewModel.getMainExercises().observe(getViewLifecycleOwner(), mainExercises -> {
-            if(mainExercises != null){
+            if (mainExercises != null) {
                 mainAdapter.updateExercises(mainExercises);
             }
         });
 
         exercisesViewModel.getCooldownExercises().observe(getViewLifecycleOwner(), cooldownExercises -> {
-            if(cooldownExercises != null){
+            if (cooldownExercises != null) {
                 cooldownAdapter.updateExercises(cooldownExercises);
             }
         });
@@ -188,44 +188,51 @@ public class RoutineDetailFragment extends Fragment {
         //arrancan los dos corazones en true y despues te fijas en la api si esta true o false
         //mandar data a la api
 
-        super.onCreateOptionsMenu(menu,inflater);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.app_bar_favorite_filled){
+        if (id == R.id.app_bar_favorite_filled) {
             //llamar api
             unfavRoutine();
-        }else if(id == R.id.app_bar_favorite_outlined){
+        } else if (id == R.id.app_bar_favorite_outlined) {
             //llamar api
             favRoutine();
-        }else if(id == R.id.app_bar_rate){
+        } else if (id == R.id.app_bar_rate) {
             openRateDialog();
-        }else if(id == R.id.app_bar_share){
+        } else if (id == R.id.app_bar_share) {
             share();
-        }else{
+        } else {
             return super.onOptionsItemSelected(item);
         }
         return true;
     }
 
-    public void favRoutine(){
+    public void favRoutine() {
         fav.setVisible(true);
         unfav.setVisible(false);
     }
 
-    public void unfavRoutine(){
+    public void unfavRoutine() {
         fav.setVisible(false);
         unfav.setVisible(true);
     }
 
-    public void openRateDialog(){
+    public void openRateDialog() {
         RateDialog rateDialog = new RateDialog(routineId, getActivity());
-        rateDialog.show(getParentFragmentManager(),"Example dialog");
+        rateDialog.show(getParentFragmentManager(), "Example dialog");
     }
 
-    public void share(){
+    public void share() {
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        //sharingIntent.putExtra(Intent.EXTRA_SUBJECT, routineData.title);
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Titulo prueba");
+        sharingIntent.putExtra("RoutineId", routineId);
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.subject) + ": http://www.gymate.com/Routines/" + routineId);
+        startActivity(Intent.createChooser(sharingIntent, "Share Rutine"));
     }
 }
 
