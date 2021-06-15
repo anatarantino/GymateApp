@@ -50,4 +50,5 @@ public class UserInfo {
     public String getAvatarUrl() {
         return avatarUrl;
     }
+
 }

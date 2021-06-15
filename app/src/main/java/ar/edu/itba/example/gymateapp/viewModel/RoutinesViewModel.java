@@ -32,10 +32,8 @@ public class RoutinesViewModel extends AndroidViewModel {
     private MutableLiveData<RoutineCredentials> currentRoutine = new MutableLiveData<>();
     private MutableLiveData<Boolean> noMoreEntries = new MutableLiveData<>();
     private RoutinesApi routinesApi;
-    private UserApi userApi;
     private CompositeDisposable disposable = new CompositeDisposable();
     private MutableLiveData<Boolean> routinesFirstLoad = new MutableLiveData<>(true);
-
 
     private boolean isLastPage = false;
     private String direction = "desc";
@@ -45,7 +43,6 @@ public class RoutinesViewModel extends AndroidViewModel {
     private int currentPage = 0;
     private int totalPages = 0;
     private int itemsPerRequest = 15;
-
 
     public RoutinesViewModel(@NonNull @NotNull Application application) {
         super(application);
@@ -160,7 +157,6 @@ public class RoutinesViewModel extends AndroidViewModel {
                         if (routineCards.getValue() != null) {
                             aux = routineCards.getValue();
                         }
-                        //comento esta linea porque me crashea la app pues ES NULL SIEMPRE NO SE POR QUEE
                         aux.addAll(routinesEntries.getEntries());
                         routineCards.setValue(aux);
                         totalPages = (int) Math.ceil(routinesEntries.getTotalCount() / (double) itemsPerRequest);
@@ -169,7 +165,6 @@ public class RoutinesViewModel extends AndroidViewModel {
 
                     @Override
                     public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                        Log.e("on error", "mal ahi hubo error");
                         e.printStackTrace();
                     }
                 }));
@@ -260,11 +255,9 @@ public class RoutinesViewModel extends AndroidViewModel {
                             @Override
                             public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull PagedList<RoutineCredentials> routinesEntries) {
                                 for(RoutineCredentials r : routinesEntries.getEntries()){
-                                    //setear el usuario con el current
-                                    r.setUser(new RoutineCredentials.User("el current","f","a",(long)1626354127,1,(long)1625641577));
+                                    r.setUser(new RoutineCredentials.User("current user"));
                                 }
                                 userRoutines.setValue(routinesEntries.getEntries());
-
                             }
 
                             @Override

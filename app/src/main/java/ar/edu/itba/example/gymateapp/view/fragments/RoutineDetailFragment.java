@@ -228,11 +228,10 @@ public class RoutineDetailFragment extends Fragment {
     public void share() {
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        //sharingIntent.putExtra(Intent.EXTRA_SUBJECT, routineData.title);
-        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Titulo prueba");
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, routineCredentials.getName());
         sharingIntent.putExtra("RoutineId", routineId);
-        sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.subject) + ": http://www.gymate.com/Routines/" + routineId);
-        startActivity(Intent.createChooser(sharingIntent, "Share Rutine"));
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.subject) + ": http://www.gymate.com/routines/" + routineId);
+        startActivity(Intent.createChooser(sharingIntent, "Share Routine"));
     }
 }
 
