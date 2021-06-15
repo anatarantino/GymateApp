@@ -64,4 +64,5 @@
     </string-array>
     <string name="wrong_credentials">Usuario o contraseña inválido. Por favor intenta nuevamente.</string>
     <string name="default_error">Ocurrió un error inesperado, inténtalo denuevo.</string>
+    <string name="finish_routine">Acabas de terminar tu rutina. Buen trabajo!</string>
 </resources>
