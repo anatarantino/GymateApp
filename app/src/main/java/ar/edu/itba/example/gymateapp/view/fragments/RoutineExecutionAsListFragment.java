@@ -1,6 +1,7 @@
 package ar.edu.itba.example.gymateapp.view.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -126,6 +127,7 @@ public class RoutineExecutionAsListFragment extends Fragment {
             viewModel.setFirstTime(false);
         }
 
+        Log.e("RoutineExecetc",viewModel.toString());
         observeExerciseViewModel();
 
         mainActivity = (MainActivity) getActivity();
