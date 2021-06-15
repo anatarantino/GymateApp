@@ -15,7 +15,9 @@ import java.util.Map;
 
 import ar.edu.itba.example.gymateapp.model.ExerciseCredentials;
 import ar.edu.itba.example.gymateapp.model.PagedList;
+import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
 import ar.edu.itba.example.gymateapp.model.RoutineCycleCredentials;
+import ar.edu.itba.example.gymateapp.model.RoutineRating;
 import ar.edu.itba.example.gymateapp.model.RoutinesApi;
 import ar.edu.itba.example.gymateapp.view.fragments.CountDownTimer;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -159,5 +161,24 @@ public class ExercisesViewModel extends AndroidViewModel {
         return countDownTimer;
     }
 
+    public void rateRoutine(int routineId, int value) {
+        RoutineRating rating = new RoutineRating(value, "");
+        disposable.add(routinesApi.rateRoutine(routineId, rating)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<RoutineCredentials>() {
+
+                    @Override
+                    public void onSuccess(@NonNull RoutineCredentials routineCredentials) {
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        e.printStackTrace();
+                    }
+                })
+        );
+    }
 
 }

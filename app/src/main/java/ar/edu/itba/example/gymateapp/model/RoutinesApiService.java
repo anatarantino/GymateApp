@@ -47,4 +47,7 @@ public interface RoutinesApiService {
 
     @DELETE("favourites/{routineId}")
     Single<Response<Void>> unfavRoutine(@Path("routineId") Integer routineId);
+
+    @POST("reviews/{routineId}")
+    Single<RoutineCredentials> rateRoutine(Integer routineId, RoutineRating rating);
 }

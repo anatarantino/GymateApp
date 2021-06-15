@@ -10,21 +10,24 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import org.jetbrains.annotations.NotNull;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.databinding.RatingDialogBinding;
+import ar.edu.itba.example.gymateapp.viewModel.ExercisesViewModel;
 
 public class RateDialog extends AppCompatDialogFragment {
 
     private int routineId;
     private RatingBar ratingBar;
     private RatingDialogBinding binding;
+    private ExercisesViewModel viewModel;
 
     public RateDialog(int routineId, FragmentActivity activity) {
         this.routineId = routineId;
-        //conectar viewModel
+        viewModel=new ViewModelProvider(activity).get(ExercisesViewModel.class);
     }
 
     @NonNull
@@ -35,9 +38,8 @@ public class RateDialog extends AppCompatDialogFragment {
         binding = RatingDialogBinding.inflate(getActivity().getLayoutInflater());
         ratingBar = binding.ratingBar;
         View view = binding.getRoot();
-        //Api
-//        builder.setView(view).setTitle(getString(R.string.RateRoutineDialog).toUpperCase()).setNegativeButton(getString(R.string.Close), (dialog, which) -> {
-//        }).setPositiveButton(getString(R.string.Rate), (dialog, which) -> viewModel.rateRoutine(routineId,(int)ratingBar.getRating()));
+        builder.setView(view).setTitle(getString(R.string.RateRoutineDialog).toUpperCase()).setNegativeButton(getString(R.string.Close), (dialog, which) -> {
+        }).setPositiveButton(getString(R.string.Rate), (dialog, which) -> viewModel.rateRoutine(routineId,(int)ratingBar.getRating()));
         this.setCancelable(false);
         return builder.create();
     }

@@ -90,4 +90,9 @@ public class RoutinesApi extends ApiClient implements RoutinesApiService {
     public Single<Response<Void>> unfavRoutine(Integer routineId) {
         return routinesApi.unfavRoutine(routineId);
     }
+
+    @Override
+    public Single<RoutineCredentials> rateRoutine(Integer routineId, RoutineRating rating) {
+        return routinesApi.rateRoutine(routineId, rating);
+    }
 }
