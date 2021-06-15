@@ -16,27 +16,30 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 import ar.edu.itba.example.gymateapp.databinding.FragmentRoutinerunBinding;
+import ar.edu.itba.example.gymateapp.model.ExerciseCredentials;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.adapter.ExercisesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.ExerciseData;
+import ar.edu.itba.example.gymateapp.viewModel.ExercisesViewModel;
 
 public class RoutineExecutionFragment extends Fragment {
 
     private FragmentRoutinerunBinding binding;
 
-    private static final String ARG_PARAM1 = "title";
-    private static final String ARG_PARAM2 = "id";
+    private ExercisesViewModel viewModel;
 
-    private String titleParam, id;
-
-    private ArrayList<ExerciseData> warmUp;
-    private ArrayList<ExerciseData> main;
-    private ArrayList<ExerciseData> cooldown;
+    private ArrayList<ExerciseCredentials> warmUp;
+    private ArrayList<ExerciseCredentials> main;
+    private ArrayList<ExerciseCredentials> cooldown;
 
     private static final int WARMUP_CYCLE = 0;
     private static final int MAIN_CYCLE = 1;
     private static final int COOLDOWN_CYCLE = 2;
-    private String[] titles = new String[3];
+    private static final int PLAYING = 0;
+    private static final int PAUSED = 1;
+    private static final int NOTRUNNING = 2;
+
+    private static final String[] titles = new String[3];
     private static final String WARMUP_TITLE = "WARM UP";
     private static final String MAIN_TITLE = "MAIN EXERCISES";
     private static final String COOLDOWN_TITLE = "COOLDOWN";

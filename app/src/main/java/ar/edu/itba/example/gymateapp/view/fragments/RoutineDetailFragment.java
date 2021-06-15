@@ -91,8 +91,10 @@ public class RoutineDetailFragment extends Fragment {
         view = binding.getRoot();
 
         main = (MainActivity) getActivity();
-        main.showUpButton();
-        main.setNavigationVisibility(false);
+        if(main != null){
+            main.showUpButton();
+            main.setNavigationVisibility(false);
+        }
         return view;
     }
 
@@ -120,8 +122,6 @@ public class RoutineDetailFragment extends Fragment {
         Button listBtn = view.findViewById(R.id.listBtn);
         listBtn.setOnClickListener(v -> {
             RoutineDetailFragmentDirections.ActionRoutineDetailFragmentToRoutineExecutionAsListFragment action = RoutineDetailFragmentDirections.actionRoutineDetailFragmentToRoutineExecutionAsListFragment(routineCredentials.getName(), routineId);
-            //RoutineExecutionAsListFragmentDirections.ActionRoutineExecutionAsListFragmentToRoutineDetailFragment action = RoutineExecutionAsListFragmentDirections.actionRoutineExecutionAsListFragmentToRoutineDetailFragment();
-            //action.setRoutineId(routineId);
             Navigation.findNavController(view).navigate(action);
         });
 

@@ -90,8 +90,9 @@ public class RoutineExecutionAsListFragment extends Fragment {
         view = binding.getRoot();
 
         mainActivity = (MainActivity) getActivity();
-        assert mainActivity != null;
-        mainActivity.setNavigationVisibility(false);
+        if(mainActivity != null){
+            mainActivity.setNavigationVisibility(false);
+        }
 
         return view;
     }
@@ -127,7 +128,6 @@ public class RoutineExecutionAsListFragment extends Fragment {
             viewModel.setFirstTime(false);
         }
 
-        Log.e("RoutineExecetc",viewModel.toString());
         observeExerciseViewModel();
 
         mainActivity = (MainActivity) getActivity();
@@ -304,6 +304,8 @@ public class RoutineExecutionAsListFragment extends Fragment {
 
     public void openFinishedRoutineDialog() {
         FinishRoutine finishRoutine = new FinishRoutine(view, FinishRoutine.LIST_EXEC);
-        finishRoutine.show(getParentFragmentManager(), "example"); //?? borrar?
+//        finishRoutine.show(getParentFragmentManager(), "example"); //?? borrar?
+        finished = true;
+        viewModel.setFirstTime(true);
     }
 }

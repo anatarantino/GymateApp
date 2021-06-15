@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -31,9 +32,10 @@ public class FinishRoutine extends AppCompatDialogFragment {
     @NotNull
     @Override
     public Dialog onCreateDialog(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        Log.e("Dialog","entre al dialog");
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.PopUp);
 
-        LayoutInflater inflater = getActivity().getLayoutInflater();
+        LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.finish_routine, null);
 
         builder.setView(view).setNegativeButton(R.string.Close, new DialogInterface.OnClickListener() {

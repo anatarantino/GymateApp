@@ -1,16 +1,14 @@
 package ar.edu.itba.example.gymateapp.view.fragments;
 
-import android.os.CountDownTimer;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-public class Timer {
+public class CountDownTimer {
 
     private long remaining = 0;
     private long interval = 0;
-    private CountDownTimer countDownTimer;
-    private final MutableLiveData<Timer.Status> countDownStatus = new MutableLiveData<>();
+    private android.os.CountDownTimer countDownTimer;
+    private final MutableLiveData<CountDownTimer.Status> countDownStatus = new MutableLiveData<>();
 
     public static class Status {
         private boolean isFinished;
@@ -35,15 +33,15 @@ public class Timer {
     }
 
     private void start(long time) {
-        countDownTimer = new CountDownTimer(time, interval) {
+        countDownTimer = new android.os.CountDownTimer(time, interval) {
             @Override
             public void onTick(long millisUntilFinished) {
-                Timer.this.onTick(millisUntilFinished);
+                CountDownTimer.this.onTick(millisUntilFinished);
             }
 
             @Override
             public void onFinish() {
-                Timer.this.onFinish();
+                CountDownTimer.this.onFinish();
             }
         }.start();
     }
@@ -57,7 +55,7 @@ public class Timer {
         countDownStatus.setValue(new Status(0, true));
     }
 
-    public LiveData<Timer.Status> getStatus() {
+    public LiveData<CountDownTimer.Status> getStatus() {
         return countDownStatus;
     }
 
