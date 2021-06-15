@@ -41,4 +41,9 @@
         <item name="background">@android:color/transparent</item>
         <item name="tint">@color/white</item>
     </style>
+
+    <style name="AppThemeToggle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorAccent">@color/Gymate_green</item>
+        <item name="android:colorControlNormal">@color/Gymate_green</item>
+    </style>
 </resources>
