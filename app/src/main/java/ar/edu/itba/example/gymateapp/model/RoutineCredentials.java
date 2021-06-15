@@ -37,13 +37,13 @@ public class RoutineCredentials {
 
     private String image;
 
-    public RoutineCredentials(Integer id, String name, String detail, Boolean isPublic, String difficulty, Integer catId,String catName,String catDetail, User user, Long date, Float averageRating) {
+    public RoutineCredentials(Integer id, String name, String detail, Boolean isPublic, String difficulty, Integer catId, String catName, String catDetail, User user, Long date, Float averageRating) {
         this.id = id;
         this.name = name;
         this.detail = detail;
         this.isPublic = isPublic;
         this.difficulty = difficulty;
-        Category cat = new Category(catId,catName,catDetail);
+        Category cat = new Category(catId, catName, catDetail);
         this.category = cat;
         this.user = user;
         this.date = date;
@@ -145,43 +145,18 @@ public class RoutineCredentials {
 
     public static class User {
         private String username;
-        private String gender;
-        private String avatarUrl;
-        private Long date;
-        private Integer id;
-        private Long lastActivity;
 
-        public User(String username, String gender, String avatarUrl, Long date, Integer id, Long lastActivity) {
+        public User(String username) {
             this.username = username;
-            this.gender = gender;
-            this.avatarUrl = avatarUrl;
-            this.date = date;
-            this.id = id;
-            this.lastActivity = lastActivity;
         }
 
         public String getUsername() {
             return username;
         }
 
-        public String getGender() {
-            return gender;
+        public void setUsername(String username) {
+            this.username = username;
         }
 
-        public String getAvatarUrl() {
-            return avatarUrl;
-        }
-
-        public Long getDate() {
-            return date;
-        }
-
-        public Integer getId() {
-            return id;
-        }
-
-        public Long getLastActivity() {
-            return lastActivity;
-        }
     }
 }

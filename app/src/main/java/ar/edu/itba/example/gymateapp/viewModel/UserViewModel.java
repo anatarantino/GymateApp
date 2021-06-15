@@ -32,6 +32,8 @@ public class UserViewModel extends AndroidViewModel {
 
     private MutableLiveData<ApiError> loginError = new MutableLiveData<>();
 
+    private UserInfo currentUser;
+
     private UserApi userApi;
 
     private Application app;
@@ -51,6 +53,7 @@ public class UserViewModel extends AndroidViewModel {
                     @Override
                     public void onSuccess(@NonNull UserInfo info) {
                         userInfo.setValue(info);
+                        currentUser = info;
                     }
 
                     @Override
@@ -115,5 +118,9 @@ public class UserViewModel extends AndroidViewModel {
 
     public void setLoginErrorCode(ApiError error) {
         loginError.setValue(error);
+    }
+
+    public UserInfo getCurrentUser() {
+        return currentUser;
     }
 }
