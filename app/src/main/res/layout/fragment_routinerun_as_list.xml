@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/run_as_list">
 
-    <include
-        android:id="@+id/executionBar"
-        layout="@layout/execution_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="385dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/executionBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -120,6 +113,17 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <include
+        android:id="@+id/executionBar"
+        layout="@layout/execution_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="809dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
