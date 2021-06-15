@@ -44,7 +44,6 @@ public class RoutineExecutionFragment extends Fragment {
     private static final String MAIN_TITLE = "MAIN EXERCISES";
     private static final String COOLDOWN_TITLE = "COOLDOWN";
 
-    private ExercisesAdapter currentAdapter;
     private int currentCycle;
     private int currentExerciseIndex;
     private boolean finished;
@@ -55,6 +54,7 @@ public class RoutineExecutionFragment extends Fragment {
 
     private TextView time;
     private ProgressBar progressBar;
+    private TextView exName;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

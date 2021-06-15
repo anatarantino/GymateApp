@@ -53,7 +53,7 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.Exer
             holder.itemView.exDuration.setTextColor(parentContext.getColor(R.color.title1));
         }
         else{
-            holder.itemView.exerciseCard.setBackgroundColor(parentContext.getColor(R.color.exerciseColor));
+            holder.itemView.exerciseCard.setBackgroundColor(parentContext.getColor(R.color.exColor));
             holder.itemView.exName.setTextColor(parentContext.getColor(R.color.title1));
             holder.itemView.exDuration.setTextColor(parentContext.getColor(R.color.title1));
         }
