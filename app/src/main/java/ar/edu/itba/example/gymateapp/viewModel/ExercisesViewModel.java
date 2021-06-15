@@ -1,7 +1,6 @@
 package ar.edu.itba.example.gymateapp.viewModel;
 
 import android.app.Application;
-import android.os.CountDownTimer;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -18,7 +17,7 @@ import ar.edu.itba.example.gymateapp.model.ExerciseCredentials;
 import ar.edu.itba.example.gymateapp.model.PagedList;
 import ar.edu.itba.example.gymateapp.model.RoutineCycleCredentials;
 import ar.edu.itba.example.gymateapp.model.RoutinesApi;
-import ar.edu.itba.example.gymateapp.view.fragments.Timer;
+import ar.edu.itba.example.gymateapp.view.fragments.CountDownTimer;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.observers.DisposableSingleObserver;
@@ -41,7 +40,7 @@ public class ExercisesViewModel extends AndroidViewModel {
     private int status;
     private ArrayList<ExerciseCredentials> currCycle;
 
-    private Timer countDownTimer;
+    private CountDownTimer countDownTimer = new CountDownTimer();
 
     public ExercisesViewModel(@NonNull @NotNull Application application) {
         super(application);
@@ -156,16 +155,9 @@ public class ExercisesViewModel extends AndroidViewModel {
         this.status = status;
     }
 
-    public Timer getCountDownTimer() {
+    public CountDownTimer getCountDownTimer() {
         return countDownTimer;
     }
 
-    @NonNull
-    @NotNull
-    @Override
-    public String toString() {
-        return "ExerciseViewModel{" + "executed " + executed + " currentCycle " + currentCycle + " cycleTitle " + cycleTitle +
-                " currentExercise " + currentExercise + " isFirstTime " + isFirstTime + " finished " + finished + " status " + status + " }";
 
-    }
 }
