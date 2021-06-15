@@ -39,7 +39,7 @@
     <string name="execute">Execute</string>
     <string name="favorite">Favorite</string>
     <string name="share">Share</string>
-    <string name="secs">"</string>
+    <string name="secs">secs</string>
     <string name="number">45</string>
     <string name="recent_routines">Recent routines</string>
     <string name="play_as_list">Play as list</string>

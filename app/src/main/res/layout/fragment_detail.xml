@@ -14,7 +14,7 @@
         android:layout_width="0dp"
         android:layout_height="62dp"
         android:layout_marginTop="16dp"
-        app:cardBackgroundColor="@color/MainTitleBg"
+        app:cardBackgroundColor="@color/ListTitleBg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -92,9 +92,11 @@
                 android:id="@+id/warmupTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/cardBg"
+                android:background="@color/MainTitleBg"
                 android:text="@string/warmup"
                 android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/MainTitle"
                 android:textSize="24sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -106,9 +108,11 @@
                 android:id="@+id/mainTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/cardBg"
+                android:background="@color/MainTitleBg"
                 android:text="@string/main"
                 android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/MainTitle"
                 android:textSize="24sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -120,9 +124,11 @@
                 android:id="@+id/cooldownTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/cardBg"
+                android:background="@color/MainTitleBg"
                 android:text="@string/cooldown"
                 android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/MainTitle"
                 android:textSize="24sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -138,6 +144,8 @@
         android:layout_height="19dp"
         android:textAlignment="center"
         android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
