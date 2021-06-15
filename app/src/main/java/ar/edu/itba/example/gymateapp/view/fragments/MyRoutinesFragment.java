@@ -34,7 +34,7 @@ import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 
 public class MyRoutinesFragment extends Fragment implements RoutinesAdapter.ItemClickListener{
     private RoutinesViewModel viewModel;
-    private FragmentRoutinesBinding binding; //me parece que vamos a tener que hacer otro xml para myroutines por el tema del fetch ampliaremos
+    private FragmentRoutinesBinding binding;
 
     private RecyclerView recyclerView;
     private RoutinesAdapter routinesAdapter;
@@ -52,6 +52,15 @@ public class MyRoutinesFragment extends Fragment implements RoutinesAdapter.Item
         DividerItemDecoration itemDecorator = new DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL);
         itemDecorator.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(requireContext(), R.drawable.divider)));
         recyclerView.addItemDecoration(itemDecorator);
+
+        Spinner spinner = (Spinner) view.findViewById(R.id.sortby_spinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> spinner_adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.spinner_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(spinner_adapter);
 
         return view;
     }
