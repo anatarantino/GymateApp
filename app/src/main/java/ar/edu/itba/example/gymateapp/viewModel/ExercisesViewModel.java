@@ -159,4 +159,13 @@ public class ExercisesViewModel extends AndroidViewModel {
     public Timer getCountDownTimer() {
         return countDownTimer;
     }
+
+    @NonNull
+    @NotNull
+    @Override
+    public String toString() {
+        return "ExerciseViewModel{" + "executed " + executed + " currentCycle " + currentCycle + " cycleTitle " + cycleTitle +
+                " currentExercise " + currentExercise + " isFirstTime " + isFirstTime + " finished " + finished + " status " + status + " }";
+
+    }
 }
