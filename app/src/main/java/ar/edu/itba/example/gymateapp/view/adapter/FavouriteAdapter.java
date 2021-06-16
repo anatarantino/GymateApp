@@ -1,6 +1,5 @@
 package ar.edu.itba.example.gymateapp.view.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,19 +8,14 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.itba.example.gymateapp.R;
-import ar.edu.itba.example.gymateapp.databinding.RoutineCardBinding;
 import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
-import ar.edu.itba.example.gymateapp.view.fragments.ClickOnRoutine;
-import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 
 public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.FavouriteViewHolder> {
 
@@ -42,9 +36,6 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
     @NonNull
     @Override
     public FavouriteAdapter.FavouriteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-//        RoutineCardBinding view = DataBindingUtil.inflate(inflater, R.layout.routine_card, parent, false);
-//        return new FavouriteAdapter.FavouriteViewHolder(view);
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.routine_card, null, false);
         return new FavouriteViewHolder(view);
     }
@@ -55,7 +46,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
 
         int id = routine.getCategory().getId();
         switch (id) {
-            //aca vamos a tener que elegir una img para cada cat
+            //a cada categoria se le asigna una imagen
             case 1:
                 holder.img.setImageResource(R.drawable.c1);
                 routine.setImage(String.valueOf(R.drawable.c1));

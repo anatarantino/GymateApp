@@ -4,12 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavDeepLinkBuilder;
 
-import java.util.concurrent.Executor;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.model.AppPreferences;
@@ -21,10 +19,6 @@ public class LoadingActivity extends AppCompatActivity {
         AppPreferences preferences = new AppPreferences(this.getApplication());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-//        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-//            Intent intent = new Intent(this, LoginActivity.class);
-//            startActivity(intent);
-//        },2000);
         new Handler().postDelayed(()-> {
             Intent appLinkIntent = getIntent();
             Uri appLinkData = appLinkIntent.getData();

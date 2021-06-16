@@ -1,19 +1,10 @@
 package ar.edu.itba.example.gymateapp.view.activities;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import ar.edu.itba.example.gymateapp.R;
-import ar.edu.itba.example.gymateapp.databinding.ActivityMainBinding;
-import ar.edu.itba.example.gymateapp.view.fragments.HomeFragment;
-import ar.edu.itba.example.gymateapp.view.fragments.MyRoutinesFragment;
-import ar.edu.itba.example.gymateapp.view.fragments.ProfileFragment;
-import ar.edu.itba.example.gymateapp.view.fragments.RoutinesFragment;
 import ar.edu.itba.example.gymateapp.viewModel.UserViewModel;
 
 import androidx.annotation.NonNull;
@@ -29,7 +20,6 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity {
 
