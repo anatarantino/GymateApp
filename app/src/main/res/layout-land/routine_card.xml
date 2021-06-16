@@ -39,20 +39,18 @@
                 android:layout_width="180dp"
                 android:layout_height="41dp"
                 android:layout_marginStart="468dp"
-                android:layout_marginTop="92dp"
+                android:layout_marginEnd="24dp"
                 android:numStars="5"
                 android:progressBackgroundTint="@color/starColor"
                 android:progressTint="@color/icon"
                 android:rating="@{RoutineCredentials.averageRating.intValue()}"
-                android:scaleX=".5"
-                android:scaleY=".5"
                 android:secondaryProgressTint="@android:color/transparent"
-                android:transformPivotX="0dp"
-                android:transformPivotY="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/creator"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
             <ImageView
                 android:id="@+id/image"
@@ -103,8 +101,8 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/categoryChip"
-                android:layout_width="111dp"
-                android:layout_height="47dp"
+                android:layout_width="135dp"
+                android:layout_height="62dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="2dp"
                 android:gravity="center"
@@ -113,7 +111,7 @@
                 app:chipBackgroundColor="@color/Gymate_green"
                 app:layout_constraintBottom_toTopOf="@+id/routineRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/routineRatingBar"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.028"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/creator"
                 app:layout_constraintVertical_bias="0.0" />
