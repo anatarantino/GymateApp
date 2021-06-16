@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:id="@+id/routine_detail"
+    tools:context=".view.fragments.RoutineDetailFragment">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView8"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/ListTitleBg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/MainTitle"
+                android:textSize="34sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:ellipsize="end"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="221dp"
+        android:layout_height="206dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:contentDescription="@string/ex_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView8"
+        app:layout_constraintVertical_bias="0.508" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/listBtn"
+        app:layout_constraintTop_toBottomOf="@+id/creator">
+
+        <LinearLayout
+            android:id="@+id/detail_description_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/detail_description_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/titleBg"
+                android:maxLines="5"
+                android:text="@string/description"
+                android:textAlignment="center"
+                android:textColor="@color/title1"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/detail_read_all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ellipsize="end"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/warmupTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/MainTitleBg"
+                android:text="@string/warmup"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/MainTitle"
+                android:textSize="24sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/warmupExercises"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/mainTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/MainTitleBg"
+                android:text="@string/main"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/MainTitle"
+                android:textSize="24sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mainExercises"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/cooldownTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/MainTitleBg"
+                android:text="@string/cooldown"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/MainTitle"
+                android:textSize="24sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cooldownExercises"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/creator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView8"
+        android:ellipsize="end"/>
+
+    <Button
+        android:id="@+id/listBtn"
+        android:layout_width="137dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="@color/Gymate_green"
+        android:text="@string/play_as_list"
+        android:textColor="@color/black"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/detailBtn"
+        android:layout_width="137dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/Gymate_green"
+        android:text="@string/play_with_detail"
+        android:textColor="@color/black"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/listBtn"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
