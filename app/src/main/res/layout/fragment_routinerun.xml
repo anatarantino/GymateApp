@@ -8,11 +8,10 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="300dp"
         android:layout_height="300dp"
         android:indeterminateOnly="false"
-        android:indeterminateTint="@color/Gymate_green"
         android:progressDrawable="@drawable/circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

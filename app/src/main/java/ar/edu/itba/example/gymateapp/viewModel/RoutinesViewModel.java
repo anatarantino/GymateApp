@@ -17,6 +17,8 @@ import java.util.Map;
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.model.PagedList;
 import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
+import ar.edu.itba.example.gymateapp.model.RoutineExecution;
+import ar.edu.itba.example.gymateapp.model.RoutineHistory;
 import ar.edu.itba.example.gymateapp.model.RoutinesApi;
 import ar.edu.itba.example.gymateapp.model.UserApi;
 import ar.edu.itba.example.gymateapp.model.UserInfo;
@@ -29,6 +31,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class RoutinesViewModel extends AndroidViewModel {
     private MutableLiveData<List<RoutineCredentials>> routineCards = new MutableLiveData<>();
     private MutableLiveData<List<RoutineCredentials>> userRoutines = new MutableLiveData<>();
+    private MutableLiveData<List<RoutineCredentials>> userHistory = new MutableLiveData<>();
     private MutableLiveData<RoutineCredentials> currentRoutine = new MutableLiveData<>();
     private MutableLiveData<Boolean> noMoreEntries = new MutableLiveData<>();
     private RoutinesApi routinesApi;
@@ -152,7 +155,6 @@ public class RoutinesViewModel extends AndroidViewModel {
                         isLastPage = routinesEntries.getLastPage();
                         noMoreEntries.setValue(isLastPage);
                         currentPage++;
-                        Log.e("RoutinesViewModel", "on success: " + routinesEntries.toString());
                         List<RoutineCredentials> aux = new ArrayList<>();
                         if (routineCards.getValue() != null) {
                             aux = routineCards.getValue();
@@ -273,5 +275,52 @@ public class RoutinesViewModel extends AndroidViewModel {
         return userRoutines;
     }
 
+    public void updateUserHistory() {
+        Map<String, String> options = new HashMap<>();
+        options.put("page", "0");
+        options.put("direction", "asc");
+        options.put("size", String.valueOf(1000));
 
+        disposable.add(routinesApi.getUserHistory(options)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(new DisposableSingleObserver<PagedList<RoutineHistory>>() {
+                        @Override
+                        public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull PagedList<RoutineHistory> routineEntries) {
+                            List<RoutineCredentials> routines = new ArrayList<>();
+                            for (RoutineHistory routine_executed : routineEntries.getEntries()) {
+                                Log.e("en updateHistoryUser","eoutine)executed: " + routine_executed.getRoutine().toString());
+                                routines.add(routine_executed.getRoutine());
+                            }
+                            userHistory.setValue(routines);
+                        }
+
+                        @Override
+                        public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                            e.printStackTrace();
+                        }
+                    }));
+    }
+
+    public void addRoutineExecution(int routineId) {
+        RoutineExecution routineExecution = new RoutineExecution(1,false);
+        disposable.add(routinesApi.addRoutineExecution(routineId, routineExecution)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(new DisposableSingleObserver<RoutineCredentials>() {
+                        @Override
+                        public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull RoutineCredentials routineEntries) {
+
+                        }
+
+                        @Override
+                        public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                            e.printStackTrace();
+                        }
+                    }));
+    }
+
+    public MutableLiveData<List<RoutineCredentials>> getUserHistory() {
+        return userHistory;
+    }
 }

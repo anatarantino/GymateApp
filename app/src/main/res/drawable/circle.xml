@@ -6,7 +6,7 @@
                 android:shape="ring"
                 android:thicknessRatio="14"
                 android:useLevel="false">
-            <solid android:color="@color/Gymate_green" />
+            <solid android:color="@color/primaryColor" />
         </shape>
     </item>
 
@@ -18,6 +18,9 @@
                     android:shape="ring"
                     android:thicknessRatio="14"
                     android:useLevel="true">
+                <gradient
+                        android:startColor="@color/Gymate_green"
+                        android:endColor="@color/Gymate_green" />
             </shape>
         </rotate>
     </item>

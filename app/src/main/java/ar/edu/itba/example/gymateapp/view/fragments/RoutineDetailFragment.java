@@ -122,17 +122,18 @@ public class RoutineDetailFragment extends Fragment {
         Button listBtn = view.findViewById(R.id.listBtn);
         listBtn.setOnClickListener(v -> {
             RoutineDetailFragmentDirections.ActionRoutineDetailFragmentToRoutineExecutionAsListFragment action = RoutineDetailFragmentDirections.actionRoutineDetailFragmentToRoutineExecutionAsListFragment(routineCredentials.getName(), routineId);
+            routinesViewModel.addRoutineExecution(routineId);
             Navigation.findNavController(view).navigate(action);
         });
 
         Button detailBtn = view.findViewById(R.id.detailBtn);
         detailBtn.setOnClickListener(v -> {
-            Log.e("en el detail","routineId: " + String.valueOf(routineId));
             RoutineDetailFragmentDirections.ActionRoutineDetailFragmentToRoutineExecutionExercise action = RoutineDetailFragmentDirections.actionRoutineDetailFragmentToRoutineExecutionExercise(routineId);
+            routinesViewModel.addRoutineExecution(routineId);
             Navigation.findNavController(view).navigate(action);
         });
 
-        exercisesViewModel = new ViewModelProvider(getActivity()).get(ExercisesViewModel.class);
+        exercisesViewModel = new ViewModelProvider(requireActivity()).get(ExercisesViewModel.class);
         exercisesViewModel.refresh(routineId);
 
         recyclerViewWarmup.setLayoutManager(new LinearLayoutManager(getContext()));

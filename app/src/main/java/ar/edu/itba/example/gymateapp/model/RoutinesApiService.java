@@ -22,7 +22,7 @@ public interface RoutinesApiService {
     Single<PagedList<RoutineCredentials>> getUserRoutines(@QueryMap Map<String, String> options);
 
     @GET("users/current/executions")
-    Single<PagedList<RoutineCredentials>> getUserHistory(@QueryMap Map<String, String> options);
+    Single<PagedList<RoutineHistory>> getUserHistory(@QueryMap Map<String, String> options);
 
     @GET("routines/{routineId}")
     Single<RoutineCredentials> getRoutineById(@Path("routineId") Integer routineId);
@@ -43,7 +43,7 @@ public interface RoutinesApiService {
     Single<Response<Void>> favRoutine(@Path("routineId") Integer routineId);
 
     @POST("executions/{routineId}")
-    Single<RoutineCredentials> addRoutineExecution(@Path("routineId") Integer routineId, @Body RoutineCredentials routineExecution);
+    Single<RoutineCredentials> addRoutineExecution(@Path("routineId") Integer routineId, @Body RoutineExecution routineExecution);
 
     @DELETE("favourites/{routineId}")
     Single<Response<Void>> unfavRoutine(@Path("routineId") Integer routineId);

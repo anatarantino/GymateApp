@@ -47,7 +47,7 @@ public class RoutinesApi extends ApiClient implements RoutinesApiService {
     }
 
     @Override
-    public Single<PagedList<RoutineCredentials>> getUserHistory(Map<String, String> options) {
+    public Single<PagedList<RoutineHistory>> getUserHistory(Map<String, String> options) {
         return routinesApi.getUserHistory(options);
     }
 
@@ -82,7 +82,7 @@ public class RoutinesApi extends ApiClient implements RoutinesApiService {
     }
 
     @Override
-    public Single<RoutineCredentials> addRoutineExecution(Integer routineId, RoutineCredentials routineExecution) {
+    public Single<RoutineCredentials> addRoutineExecution(Integer routineId, RoutineExecution routineExecution) {
         return routinesApi.addRoutineExecution(routineId, routineExecution);
     }
 

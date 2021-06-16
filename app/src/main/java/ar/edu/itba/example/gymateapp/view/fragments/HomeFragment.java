@@ -41,8 +41,6 @@ import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 
 public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickListener {
 
-    private RecyclerView recyclerRoutine;
-
     private View view;
     private RoutinesViewModel viewModel;
     private RoutinesAdapter routinesAdapter;
@@ -80,36 +78,21 @@ public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickL
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(RoutinesViewModel.class);
-
+        viewModel.updateUserHistory();
         routinesAdapter = new RoutinesAdapter(new ArrayList<>(),this);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(routinesAdapter);
 
-        viewModel.getRoutinesFirstLoad().observe(getViewLifecycleOwner(), firstLoad -> {
-            if(firstLoad != null){
-                if(firstLoad) {
-                    viewModel.updateData();
-                    viewModel.setRoutinesFirstLoad(false);
-                }
-            }
-        });
-
-        viewModel.getRoutineCards().observe(getViewLifecycleOwner(), routines -> {
-            if (routines != null) {
+        viewModel.getUserHistory().observe(getViewLifecycleOwner(), routines -> {
+            if (routines != null){
                 routinesAdapter.updateRoutines(routines);
             }
         });
 
-        viewModel.getNoMoreEntries().observe(getViewLifecycleOwner(), value -> {
-            if (value != null) {
-                noMoreEntries = value;
-            }
-        });
-
         scrollView.setOnScrollChangeListener(
-                (View.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+                (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
                     if(!noMoreEntries && !scrollView.canScrollVertically(1)){
                         viewModel.updateData();
                     }

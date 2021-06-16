@@ -159,4 +159,20 @@ public class RoutineCredentials {
         }
 
     }
+
+    @Override
+    public String toString() {
+        return "RoutineCredentials{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", detail='" + detail + '\'' +
+                ", isPublic=" + isPublic +
+                ", difficulty='" + difficulty + '\'' +
+                ", category=" + category +
+                ", user=" + user +
+                ", date=" + date +
+                ", averageRating=" + averageRating +
+                ", image='" + image + '\'' +
+                '}';
+    }
 }
