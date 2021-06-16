@@ -38,8 +38,8 @@
                 style="?android:attr/ratingBarStyleIndicator"
                 android:layout_width="180dp"
                 android:layout_height="41dp"
-                android:layout_marginStart="496dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginStart="468dp"
+                android:layout_marginTop="92dp"
                 android:numStars="5"
                 android:progressBackgroundTint="@color/starColor"
                 android:progressTint="@color/icon"
@@ -49,18 +49,21 @@
                 android:secondaryProgressTint="@android:color/transparent"
                 android:transformPivotX="0dp"
                 android:transformPivotY="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/creator"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="175dp"
-                android:layout_height="0dp"
+                android:layout_width="209dp"
+                android:layout_height="125dp"
                 android:layout_marginStart="4dp"
                 android:contentDescription="@string/ex_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/c1" />
 
             <TextView
@@ -88,20 +91,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="36dp"
+                android:layout_marginBottom="32dp"
                 android:ellipsize="end"
                 android:text="@{RoutineCredentials.user.username}"
                 android:textColor="@color/title1"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toTopOf="@+id/routineRatingBar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/image" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/categoryChip"
-                android:layout_width="92dp"
-                android:layout_height="40dp"
+                android:layout_width="111dp"
+                android:layout_height="47dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="2dp"
                 android:gravity="center"
@@ -110,7 +113,7 @@
                 app:chipBackgroundColor="@color/Gymate_green"
                 app:layout_constraintBottom_toTopOf="@+id/routineRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/routineRatingBar"
-                app:layout_constraintHorizontal_bias="0.294"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/creator"
                 app:layout_constraintVertical_bias="0.0" />
