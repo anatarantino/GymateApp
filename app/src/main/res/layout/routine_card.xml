@@ -36,9 +36,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <!--                style="?android:attr/ratingBarStyleSmall"-->
-
             <RatingBar
                 android:id="@+id/routineRatingBar"
                 style="?android:attr/ratingBarStyleIndicator"
