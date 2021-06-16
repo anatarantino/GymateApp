@@ -61,6 +61,7 @@
         <item>Creation date</item>
         <item>Difficulty</item>
         <item>Rating</item>
+        <item>Title</item>
     </string-array>
     <string name="wrong_credentials">Invalid username or password. Please try again.</string>
     <string name="default_error">Invalid username or password, try again.</string>
