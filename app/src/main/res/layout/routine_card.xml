@@ -8,10 +8,7 @@
         <variable
             name="RoutineCredentials"
             type="ar.edu.itba.example.gymateapp.model.RoutineCredentials" />
-
-        <variable
-            name="clickOnRoutine"
-            type="ar.edu.itba.example.gymateapp.view.fragments.ClickOnRoutine" />
+        
     </data>
 
     <androidx.cardview.widget.CardView
