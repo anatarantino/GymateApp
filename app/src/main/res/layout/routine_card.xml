@@ -41,8 +41,8 @@
             <RatingBar
                 android:id="@+id/routineRatingBar"
                 style="?android:attr/ratingBarStyleSmall"
-                android:layout_width="78dp"
-                android:layout_height="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:numStars="5"
                 android:progressBackgroundTint="@color/starColor"
@@ -101,17 +101,21 @@
                 app:layout_constraintStart_toEndOf="@+id/image" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chip4"
-                android:layout_width="73dp"
-                android:layout_height="41dp"
+                android:id="@+id/categoryChip"
+                android:layout_width="92dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
                 android:text="@{RoutineCredentials.category.name}"
+                android:textAlignment="center"
                 app:chipBackgroundColor="@color/Gymate_green"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/routineRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/routineRatingBar"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/image" />
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/creator"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
