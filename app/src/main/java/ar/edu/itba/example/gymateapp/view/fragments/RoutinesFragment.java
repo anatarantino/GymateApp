@@ -110,7 +110,7 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
         });
 
         scrollView.setOnScrollChangeListener(
-                (View.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+                (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
                     if(!noMoreEntries && !scrollView.canScrollVertically(1)){
                         viewModel.updateData();
                     }

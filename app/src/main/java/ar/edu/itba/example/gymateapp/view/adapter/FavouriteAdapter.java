@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.chip.Chip;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,7 +79,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
 //        holder.txtCreator.setText(favouriteList.get(position).getUser().getUsername());
         holder.txtCreator.setText("aca iria el usuario");
         holder.rating.setRating(favouriteList.get(position).getAverageRating());
-
+        holder.category.setText(favouriteList.get(position).getCategory().getName());
         // holder.itemView.setRoutineCredentials(favouriteList.get(position));
         holder.itemView.setOnClickListener(v -> listener.onItemClick(favouriteList.get(position)));
 
@@ -94,6 +96,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
         TextView id, txtTitle, txtCreator;
         ImageView img;
         RatingBar rating;
+        Chip category;
 
         public FavouriteViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -103,6 +106,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
             txtCreator = (TextView) itemView.findViewById(R.id.creator);
             img = (ImageView) itemView.findViewById(R.id.image);
             rating = (RatingBar) itemView.findViewById(R.id.routineRatingBar);
+            category = (Chip) itemView.findViewById(R.id.categoryChip);
         }
     }
 

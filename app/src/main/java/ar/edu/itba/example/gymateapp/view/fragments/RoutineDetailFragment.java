@@ -32,13 +32,14 @@ import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.adapter.ExercisesAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 import ar.edu.itba.example.gymateapp.viewModel.ExercisesViewModel;
+import ar.edu.itba.example.gymateapp.viewModel.FavouritesRoutinesViewModel;
 import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 
 
 public class RoutineDetailFragment extends Fragment {
 
     private RoutinesViewModel routinesViewModel;
-
+    private FavouritesRoutinesViewModel favViewModel;
     private ExercisesViewModel exercisesViewModel;
 
     private ExercisesAdapter warmupAdapter = new ExercisesAdapter(new ArrayList<>());
@@ -119,6 +120,8 @@ public class RoutineDetailFragment extends Fragment {
             }
         });
 
+        favViewModel = new ViewModelProvider(requireActivity()).get(FavouritesRoutinesViewModel.class);
+
         Button listBtn = view.findViewById(R.id.listBtn);
         listBtn.setOnClickListener(v -> {
             RoutineDetailFragmentDirections.ActionRoutineDetailFragmentToRoutineExecutionAsListFragment action = RoutineDetailFragmentDirections.actionRoutineDetailFragmentToRoutineExecutionAsListFragment(routineCredentials.getName(), routineId);
@@ -177,18 +180,30 @@ public class RoutineDetailFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        Log.e("On create options menu", "entre");
         menu.findItem(R.id.app_bar_share).setVisible(true);
         menu.findItem(R.id.app_bar_rate).setVisible(true);
-        //cambiar a true despues
-        menu.findItem(R.id.app_bar_favorite_filled).setVisible(false);
-//        menu.findItem(R.id.app_bar_favorite_filled).setVisible(true);
+        menu.findItem(R.id.app_bar_favorite_filled).setVisible(true);
         menu.findItem(R.id.app_bar_favorite_outlined).setVisible(true);
 
         fav = menu.findItem(R.id.app_bar_favorite_filled);
         unfav = menu.findItem(R.id.app_bar_favorite_outlined);
 
-        //arrancan los dos corazones en true y despues te fijas en la api si esta true o false
-        //mandar data a la api
+        favViewModel.getFavouriteRoutines().observe(getViewLifecycleOwner(), favourites -> {
+            boolean isFav = false;
+            for (RoutineCredentials routine : favourites) {
+                if (routine.getId() == routineId) {
+                    isFav = true;
+                    break;
+                }
+            }
+            if (isFav) {
+                favRoutine();
+            }else {
+                unfavRoutine();
+            }
+            Log.e("fav",String.valueOf(isFav));
+        });
 
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -197,10 +212,10 @@ public class RoutineDetailFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.app_bar_favorite_filled) {
-            //llamar api
+            favViewModel.unfavRoutine(routineId);
             unfavRoutine();
         } else if (id == R.id.app_bar_favorite_outlined) {
-            //llamar api
+            favViewModel.favRoutine(routineId);
             favRoutine();
         } else if (id == R.id.app_bar_rate) {
             openRateDialog();

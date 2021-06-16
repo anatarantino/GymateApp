@@ -85,11 +85,7 @@ public class FavouritesRoutinesViewModel extends AndroidViewModel {
                     .subscribeWith(new DisposableSingleObserver<PagedList<RoutineCredentials>>() {
                         @Override
                         public void onSuccess(@NonNull PagedList<RoutineCredentials> favourites) {
-                            Log.e("onSuccess","ok");
-                            Log.e("..",String.valueOf(favourites.getTotalCount()));
-                            Log.e("..",favourites.toString());
                             favouriteRoutines.setValue(favourites.getEntries());
-                            //Log.e("En el favRoutinesViewModel","entries: " + favourites.getEntries().size());
                         }
 
                         @Override
@@ -107,4 +103,6 @@ public class FavouritesRoutinesViewModel extends AndroidViewModel {
     public MutableLiveData<List<RoutineCredentials>> getFavouriteRoutines() {
         return favouriteRoutines;
     }
+
+    public boolean 
 }
