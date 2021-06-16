@@ -244,7 +244,7 @@ public class RoutineDetailFragment extends Fragment {
         sharingIntent.setType("text/plain");
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT, routineCredentials.getName());
         sharingIntent.putExtra("RoutineId", routineId);
-        sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.subject) + ": http://www.gymate.com/routines/" + routineId);
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.subject) + ": http://www.gymatemarti.com/routines/" + routineId);
         startActivity(Intent.createChooser(sharingIntent, "Share Routine"));
     }
 }
