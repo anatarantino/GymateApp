@@ -20,9 +20,7 @@ import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
 import ar.edu.itba.example.gymateapp.model.RoutineExecution;
 import ar.edu.itba.example.gymateapp.model.RoutineHistory;
 import ar.edu.itba.example.gymateapp.model.RoutinesApi;
-import ar.edu.itba.example.gymateapp.model.UserApi;
-import ar.edu.itba.example.gymateapp.model.UserInfo;
-import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
+
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.observers.DisposableSingleObserver;
@@ -113,16 +111,16 @@ public class RoutinesViewModel extends AndroidViewModel {
         orderById = option;
         switch (option) {
             case 0:
-                orderBy = "dateCreated";
-                break;
-            case 1:
-                orderBy = "averageRating";
-                break;
-            case 2:
                 orderBy = "categoryId";
                 break;
-            case 3:
+            case 1:
+                orderBy = "date";
+                break;
+            case 2:
                 orderBy = "difficulty";
+                break;
+            case 3:
+                orderBy = "averageRating";
                 break;
             case 4:
                 orderBy = "name";
@@ -289,7 +287,6 @@ public class RoutinesViewModel extends AndroidViewModel {
                         public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull PagedList<RoutineHistory> routineEntries) {
                             List<RoutineCredentials> routines = new ArrayList<>();
                             for (RoutineHistory routine_executed : routineEntries.getEntries()) {
-                                Log.e("en updateHistoryUser","eoutine)executed: " + routine_executed.getRoutine().toString());
                                 routines.add(routine_executed.getRoutine());
                             }
                             userHistory.setValue(routines);

@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import ar.edu.itba.example.gymateapp.model.ApiResponse;
 import ar.edu.itba.example.gymateapp.model.PagedList;
@@ -31,36 +32,36 @@ public class FavouritesRoutinesViewModel extends AndroidViewModel {
 
     public void favRoutine(int routineId) {
         disposable.add(routinesApi.favRoutine(routineId)
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<Response<Void>>(){
-                        @Override
-                        public void onSuccess(@NotNull Response<Void> voidResponse) {
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<Response<Void>>(){
+                    @Override
+                    public void onSuccess(@NotNull Response<Void> voidResponse) {
 
-                        }
+                    }
 
-                        @Override
-                        public void onError(@NonNull Throwable e) {
-                            e.printStackTrace();
-                        }
-                    }));
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        e.printStackTrace();
+                    }
+                }));
     }
 
     public void unfavRoutine(int routineId) {
         disposable.add(routinesApi.unfavRoutine(routineId)
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<Response<Void>>() {
-                        @Override
-                        public void onSuccess(@NonNull Response<Void> voidApiResponse) {
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<Response<Void>>() {
+                    @Override
+                    public void onSuccess(@NonNull Response<Void> voidApiResponse) {
 
-                        }
+                    }
 
-                        @Override
-                        public void onError(@NonNull Throwable e) {
-                            e.printStackTrace();
-                        }
-                    }));
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        e.printStackTrace();
+                    }
+                }));
     }
 
     public FavouritesRoutinesViewModel(@androidx.annotation.NonNull @NotNull Application application) {
@@ -80,19 +81,19 @@ public class FavouritesRoutinesViewModel extends AndroidViewModel {
         options.put("direction", "desc");
 
         disposable.add(routinesApi.getFavouriteRoutines(options)
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<PagedList<RoutineCredentials>>() {
-                        @Override
-                        public void onSuccess(@NonNull PagedList<RoutineCredentials> favourites) {
-                            favouriteRoutines.setValue(favourites.getEntries());
-                        }
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<PagedList<RoutineCredentials>>() {
+                    @Override
+                    public void onSuccess(@NonNull PagedList<RoutineCredentials> favourites) {
+                        favouriteRoutines.setValue(favourites.getEntries());
+                    }
 
-                        @Override
-                        public void onError(@NonNull Throwable e) {
-                            e.printStackTrace();
-                        }
-                    }));
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        e.printStackTrace();
+                    }
+                }));
     }
     @Override
     protected void onCleared() {
@@ -104,5 +105,4 @@ public class FavouritesRoutinesViewModel extends AndroidViewModel {
         return favouriteRoutines;
     }
 
-    public boolean 
 }

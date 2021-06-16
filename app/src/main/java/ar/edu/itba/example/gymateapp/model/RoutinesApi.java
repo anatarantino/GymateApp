@@ -92,7 +92,7 @@ public class RoutinesApi extends ApiClient implements RoutinesApiService {
     }
 
     @Override
-    public Single<RoutineCredentials> rateRoutine(Integer routineId, RoutineRating rating) {
+    public Single<RoutineRating> rateRoutine(Integer routineId, RoutineRating rating) {
         return routinesApi.rateRoutine(routineId, rating);
     }
 }

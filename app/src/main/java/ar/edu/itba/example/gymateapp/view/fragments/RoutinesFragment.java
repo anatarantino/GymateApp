@@ -1,18 +1,13 @@
 package ar.edu.itba.example.gymateapp.view.fragments;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ScrollView;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
@@ -31,13 +26,11 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import ar.edu.itba.example.gymateapp.R;
-import ar.edu.itba.example.gymateapp.databinding.FragmentHomeBinding;
 import ar.edu.itba.example.gymateapp.databinding.FragmentRoutinesBinding;
 import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
 import ar.edu.itba.example.gymateapp.view.adapter.SortAdapter;
-import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 
 
@@ -69,14 +62,6 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
         itemDecorator.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(requireContext(), R.drawable.divider)));
         recyclerView.addItemDecoration(itemDecorator);
 
-//        Spinner spinner = (Spinner) view.findViewById(R.id.sortby_spinner);
-//        // Create an ArrayAdapter using the string array and a default spinner layout
-//        ArrayAdapter<CharSequence> spinner_adapter = ArrayAdapter.createFromResource(getContext(), R.array.spinner_array, android.R.layout.simple_spinner_item);
-//        // Specify the layout to use when the list of choices appears
-//        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        // Apply the adapter to the spinner
-//        spinner.setAdapter(spinner_adapter);
-
         ((MainActivity) requireActivity()).setNavigationVisibility(true);
         return view;
     }
@@ -86,7 +71,7 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(RoutinesViewModel.class);
 
-        setSpinner(view);
+        setSortOrder(view);
 
         routinesAdapter = new RoutinesAdapter(new ArrayList<>(), this);
 
@@ -131,7 +116,7 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
         Navigation.findNavController(view).navigate(action);
     }
 
-    private void setSpinner(View view) {
+    private void setSortOrder(View view) {
         sortSpinner = view.findViewById(R.id.sortby_spinner);
         ArrayAdapter<CharSequence> spinner_adapter = ArrayAdapter.createFromResource(getContext(), R.array.spinner_array, android.R.layout.simple_spinner_item);
         spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -140,16 +125,14 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
         sortSpinner.setOnItemSelectedListener(new SortAdapter(viewModel));
 
         orderBtn = view.findViewById(R.id.toggleButton);
-        orderBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    // The toggle is enabled
-                    
-                } else {
-                    // The toggle is disabled
-                }
+        orderBtn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked){
+                viewModel.orderRoutines(1);
+            }else{
+                viewModel.orderRoutines(0);
             }
         });
+
     }
 
 

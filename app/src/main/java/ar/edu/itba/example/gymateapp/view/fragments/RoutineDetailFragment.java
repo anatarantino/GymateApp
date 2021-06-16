@@ -180,29 +180,28 @@ public class RoutineDetailFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        Log.e("On create options menu", "entre");
         menu.findItem(R.id.app_bar_share).setVisible(true);
         menu.findItem(R.id.app_bar_rate).setVisible(true);
         menu.findItem(R.id.app_bar_favorite_filled).setVisible(true);
-        menu.findItem(R.id.app_bar_favorite_outlined).setVisible(true);
+        menu.findItem(R.id.app_bar_favorite_outlined).setVisible(false);
 
         fav = menu.findItem(R.id.app_bar_favorite_filled);
         unfav = menu.findItem(R.id.app_bar_favorite_outlined);
 
         favViewModel.getFavouriteRoutines().observe(getViewLifecycleOwner(), favourites -> {
-            boolean isFav = false;
+
+            boolean isFavourite = false;
             for (RoutineCredentials routine : favourites) {
                 if (routine.getId() == routineId) {
-                    isFav = true;
+                    isFavourite = true;
                     break;
                 }
             }
-            if (isFav) {
+            if (isFavourite) {
                 favRoutine();
             }else {
                 unfavRoutine();
             }
-            Log.e("fav",String.valueOf(isFav));
         });
 
         super.onCreateOptionsMenu(menu, inflater);

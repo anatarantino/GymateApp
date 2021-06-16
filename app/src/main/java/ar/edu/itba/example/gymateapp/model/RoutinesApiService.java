@@ -39,15 +39,15 @@ public interface RoutinesApiService {
     @GET("favourites")
     Single<PagedList<RoutineCredentials>> getFavouriteRoutines(@QueryMap Map<String, String> options);
 
-    @POST("favourites/{routineId}")
+    @POST("favourites/{routineId}/")
     Single<Response<Void>> favRoutine(@Path("routineId") Integer routineId);
 
     @POST("executions/{routineId}")
     Single<RoutineCredentials> addRoutineExecution(@Path("routineId") Integer routineId, @Body RoutineExecution routineExecution);
 
-    @DELETE("favourites/{routineId}")
+    @DELETE("favourites/{routineId}/")
     Single<Response<Void>> unfavRoutine(@Path("routineId") Integer routineId);
 
     @POST("reviews/{routineId}")
-    Single<RoutineCredentials> rateRoutine(Integer routineId, RoutineRating rating);
+    Single<RoutineRating> rateRoutine(@Path("routineId") Integer routineId,@Body RoutineRating rating);
 }

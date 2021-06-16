@@ -167,10 +167,10 @@ public class ExercisesViewModel extends AndroidViewModel {
         disposable.add(routinesApi.rateRoutine(routineId, rating)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<RoutineCredentials>() {
+                .subscribeWith(new DisposableSingleObserver<RoutineRating>() {
 
                     @Override
-                    public void onSuccess(@NonNull RoutineCredentials routineCredentials) {
+                    public void onSuccess(@NonNull RoutineRating routineCredentials) {
 
                     }
 
