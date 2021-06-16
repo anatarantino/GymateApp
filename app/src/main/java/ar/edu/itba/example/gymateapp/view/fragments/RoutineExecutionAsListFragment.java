@@ -107,6 +107,7 @@ public class RoutineExecutionAsListFragment extends Fragment {
 
         viewModel = new ViewModelProvider(requireActivity()).get(ExercisesViewModel.class);
 
+        Log.e("As List","viewModel es: " + viewModel.toString());
         recyclerViewWarmup.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewWarmup.setAdapter(warmupAdapter);
 

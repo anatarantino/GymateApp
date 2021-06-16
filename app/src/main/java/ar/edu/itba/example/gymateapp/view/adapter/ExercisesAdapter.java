@@ -49,14 +49,13 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.Exer
         holder.itemView.setExerciseCredentials(exercise);
         if (exercise.isRunning()){
             holder.itemView.exerciseCard.setBackgroundColor(parentContext.getColor(R.color.Gymate_green));
-            holder.itemView.exName.setTextColor(parentContext.getColor(R.color.title1));
-            holder.itemView.exDuration.setTextColor(parentContext.getColor(R.color.title1));
         }
         else{
             holder.itemView.exerciseCard.setBackgroundColor(parentContext.getColor(R.color.exColor));
-            holder.itemView.exName.setTextColor(parentContext.getColor(R.color.title1));
-            holder.itemView.exDuration.setTextColor(parentContext.getColor(R.color.title1));
         }
+        holder.itemView.exName.setTextColor(parentContext.getColor(R.color.exTitleColor));
+        holder.itemView.exDuration.setTextColor(parentContext.getColor(R.color.exTitleColor));
+        holder.itemView.secs.setTextColor(parentContext.getColor(R.color.exTitleColor));
 
     }
 

@@ -8,11 +8,12 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="300dp"
+        android:indeterminateOnly="false"
         android:indeterminateTint="@color/Gymate_green"
-        android:progressTint="#000000"
+        android:progressDrawable="@drawable/circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,11 +39,10 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/CycleTitle"
                 style="@style/Titles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/warmup"
                 android:textAllCaps="true"
                 android:textColor="@color/MainTitle"
                 android:textSize="35sp"
@@ -69,7 +69,6 @@
         android:id="@+id/exTitle"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:text="@string/ex_name"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -84,7 +83,6 @@
         android:id="@+id/exDesc"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/ex_description"
         android:textAlignment="center"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/executionBar"
