@@ -101,10 +101,11 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/categoryChip"
-                android:layout_width="135dp"
+                android:layout_width="144dp"
                 android:layout_height="62dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="2dp"
+                android:clickable="false"
                 android:gravity="center"
                 android:text="@{RoutineCredentials.category.name}"
                 android:textAlignment="center"

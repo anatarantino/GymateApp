@@ -28,7 +28,7 @@ public class UserInfo {
 
     @Override
     public String toString() {
-        return "userame: "+username;
+        return "username: "+username;
     }
 
     public String getUsername() {

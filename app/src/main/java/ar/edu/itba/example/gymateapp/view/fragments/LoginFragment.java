@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDeepLinkBuilder;
 
@@ -26,13 +27,15 @@ import java.util.Objects;
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.databinding.ActivityLoginBinding;
 import ar.edu.itba.example.gymateapp.databinding.FragmentLoginBinding;
+import ar.edu.itba.example.gymateapp.model.UserInfo;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.viewModel.UserViewModel;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
 public class LoginFragment extends Fragment {
     private EditText username, password;
     private UserViewModel viewModel;
-
+    private LiveData<UserInfo> userInfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,7 +61,7 @@ public class LoginFragment extends Fragment {
         if (!validateUsername() | !validatePassword()) {
             return;
         }
-        viewModel.tryLogin(username.getText().toString(), password.getText().toString());
+        viewModel.tryLogin(username.getText().toString().toUpperCase(), password.getText().toString());
 
         viewModel.getLoginError().observe(getViewLifecycleOwner(), error -> {
             if (error != null) {
@@ -143,5 +146,7 @@ public class LoginFragment extends Fragment {
             return true;
         }
     }
+
+
 }
 

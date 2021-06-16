@@ -21,6 +21,8 @@ import ar.edu.itba.example.gymateapp.model.RoutineExecution;
 import ar.edu.itba.example.gymateapp.model.RoutineHistory;
 import ar.edu.itba.example.gymateapp.model.RoutinesApi;
 
+import ar.edu.itba.example.gymateapp.model.UserApi;
+import ar.edu.itba.example.gymateapp.model.UserInfo;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.observers.DisposableSingleObserver;
@@ -33,13 +35,15 @@ public class RoutinesViewModel extends AndroidViewModel {
     private MutableLiveData<RoutineCredentials> currentRoutine = new MutableLiveData<>();
     private MutableLiveData<Boolean> noMoreEntries = new MutableLiveData<>();
     private RoutinesApi routinesApi;
+    private UserApi userApi;
+    private CompositeDisposable userDisposable = new CompositeDisposable();
     private CompositeDisposable disposable = new CompositeDisposable();
     private MutableLiveData<Boolean> routinesFirstLoad = new MutableLiveData<>(true);
 
     private boolean isLastPage = false;
     private String direction = "desc";
     private int directionId = 0;
-    private String orderBy = "date";
+    private String orderBy = "categoryId";
     private int orderById = 0;
     private int currentPage = 0;
     private int totalPages = 0;
@@ -48,6 +52,7 @@ public class RoutinesViewModel extends AndroidViewModel {
     public RoutinesViewModel(@NonNull @NotNull Application application) {
         super(application);
         routinesApi = new RoutinesApi(application);
+        userApi = new UserApi(application);
     }
 
     public void resetData() {
@@ -247,24 +252,36 @@ public class RoutinesViewModel extends AndroidViewModel {
         options.put("orderBy", orderBy);
         options.put("direction", direction);
         options.put("size", String.valueOf(1000));
-        disposable.add(
-                routinesApi.getUserRoutines(options)
-                        .subscribeOn(Schedulers.newThread())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<PagedList<RoutineCredentials>>() {
-                            @Override
-                            public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull PagedList<RoutineCredentials> routinesEntries) {
-                                for(RoutineCredentials r : routinesEntries.getEntries()){
-                                    r.setUser(new RoutineCredentials.User("current user"));
-                                }
-                                userRoutines.setValue(routinesEntries.getEntries());
-                            }
+        disposable.add(routinesApi.getUserRoutines(options)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<PagedList<RoutineCredentials>>() {
+                    @Override
+                    public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull PagedList<RoutineCredentials> routinesEntries) {
+                        userDisposable.add(userApi.getCurrentUser()
+                                .subscribeOn(Schedulers.newThread())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribeWith(new DisposableSingleObserver<UserInfo>() {
+                                    @Override
+                                    public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull UserInfo userInfo) {
+                                        for(RoutineCredentials r : routinesEntries.getEntries()){
+                                            r.setUser(new RoutineCredentials.User(userInfo.getUsername()));
+                                        }
+                                        userRoutines.setValue(routinesEntries.getEntries());
+                                    }
 
-                            @Override
-                            public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                                e.printStackTrace();
-                            }
-                        })
+                                    @Override
+                                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                                        e.printStackTrace();
+                                    }
+                                }));
+                    }
+
+                    @Override
+                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                        e.printStackTrace();
+                    }
+                })
         );
 
     }
@@ -280,41 +297,41 @@ public class RoutinesViewModel extends AndroidViewModel {
         options.put("size", String.valueOf(1000));
 
         disposable.add(routinesApi.getUserHistory(options)
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<PagedList<RoutineHistory>>() {
-                        @Override
-                        public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull PagedList<RoutineHistory> routineEntries) {
-                            List<RoutineCredentials> routines = new ArrayList<>();
-                            for (RoutineHistory routine_executed : routineEntries.getEntries()) {
-                                routines.add(routine_executed.getRoutine());
-                            }
-                            userHistory.setValue(routines);
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<PagedList<RoutineHistory>>() {
+                    @Override
+                    public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull PagedList<RoutineHistory> routineEntries) {
+                        List<RoutineCredentials> routines = new ArrayList<>();
+                        for (RoutineHistory routine_executed : routineEntries.getEntries()) {
+                            routines.add(routine_executed.getRoutine());
                         }
+                        userHistory.setValue(routines);
+                    }
 
-                        @Override
-                        public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                            e.printStackTrace();
-                        }
-                    }));
+                    @Override
+                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                        e.printStackTrace();
+                    }
+                }));
     }
 
     public void addRoutineExecution(int routineId) {
         RoutineExecution routineExecution = new RoutineExecution(1,false);
         disposable.add(routinesApi.addRoutineExecution(routineId, routineExecution)
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<RoutineCredentials>() {
-                        @Override
-                        public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull RoutineCredentials routineEntries) {
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<RoutineCredentials>() {
+                    @Override
+                    public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull RoutineCredentials routineEntries) {
 
-                        }
+                    }
 
-                        @Override
-                        public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                            e.printStackTrace();
-                        }
-                    }));
+                    @Override
+                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                        e.printStackTrace();
+                    }
+                }));
     }
 
     public MutableLiveData<List<RoutineCredentials>> getUserHistory() {

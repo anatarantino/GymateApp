@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavDeepLinkBuilder;
@@ -24,6 +25,7 @@ public class LoadingActivity extends AppCompatActivity {
             Uri appLinkData = appLinkIntent.getData();
             if(appLinkData != null) { //inicio desde un link
                 String routineId = appLinkData.getLastPathSegment();
+                Log.e("LoadingActivity", "id recibido: " + routineId );
                 newActivity(preferences,routineId);
             }else{
                 Intent intent;
