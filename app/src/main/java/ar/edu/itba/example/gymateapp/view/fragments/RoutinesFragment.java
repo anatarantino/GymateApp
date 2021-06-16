@@ -8,10 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -49,6 +51,7 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
     private RecyclerView recyclerView;
     boolean noMoreEntries = false;
     private Spinner sortSpinner;
+    private ToggleButton orderBtn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,7 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
         scrollView = binding.scrollView;
         recyclerView = binding.userRecyclerView;
 
-        DividerItemDecoration itemDecorator = new DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL);
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL);
         itemDecorator.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(requireContext(), R.drawable.divider)));
         recyclerView.addItemDecoration(itemDecorator);
 
@@ -85,15 +88,15 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
 
         setSpinner(view);
 
-        routinesAdapter = new RoutinesAdapter(new ArrayList<>(),this);
+        routinesAdapter = new RoutinesAdapter(new ArrayList<>(), this);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(routinesAdapter);
 
         viewModel.getRoutinesFirstLoad().observe(getViewLifecycleOwner(), firstLoad -> {
-            if(firstLoad != null){
-                if(firstLoad) {
+            if (firstLoad != null) {
+                if (firstLoad) {
                     viewModel.updateData();
                     viewModel.setRoutinesFirstLoad(false);
                 }
@@ -114,28 +117,42 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
 
         scrollView.setOnScrollChangeListener(
                 (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
-                    if(!noMoreEntries && !scrollView.canScrollVertically(1)){
+                    if (!noMoreEntries && !scrollView.canScrollVertically(1)) {
                         viewModel.updateData();
                     }
                 }
         );
     }
 
-   @Override
+    @Override
     public void onItemClick(RoutineCredentials routineCredentials) {
         RoutinesFragmentDirections.ActionNavigationRoutinesToRoutineDetailFragment action = RoutinesFragmentDirections.actionNavigationRoutinesToRoutineDetailFragment();
         action.setRoutineId(routineCredentials.getId());
         Navigation.findNavController(view).navigate(action);
     }
 
-    private void setSpinner(View view){
-        sortSpinner=view.findViewById(R.id.sortby_spinner);
+    private void setSpinner(View view) {
+        sortSpinner = view.findViewById(R.id.sortby_spinner);
         ArrayAdapter<CharSequence> spinner_adapter = ArrayAdapter.createFromResource(getContext(), R.array.spinner_array, android.R.layout.simple_spinner_item);
         spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sortSpinner.setAdapter(spinner_adapter);
         sortSpinner.setSelection(viewModel.getOrderById(), false);
         sortSpinner.setOnItemSelectedListener(new SortAdapter(viewModel));
+
+        orderBtn = view.findViewById(R.id.toggleButton);
+        orderBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // The toggle is enabled
+                    
+                } else {
+                    // The toggle is disabled
+                }
+            }
+        });
     }
+
+
 }
 
 
