@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="RoutineCredentials"
+            type="ar.edu.itba.example.gymateapp.model.RoutineCredentials" />
+        
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:elevation="16dp"
+        app:cardElevation="8dp"
+        app:cardMaxElevation="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:background="@color/cardBg">
+
+            <TextView
+                android:id="@+id/routineId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(RoutineCredentials.id)}"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/routineRatingBar"
+                style="?android:attr/ratingBarStyleIndicator"
+                android:layout_width="180dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="496dp"
+                android:layout_marginTop="100dp"
+                android:numStars="5"
+                android:progressBackgroundTint="@color/starColor"
+                android:progressTint="@color/icon"
+                android:rating="@{RoutineCredentials.averageRating.intValue()}"
+                android:scaleX=".5"
+                android:scaleY=".5"
+                android:secondaryProgressTint="@android:color/transparent"
+                android:transformPivotX="0dp"
+                android:transformPivotY="0dp"
+                app:layout_constraintStart_toStartOf="@+id/creator"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="175dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="4dp"
+                android:contentDescription="@string/ex_image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/c1" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="@{RoutineCredentials.name}"
+                android:textColor="@color/title1"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/creator"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.413" />
+
+            <TextView
+                android:id="@+id/creator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="36dp"
+                android:ellipsize="end"
+                android:text="@{RoutineCredentials.user.username}"
+                android:textColor="@color/title1"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toTopOf="@+id/routineRatingBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/image" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/categoryChip"
+                android:layout_width="92dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="@{RoutineCredentials.category.name}"
+                android:textAlignment="center"
+                app:chipBackgroundColor="@color/Gymate_green"
+                app:layout_constraintBottom_toTopOf="@+id/routineRatingBar"
+                app:layout_constraintEnd_toStartOf="@+id/routineRatingBar"
+                app:layout_constraintHorizontal_bias="0.294"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/creator"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
