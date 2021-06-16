@@ -33,6 +33,7 @@ public class ExercisesViewModel extends AndroidViewModel {
     private RoutinesApi routinesApi;
     private CompositeDisposable disposable = new CompositeDisposable();
 
+    private boolean started = false;
     private boolean executed;
     private int currentCycle;
     private String cycleTitle;
@@ -181,4 +182,16 @@ public class ExercisesViewModel extends AndroidViewModel {
         );
     }
 
+    public boolean isStarted() {
+        return started;
+    }
+
+    public void setStarted(boolean started) {
+        this.started = started;
+    }
+
+    @Override
+    public String toString() {
+        return "warmup(0){ " + warmupExercises.getValue().get(0).getExercise().getName() + " }";
+    }
 }

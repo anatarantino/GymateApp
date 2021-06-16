@@ -54,11 +54,11 @@
     <fragment
         android:id="@+id/routineExecutionExercise"
         android:name="ar.edu.itba.example.gymateapp.view.fragments.RoutineExecutionFragment"
-        android:label="fragment_routine_execution_exercise"
+        android:label="RoutineExecutionFragment"
         tools:layout="@layout/fragment_routinerun">
         <argument
-            android:name="title"
-            app:argType="string"/>
+            android:name="RoutineId"
+            app:argType="integer"/>
         <action
             android:id="@+id/action_routineExecutionExercise_to_routineDetailFragment"
             app:destination="@id/routineDetailFragment" />

@@ -7,9 +7,6 @@ public class ExerciseCredentials {
     @SerializedName("exercise")
     @Expose
     private Exercise exercise;
-    @SerializedName("detail")
-    @Expose
-    private String detail;
     @SerializedName("type")
     @Expose
     private String type;
@@ -19,9 +16,8 @@ public class ExerciseCredentials {
 
     private boolean isRunning;
 
-    public ExerciseCredentials(Exercise exercise, String detail, String type, Integer duration) {
+    public ExerciseCredentials(Exercise exercise, String type, Integer duration) {
         this.exercise = exercise;
-        this.detail = detail;
         this.type = type;
         this.duration = duration;
         isRunning = false;
@@ -33,14 +29,6 @@ public class ExerciseCredentials {
 
     public void setExercise(Exercise exercise) {
         this.exercise = exercise;
-    }
-
-    public String getDetail() {
-        return detail;
-    }
-
-    public void setDetail(String detail) {
-        this.detail = detail;
     }
 
     public String getType() {

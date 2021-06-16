@@ -127,8 +127,8 @@ public class RoutineDetailFragment extends Fragment {
 
         Button detailBtn = view.findViewById(R.id.detailBtn);
         detailBtn.setOnClickListener(v -> {
-            RoutineExecutionFragmentDirections.ActionRoutineExecutionExerciseToRoutineDetailFragment action = RoutineExecutionFragmentDirections.actionRoutineExecutionExerciseToRoutineDetailFragment();
-            action.setRoutineId(routineId);
+            Log.e("en el detail","routineId: " + String.valueOf(routineId));
+            RoutineDetailFragmentDirections.ActionRoutineDetailFragmentToRoutineExecutionExercise action = RoutineDetailFragmentDirections.actionRoutineDetailFragmentToRoutineExecutionExercise(routineId);
             Navigation.findNavController(view).navigate(action);
         });
 
