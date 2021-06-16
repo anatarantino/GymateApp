@@ -34,6 +34,7 @@ import ar.edu.itba.example.gymateapp.databinding.FragmentRoutinesBinding;
 import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
+import ar.edu.itba.example.gymateapp.view.adapter.SortAdapter;
 import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 
@@ -47,6 +48,7 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
     private ScrollView scrollView;
     private RecyclerView recyclerView;
     boolean noMoreEntries = false;
+    private Spinner sortSpinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,14 +66,13 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
         itemDecorator.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(requireContext(), R.drawable.divider)));
         recyclerView.addItemDecoration(itemDecorator);
 
-        Spinner spinner = (Spinner) view.findViewById(R.id.sortby_spinner);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> spinner_adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.spinner_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(spinner_adapter);
+//        Spinner spinner = (Spinner) view.findViewById(R.id.sortby_spinner);
+//        // Create an ArrayAdapter using the string array and a default spinner layout
+//        ArrayAdapter<CharSequence> spinner_adapter = ArrayAdapter.createFromResource(getContext(), R.array.spinner_array, android.R.layout.simple_spinner_item);
+//        // Specify the layout to use when the list of choices appears
+//        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        // Apply the adapter to the spinner
+//        spinner.setAdapter(spinner_adapter);
 
         ((MainActivity) requireActivity()).setNavigationVisibility(true);
         return view;
@@ -81,6 +82,8 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(RoutinesViewModel.class);
+
+        setSpinner(view);
 
         routinesAdapter = new RoutinesAdapter(new ArrayList<>(),this);
 
@@ -118,7 +121,6 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
         );
     }
 
-
    @Override
     public void onItemClick(RoutineCredentials routineCredentials) {
         RoutinesFragmentDirections.ActionNavigationRoutinesToRoutineDetailFragment action = RoutinesFragmentDirections.actionNavigationRoutinesToRoutineDetailFragment();
@@ -126,6 +128,14 @@ public class RoutinesFragment extends Fragment implements RoutinesAdapter.ItemCl
         Navigation.findNavController(view).navigate(action);
     }
 
+    private void setSpinner(View view){
+        sortSpinner=view.findViewById(R.id.sortby_spinner);
+        ArrayAdapter<CharSequence> spinner_adapter = ArrayAdapter.createFromResource(getContext(), R.array.spinner_array, android.R.layout.simple_spinner_item);
+        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sortSpinner.setAdapter(spinner_adapter);
+        sortSpinner.setSelection(viewModel.getOrderById(), false);
+        sortSpinner.setOnItemSelectedListener(new SortAdapter(viewModel));
+    }
 }
 
 
