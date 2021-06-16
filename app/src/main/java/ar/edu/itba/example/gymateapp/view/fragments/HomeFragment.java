@@ -1,42 +1,31 @@
 package ar.edu.itba.example.gymateapp.view.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
-import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.Objects;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.databinding.FragmentHomeBinding;
-import ar.edu.itba.example.gymateapp.databinding.FragmentRoutinesBinding;
 import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
-import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 
 public class HomeFragment extends Fragment implements RoutinesAdapter.ItemClickListener {

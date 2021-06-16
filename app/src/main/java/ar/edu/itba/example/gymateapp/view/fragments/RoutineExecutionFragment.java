@@ -1,7 +1,6 @@
 package ar.edu.itba.example.gymateapp.view.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +19,6 @@ import java.util.ArrayList;
 import ar.edu.itba.example.gymateapp.databinding.FragmentRoutinerunBinding;
 import ar.edu.itba.example.gymateapp.model.ExerciseCredentials;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
-import ar.edu.itba.example.gymateapp.view.adapter.ExercisesAdapter;
-import ar.edu.itba.example.gymateapp.view.classes.ExerciseData;
 import ar.edu.itba.example.gymateapp.viewModel.ExercisesViewModel;
 
 public class RoutineExecutionFragment extends Fragment {

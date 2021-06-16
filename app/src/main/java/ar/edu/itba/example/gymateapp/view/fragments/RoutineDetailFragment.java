@@ -2,7 +2,6 @@ package ar.edu.itba.example.gymateapp.view.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,7 +29,6 @@ import ar.edu.itba.example.gymateapp.databinding.FragmentDetailBinding;
 import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.adapter.ExercisesAdapter;
-import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 import ar.edu.itba.example.gymateapp.viewModel.ExercisesViewModel;
 import ar.edu.itba.example.gymateapp.viewModel.FavouritesRoutinesViewModel;
 import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;

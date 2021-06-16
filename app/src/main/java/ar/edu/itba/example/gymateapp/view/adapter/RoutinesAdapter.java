@@ -1,31 +1,23 @@
 package ar.edu.itba.example.gymateapp.view.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.itba.example.gymateapp.R;
-import ar.edu.itba.example.gymateapp.databinding.RoutineCardBinding;
 import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
-import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
-import ar.edu.itba.example.gymateapp.view.fragments.ClickOnRoutine;
 
 public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.RoutineViewHolder> {
 
@@ -40,7 +32,7 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.Routin
 
     @Override
     public RoutineViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.routine_card,null,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.routine_card,parent,false);
         return new RoutineViewHolder(view);
     }
 
@@ -49,7 +41,6 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.Routin
         RoutineCredentials routine = routinesList.get(position);
         int id = routine.getCategory().getId();
         switch(id) {
-            //aca vamos a tener que elegir una img para cada cat
             case 1: //brazos
                 holder.img.setImageResource(R.drawable.c1);
                 routine.setImage(String.valueOf(R.drawable.c1));
@@ -58,7 +49,7 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.Routin
                 holder.img.setImageResource(R.drawable.c2);
                 routine.setImage(String.valueOf(R.drawable.c2));
                 break;
-            case 3: //Absominales
+            case 3: //Abdominales
                 holder.img.setImageResource(R.drawable.c3);
                 routine.setImage(String.valueOf(R.drawable.c3));
                 break;

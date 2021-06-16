@@ -1,12 +1,10 @@
 package ar.edu.itba.example.gymateapp.view.fragments;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.ToggleButton;
@@ -32,7 +30,6 @@ import ar.edu.itba.example.gymateapp.model.RoutineCredentials;
 import ar.edu.itba.example.gymateapp.view.activities.MainActivity;
 import ar.edu.itba.example.gymateapp.view.adapter.RoutinesAdapter;
 import ar.edu.itba.example.gymateapp.view.adapter.SortAdapter;
-import ar.edu.itba.example.gymateapp.view.classes.RoutineData;
 import ar.edu.itba.example.gymateapp.viewModel.RoutinesViewModel;
 
 public class MyRoutinesFragment extends Fragment implements RoutinesAdapter.ItemClickListener{
