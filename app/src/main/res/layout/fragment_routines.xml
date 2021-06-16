@@ -12,10 +12,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
         android:layout_marginTop="16dp"
-        android:background="@color/ListTitleBg"
+        android:background="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/toggleButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,9 +23,8 @@
 
         <Spinner
             android:id="@+id/sortby_spinner"
-            android:layout_width="155dp"
-            android:layout_height="50dp"
-
+            android:layout_width="140dp"
+            android:layout_height="40dp"
             android:prompt="@string/sort_by"
             android:spinnerMode="dropdown"
             app:layout_constraintStart_toStartOf="parent"
