@@ -4,8 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:background="@color/secondColorVariant"
-        android:padding="10dp">
+        android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/LinearLayoutShowExercise"
@@ -15,18 +14,17 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="11dp"
+        android:background="@android:color/transparent"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@android:color/transparent"
         app:layout_constraintTop_toTopOf="parent">
 
         <RatingBar
             android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:background="@color/secondColorVariant"
+            android:layout_height="match_parent"
+            android:background="@color/white"
             android:numStars="5"
             android:paddingVertical="25dp"
             android:progressTint="@color/primaryColor"

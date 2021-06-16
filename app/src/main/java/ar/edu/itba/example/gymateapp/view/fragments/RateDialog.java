@@ -38,8 +38,8 @@ public class RateDialog extends AppCompatDialogFragment {
         binding = RatingDialogBinding.inflate(getActivity().getLayoutInflater());
         ratingBar = binding.ratingBar;
         View view = binding.getRoot();
-        builder.setView(view).setTitle(getString(R.string.RateRoutineDialog).toUpperCase()).setNegativeButton(getString(R.string.Close), (dialog, which) -> {
-        }).setPositiveButton(getString(R.string.Rate), (dialog, which) -> viewModel.rateRoutine(routineId,(int)ratingBar.getRating()));
+        builder.setView(view).setTitle(getString(R.string.RateRoutineDialog).toUpperCase()).setNegativeButton(getString(R.string.Close).toUpperCase(), (dialog, which) -> {
+        }).setPositiveButton(getString(R.string.Rate).toUpperCase(), (dialog, which) -> viewModel.rateRoutine(routineId,(int)ratingBar.getRating()));
         this.setCancelable(false);
         return builder.create();
     }
