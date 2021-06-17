@@ -40,27 +40,41 @@ public class LoadingActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        },2000);
-        Uri uri = getIntent().getData();
-
-        if(uri != null) {
-            NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
-                findFragmentById(R.id.mainNavFragment);
-            assert navHostFragment != null;
-            NavController navController = navHostFragment.getNavController();
-            Bundle bundle = new Bundle();
-            bundle.putInt("RoutineId",Integer.parseInt(uri.getLastPathSegment()));
-            Log.e("mainAct","entre!! con el id: " + bundle.getBundle("RoutineId"));
-            navController.navigate(R.id.action_navigation_home_to_routineDetailFragment,bundle);
-        }
+//        Uri uri = getIntent().getData();
+//
+//        if(uri != null) {
+//            NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
+//                    findFragmentById(R.id.mainNavFragment);
+//            assert navHostFragment != null;
+//            NavController navController = navHostFragment.getNavController();
+//            Bundle bundle = new Bundle();
+//            bundle.putInt("RoutineId",Integer.parseInt(uri.getLastPathSegment()));
+//            Log.e("mainAct","entre!! con el id: " + bundle.getBundle("RoutineId"));
+//            navController.navigate(R.id.action_navigation_home_to_routineDetailFragment,bundle);
+//        }
 
         Intent intent;
-                if(preferences.getAuthToken() != null){
-                    Log.e("LoadingAct", "entre al !null!!!!");
-                    intent = new Intent(LoadingActivity.this, MainActivity.class);
-                }else {
-                    intent = new Intent(LoadingActivity.this, LoginActivity.class);
-                }
+        if(preferences.getAuthToken() != null){
+            Uri uri = getIntent().getData();
+            Log.e("LoadingAct", "entre al !null!!!!");
+            if(uri != null) {
+                Log.e("uri","entre al uri not null");
+                NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
+                        findFragmentById(R.id.mainNavFragment);
+                assert navHostFragment != null;
+                NavController navController = navHostFragment.getNavController();
+                Bundle bundle = new Bundle();
+                bundle.putInt("RoutineId", Integer.parseInt(uri.getLastPathSegment()));
+                navController.navigate(R.id.action_navigation_home_to_routineDetailFragment, bundle);
+            }else{
+                Log.e("intent","entre a la otra opcion");
+                intent = new Intent(LoadingActivity.this, MainActivity.class);
                 startActivity(intent);
+            }
+        }else {
+            intent = new Intent(LoadingActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void newActivity(AppPreferences preferences, String routineId){
