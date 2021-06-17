@@ -94,17 +94,10 @@
 
     </fragment>
     <activity
-        android:id="@+id/loadingActivity2"
+        android:id="@+id/loadingActivity"
         android:name="ar.edu.itba.example.gymateapp.view.activities.LoadingActivity"
-        android:label="activity_loading"
-        tools:layout="@layout/activity_loading" >
-        <argument
-            android:name="RoutineId"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_loadingActivity2_to_routineDetailFragment"
-            app:destination="@id/routineDetailFragment" />
-    </activity>
+        android:label="fragment_loading"
+        tools:layout="@layout/fragment_loading" />
 
 
 </navigation>
