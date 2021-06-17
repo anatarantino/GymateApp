@@ -95,15 +95,6 @@
         <action
             android:id="@+id/action_routineDetailFragment_to_navigation_routines"
             app:destination="@id/navigation_routines" />
-        <action
-            android:id="@+id/action_routineDetailFragment_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
-        <action
-            android:id="@+id/action_routineDetailFragment_to_navigation_my_routines"
-            app:destination="@id/navigation_my_routines" />
-        <action
-            android:id="@+id/action_routineDetailFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
     </fragment>
     <fragment
         android:id="@+id/sortByFragment"
