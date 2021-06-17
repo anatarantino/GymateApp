@@ -7,7 +7,10 @@ import android.os.Handler;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDeepLink;
 import androidx.navigation.NavDeepLinkBuilder;
+import androidx.navigation.Navigation;
 
 
 import ar.edu.itba.example.gymateapp.R;
@@ -25,7 +28,6 @@ public class LoadingActivity extends AppCompatActivity {
             Uri appLinkData = appLinkIntent.getData();
             if(appLinkData != null) { //inicio desde un link
                 String routineId = appLinkData.getLastPathSegment();
-                Log.e("LoadingActivity", "id recibido: " + routineId );
                 newActivity(preferences,routineId);
             }else{
                 Intent intent;
@@ -44,8 +46,7 @@ public class LoadingActivity extends AppCompatActivity {
         bundle.putInt("routineId",Integer.parseInt(routineId));
         if(preferences.getAuthToken() != null){
             new NavDeepLinkBuilder(this).setComponentName(MainActivity.class)
-                    .setGraph(R.navigation.mobile_navigation).setDestination(R.id.routine_detail)
-                    .setArguments(bundle)
+                    .setGraph(R.navigation.mobile_navigation).setDestination(R.id.routine_detail).setArguments(bundle)
                     .createTaskStackBuilder()
                     .startActivities();
             return;

@@ -107,7 +107,6 @@ public class RoutineExecutionAsListFragment extends Fragment {
 
         viewModel = new ViewModelProvider(requireActivity()).get(ExercisesViewModel.class);
 
-        Log.e("As List","viewModel es: " + viewModel.toString());
         recyclerViewWarmup.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewWarmup.setAdapter(warmupAdapter);
 
@@ -196,6 +195,8 @@ public class RoutineExecutionAsListFragment extends Fragment {
                         currentExercise++;
                         if((exercise = getNextExercise()) != null) {
                             viewModel.getCountDownTimer().start(exercise.getDuration() * 1000,1000);
+                        }else {
+                            openFinishedRoutineDialog();
                         }
                     }
                 }else {
@@ -305,7 +306,7 @@ public class RoutineExecutionAsListFragment extends Fragment {
 
     public void openFinishedRoutineDialog() {
         FinishRoutine finishRoutine = new FinishRoutine(view, FinishRoutine.LIST_EXEC);
-//        finishRoutine.show(getParentFragmentManager(), "example"); //?? borrar?
+        finishRoutine.show(getParentFragmentManager(), "example");
         finished = true;
         viewModel.setFirstTime(true);
     }
