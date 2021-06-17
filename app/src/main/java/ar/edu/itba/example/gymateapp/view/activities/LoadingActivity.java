@@ -20,7 +20,7 @@ import ar.edu.itba.example.gymateapp.model.AppPreferences;
 public class LoadingActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         AppPreferences preferences = new AppPreferences(this.getApplication());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
@@ -54,33 +54,35 @@ public class LoadingActivity extends AppCompatActivity {
 //        }
 
         Intent intent;
-        if(preferences.getAuthToken() != null){
+        if (preferences.getAuthToken() != null) {
             Uri uri = getIntent().getData();
             Log.e("LoadingAct", "entre al !null!!!!");
-            if(uri != null) {
-                Log.e("uri","entre al uri not null");
+            if (uri != null) {
+                Log.e("uri", "entre al uri not null");
                 NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
                         findFragmentById(R.id.mainNavFragment);
-                assert navHostFragment != null;
-                NavController navController = navHostFragment.getNavController();
-                Bundle bundle = new Bundle();
-                bundle.putInt("RoutineId", Integer.parseInt(uri.getLastPathSegment()));
-                navController.navigate(R.id.action_navigation_home_to_routineDetailFragment, bundle);
-            }else{
-                Log.e("intent","entre a la otra opcion");
+                if (navHostFragment != null) {
+                    NavController navController = navHostFragment.getNavController();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("RoutineId", Integer.parseInt(uri.getLastPathSegment()));
+                    Log.e("mainAct","entre!! con el id: " + bundle.getBundle("RoutineId"));
+                    navController.navigate(R.id.action_navigation_home_to_routineDetailFragment, bundle);
+                }
+            } else {
+                Log.e("intent", "entre a la otra opcion");
                 intent = new Intent(LoadingActivity.this, MainActivity.class);
                 startActivity(intent);
             }
-        }else {
+        } else {
             intent = new Intent(LoadingActivity.this, LoginActivity.class);
             startActivity(intent);
         }
     }
 
-    private void newActivity(AppPreferences preferences, String routineId){
+    private void newActivity(AppPreferences preferences, String routineId) {
         Bundle bundle = new Bundle();
-        bundle.putInt("routineId",Integer.parseInt(routineId));
-        if(preferences.getAuthToken() != null){
+        bundle.putInt("routineId", Integer.parseInt(routineId));
+        if (preferences.getAuthToken() != null) {
             new NavDeepLinkBuilder(this).setComponentName(MainActivity.class)
                     .setGraph(R.navigation.mobile_navigation).setDestination(R.id.routine_detail).setArguments(bundle)
                     .createTaskStackBuilder()
@@ -91,8 +93,8 @@ public class LoadingActivity extends AppCompatActivity {
         putAndStart(routineId, auxIntent);
     }
 
-    private void putAndStart(String routineId, Intent intent){
-        intent.putExtra("RoutineId",routineId);
+    private void putAndStart(String routineId, Intent intent) {
+        intent.putExtra("RoutineId", routineId);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();
