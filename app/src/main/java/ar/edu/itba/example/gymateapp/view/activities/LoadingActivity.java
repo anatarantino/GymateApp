@@ -11,6 +11,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.NavDeepLink;
 import androidx.navigation.NavDeepLinkBuilder;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 
 import ar.edu.itba.example.gymateapp.R;
@@ -39,6 +40,18 @@ public class LoadingActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        },2000);
+        Uri uri = getIntent().getData();
+
+        if(uri != null) {
+            NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
+                findFragmentById(R.id.mainNavFragment);
+            assert navHostFragment != null;
+            NavController navController = navHostFragment.getNavController();
+            Bundle bundle = new Bundle();
+            bundle.putInt("RoutineId",Integer.parseInt(uri.getLastPathSegment()));
+            Log.e("mainAct","entre!! con el id: " + bundle.getBundle("RoutineId"));
+            navController.navigate(R.id.action_navigation_home_to_routineDetailFragment,bundle);
+        }
 
         Intent intent;
                 if(preferences.getAuthToken() != null){
