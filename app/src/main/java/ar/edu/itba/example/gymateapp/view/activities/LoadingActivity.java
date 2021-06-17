@@ -12,7 +12,10 @@ import androidx.navigation.NavDeepLink;
 import androidx.navigation.NavDeepLinkBuilder;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import ar.edu.itba.example.gymateapp.R;
 import ar.edu.itba.example.gymateapp.model.AppPreferences;
@@ -48,11 +51,14 @@ public class LoadingActivity extends AppCompatActivity {
             Log.e("LoadingAct", "entre al !null!!!!");
             if (uri != null) {
                 Log.e("uri", "entre al uri not null");
+                BottomNavigationView bottomNav = findViewById(R.id.nav_view);
                 NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
                         findFragmentById(R.id.mainNavFragment);
+                assert navHostFragment != null;
+        NavigationUI.setupWithNavController(bottomNav,navHostFragment.getNavController());
+        NavController navController = navHostFragment.getNavController();
                 Log.e("pos nav frag",navHostFragment.toString());
-                if (navHostFragment != null) {
-                    NavController navController = navHostFragment.getNavController();
+
                     Bundle bundle = new Bundle();
                     //bundle.putInt("RoutineId", Integer.parseInt(uri.getLastPathSegment()));
                     //Log.e("mainAct","entre!! con el id: " + bundle.getBundle("RoutineId"));
@@ -61,7 +67,7 @@ public class LoadingActivity extends AppCompatActivity {
                     Log.e("mainAct", "entre con el id: " + bundle.getString("RoutineId"));
                     new NavDeepLinkBuilder(this).setComponentName(MainActivity.class).setGraph(R.navigation.mobile_navigation).setDestination(R.id.routine_detail).setArguments(bundle).createTaskStackBuilder().startActivities();
 //                    navController.navigate(R.id.action_navigation_home_to_routineDetailFragment, bundle);
-                }
+
             } else {
                 Log.e("intent", "entre a la otra opcion");
                 intent = new Intent(LoadingActivity.this, MainActivity.class);
