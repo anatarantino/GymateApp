@@ -36,6 +36,18 @@ public class LoginFragment extends Fragment {
     private EditText username, password;
     private UserViewModel viewModel;
     private LiveData<UserInfo> userInfo;
+    private String arg1;
+
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle a = getArguments();
+        if(a != null ){
+            arg1 = a.getString("RoutineId");
+        }else {
+            arg1 = null;
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,19 +79,15 @@ public class LoginFragment extends Fragment {
             if (error != null) {
                 switch (error.getCode()) {
                     case 4:
-                        //errorMessage.setText(R.string.wrong_credentials);
                         password.setError(" ");
                         username.setError(" ");
                         new Handler().postDelayed(() -> {
                             password.setError(null);
                             username.setError(null);
-                            //errorMessage.setText("");
-                        }, 3000);
+                        }, 2000);
                         viewModel.setLoginErrorCode(null);
                         break;
                     default:
-                        //errorMessage.setText(R.string.default_error);
-                        //new Handler().postDelayed(() -> errorMessage.setText(""), 3000);
                         break;
                 }
             }
@@ -89,7 +97,6 @@ public class LoginFragment extends Fragment {
             if (authToken != null) {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 Bundle aux = getArguments();
-                //appassert aux != null;
                 if(aux != null){
                     if (aux.get("RoutineId") != null) {
                         Bundle bundle = new Bundle();

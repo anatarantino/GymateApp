@@ -2,11 +2,15 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/login_navigation.xml"
+    android:id="@+id/login_navigation"
     app:startDestination="@id/loginFragment">
 
     <fragment
             android:id="@+id/loginFragment"
             android:name="ar.edu.itba.example.gymateapp.view.fragments.LoginFragment"
-            android:label="LoginFragment"/>
+            android:label="LoginFragment" >
+        <argument
+            android:name="RoutineId"
+            app:argType="string" />
+    </fragment>
 </navigation>
