@@ -26,4 +26,5 @@
     <color name="exerciseColor">@color/grey_darken_1</color>
     <color name="exColor">@color/grey_lighten_5</color>
     <color name="exTitleColor">@color/black</color>
+    <color name="spinnerColor">@color/white</color>
 </resources>
