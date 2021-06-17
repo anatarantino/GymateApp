@@ -30,15 +30,23 @@ public class LoadingActivity extends AppCompatActivity {
 //                String routineId = appLinkData.getLastPathSegment();
 //                newActivity(preferences,routineId);
 //            }else{
-                Intent intent;
+//                Intent intent;
+//                if(preferences.getAuthToken() != null){
+//                    intent = new Intent(LoadingActivity.this, MainActivity.class);
+//                }else {
+//                    intent = new Intent(LoadingActivity.this, LoginActivity.class);
+//                }
+//                startActivity(intent);
+//            }
+//        },2000);
+
+        Intent intent;
                 if(preferences.getAuthToken() != null){
                     intent = new Intent(LoadingActivity.this, MainActivity.class);
                 }else {
                     intent = new Intent(LoadingActivity.this, LoginActivity.class);
                 }
                 startActivity(intent);
-//            }
-//        },2000);
     }
 
     private void newActivity(AppPreferences preferences, String routineId){
