@@ -40,18 +40,7 @@ public class LoadingActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        },2000);
-//        Uri uri = getIntent().getData();
 //
-//        if(uri != null) {
-//            NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
-//                    findFragmentById(R.id.mainNavFragment);
-//            assert navHostFragment != null;
-//            NavController navController = navHostFragment.getNavController();
-//            Bundle bundle = new Bundle();
-//            bundle.putInt("RoutineId",Integer.parseInt(uri.getLastPathSegment()));
-//            Log.e("mainAct","entre!! con el id: " + bundle.getBundle("RoutineId"));
-//            navController.navigate(R.id.action_navigation_home_to_routineDetailFragment,bundle);
-//        }
 
         Intent intent;
         if (preferences.getAuthToken() != null) {
@@ -68,7 +57,8 @@ public class LoadingActivity extends AppCompatActivity {
                     //Log.e("mainAct","entre!! con el id: " + bundle.getBundle("RoutineId"));
                     bundle.putString("RoutineId",uri.getLastPathSegment());
                     Log.e("mainAct", "entre con el id: " + bundle.getString("RoutineId"));
-                    navController.navigate(R.id.action_navigation_home_to_routineDetailFragment, bundle);
+                    new NavDeepLinkBuilder(this).setComponentName(MainActivity.class).setGraph(R.navigation.mobile_navigation).setDestination(R.id.routine_detail).setArguments(bundle).createTaskStackBuilder().startActivities();
+//                    navController.navigate(R.id.action_navigation_home_to_routineDetailFragment, bundle);
                 }
             } else {
                 Log.e("intent", "entre a la otra opcion");
