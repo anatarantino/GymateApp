@@ -27,62 +27,27 @@ public class LoadingActivity extends AppCompatActivity {
         AppPreferences preferences = new AppPreferences(this.getApplication());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-//        new Handler().postDelayed(()-> {
-//            Intent appLinkIntent = getIntent();
-//            Uri appLinkData = appLinkIntent.getData();
-//            if(appLinkData != null) { //inicio desde un link
-//                String routineId = appLinkData.getLastPathSegment();
-//                newActivity(preferences,routineId);
-//            }else{
-//                Intent intent;
-//                if(preferences.getAuthToken() != null){
-//                    intent = new Intent(LoadingActivity.this, MainActivity.class);
-//                }else {
-//                    intent = new Intent(LoadingActivity.this, LoginActivity.class);
-//                }
-//                startActivity(intent);
-//            }
-//        },2000);
-//
-
-        Intent intent;
-        if (preferences.getAuthToken() != null) {
-            Uri uri = getIntent().getData();
-            Log.e("LoadingAct", "entre al !null!!!!");
-            if (uri != null) {
-                Log.e("uri", "entre al uri not null");
-                BottomNavigationView bottomNav = findViewById(R.id.nav_view);
-                NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
-                        findFragmentById(R.id.mainNavFragment);
-                assert navHostFragment != null;
-        NavigationUI.setupWithNavController(bottomNav,navHostFragment.getNavController());
-        NavController navController = navHostFragment.getNavController();
-                Log.e("pos nav frag",navHostFragment.toString());
-
-                    Bundle bundle = new Bundle();
-                    //bundle.putInt("RoutineId", Integer.parseInt(uri.getLastPathSegment()));
-                    //Log.e("mainAct","entre!! con el id: " + bundle.getBundle("RoutineId"));
-                    Log.e("pre bundle","recibi id: " + uri.getLastPathSegment());
-                    bundle.putString("RoutineId",uri.getLastPathSegment());
-                    Log.e("mainAct", "entre con el id: " + bundle.getString("RoutineId"));
-                    new NavDeepLinkBuilder(this).setComponentName(MainActivity.class).setGraph(R.navigation.mobile_navigation).setDestination(R.id.routine_detail).setArguments(bundle).createTaskStackBuilder().startActivities();
-//                    navController.navigate(R.id.action_navigation_home_to_routineDetailFragment, bundle);
-
-            } else {
-                Log.e("intent", "entre a la otra opcion");
-                intent = new Intent(LoadingActivity.this, MainActivity.class);
+            Intent appLinkIntent = getIntent();
+            Uri appLinkData = appLinkIntent.getData();
+            if(appLinkData != null) { //inicio desde un link
+                String routineId = appLinkData.getLastPathSegment();
+                newActivity(preferences,routineId);
+            }else{
+                Intent intent;
+                if(preferences.getAuthToken() != null){
+                    intent = new Intent(LoadingActivity.this, MainActivity.class);
+                }else {
+                    intent = new Intent(LoadingActivity.this, LoginActivity.class);
+                }
                 startActivity(intent);
             }
-        } else {
-            intent = new Intent(LoadingActivity.this, LoginActivity.class);
-            startActivity(intent);
-        }
+
     }
 
     private void newActivity(AppPreferences preferences, String routineId) {
         Bundle bundle = new Bundle();
-        bundle.putInt("routineId", Integer.parseInt(routineId));
-        if (preferences.getAuthToken() != null) {
+        bundle.putInt("RoutineId", Integer.parseInt(routineId));
+        if (preferences.getAuthToken() != null) { //tengo permisos
             new NavDeepLinkBuilder(this).setComponentName(MainActivity.class)
                     .setGraph(R.navigation.mobile_navigation).setDestination(R.id.routine_detail).setArguments(bundle)
                     .createTaskStackBuilder()

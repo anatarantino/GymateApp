@@ -32,7 +32,6 @@ public class FinishRoutine extends AppCompatDialogFragment {
     @NotNull
     @Override
     public Dialog onCreateDialog(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        Log.e("Dialog","entre al dialog");
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.PopUp);
 
         LayoutInflater inflater = requireActivity().getLayoutInflater();

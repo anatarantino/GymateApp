@@ -23,7 +23,7 @@
         <action
             android:id="@+id/action_navigation_routines_to_routineDetailFragment"
             app:destination="@id/routineDetailFragment" />
-        
+
     </fragment>
 
     <fragment
@@ -93,6 +93,11 @@
             app:destination="@id/navigation_routines" />
 
     </fragment>
+    <activity
+        android:id="@+id/loadingActivity"
+        android:name="ar.edu.itba.example.gymateapp.view.activities.LoadingActivity"
+        android:label="fragment_loading"
+        tools:layout="@layout/fragment_loading" />
 
 
 </navigation>
