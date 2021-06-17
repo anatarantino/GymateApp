@@ -55,6 +55,7 @@ public class LoadingActivity extends AppCompatActivity {
 
         Intent intent;
                 if(preferences.getAuthToken() != null){
+                    Log.e("LoadingAct", "entre al !null!!!!");
                     intent = new Intent(LoadingActivity.this, MainActivity.class);
                 }else {
                     intent = new Intent(LoadingActivity.this, LoginActivity.class);
