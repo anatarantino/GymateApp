@@ -32,13 +32,10 @@ public class FavouritesRoutinesViewModel extends AndroidViewModel {
     private MutableLiveData<List<RoutineCredentials>> favouriteRoutines = new MutableLiveData<>();
     private RoutinesApi routinesApi;
     private CompositeDisposable disposable = new CompositeDisposable();
-    private UserApi userApi;
-    private CompositeDisposable userDisposable = new CompositeDisposable();
 
     public FavouritesRoutinesViewModel(@androidx.annotation.NonNull @NotNull Application application) {
         super(application);
         routinesApi = new RoutinesApi(application);
-        userApi = new UserApi(application);
     }
 
     public void favRoutine(int routineId) {
@@ -92,24 +89,10 @@ public class FavouritesRoutinesViewModel extends AndroidViewModel {
                 .subscribeWith(new DisposableSingleObserver<PagedList<RoutineCredentials>>() {
                     @Override
                     public void onSuccess(@NonNull PagedList<RoutineCredentials> favourites) {
-                        userDisposable.add(userApi.getCurrentUser()
-                                .subscribeOn(Schedulers.newThread())
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribeWith(new DisposableSingleObserver<UserInfo>() {
-                                    @Override
-                                    public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull UserInfo userInfo) {
-                                        for(RoutineCredentials r : favourites.getEntries()){
-                                            r.setUser(new RoutineCredentials.User(userInfo.getUsername()));
-                                        }
-                                        favouriteRoutines.setValue(favourites.getEntries());
-                                    }
-
-                                    @Override
-                                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                                        e.printStackTrace();
-                                    }
-                                }));
+                        favouriteRoutines.setValue(favourites.getEntries());
                     }
+
+
 
                     @Override
                     public void onError(@NonNull Throwable e) {

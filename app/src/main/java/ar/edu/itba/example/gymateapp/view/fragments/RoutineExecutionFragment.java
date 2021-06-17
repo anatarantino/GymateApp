@@ -180,6 +180,8 @@ public class RoutineExecutionFragment extends Fragment {
                             viewModel.getCountDownTimer().start(currentExercise.getDuration() * 1000, 1000);
                             progressBar.setProgress(0);
                             progressBar.setMax(currentExercise.getDuration());
+                        }else {
+                            finishRoutine();
                         }
                     }else {
                         long remainingTime = countdown.getRemainingTime();
@@ -306,5 +308,8 @@ public class RoutineExecutionFragment extends Fragment {
 
     public void finishRoutine() {
         FinishRoutine finishRoutine = new FinishRoutine(view, FinishRoutine.DETAIL_EXEC);
+        finishRoutine.show(getParentFragmentManager(), "example");
+        finished = true;
+        viewModel.setFirstTime(true);
     }
 }
