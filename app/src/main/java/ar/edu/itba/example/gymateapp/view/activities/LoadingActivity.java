@@ -55,6 +55,7 @@ public class LoadingActivity extends AppCompatActivity {
                     Bundle bundle = new Bundle();
                     //bundle.putInt("RoutineId", Integer.parseInt(uri.getLastPathSegment()));
                     //Log.e("mainAct","entre!! con el id: " + bundle.getBundle("RoutineId"));
+                    Log.e("pre bundle","recibi id: " + uri.getLastPathSegment());
                     bundle.putString("RoutineId",uri.getLastPathSegment());
                     Log.e("mainAct", "entre con el id: " + bundle.getString("RoutineId"));
                     new NavDeepLinkBuilder(this).setComponentName(MainActivity.class).setGraph(R.navigation.mobile_navigation).setDestination(R.id.routine_detail).setArguments(bundle).createTaskStackBuilder().startActivities();
