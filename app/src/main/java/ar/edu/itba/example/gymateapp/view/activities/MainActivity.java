@@ -1,5 +1,6 @@
 package ar.edu.itba.example.gymateapp.view.activities;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -41,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         userViewModel.setUserData();
+
+        NavController navController = navHostFragment.getNavController();
+        Uri uri = getIntent().getData();
+        if(uri != null) {
+            Bundle bundle = new Bundle();
+            bundle.putInt("RoutineId",Integer.parseInt(uri.getLastPathSegment()));
+            navController.navigate(R.id.action_navigation_home_to_routineDetailFragment,bundle);
+        }
 
 
     }
