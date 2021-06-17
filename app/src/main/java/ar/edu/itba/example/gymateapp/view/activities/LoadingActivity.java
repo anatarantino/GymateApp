@@ -50,6 +50,7 @@ public class LoadingActivity extends AppCompatActivity {
                 Log.e("uri", "entre al uri not null");
                 NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
                         findFragmentById(R.id.mainNavFragment);
+                Log.e("pos nav frag",navHostFragment.toString());
                 if (navHostFragment != null) {
                     NavController navController = navHostFragment.getNavController();
                     Bundle bundle = new Bundle();
