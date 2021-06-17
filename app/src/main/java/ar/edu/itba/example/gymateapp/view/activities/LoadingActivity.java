@@ -29,10 +29,10 @@ public class LoadingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_loading);
             Intent appLinkIntent = getIntent();
             Uri appLinkData = appLinkIntent.getData();
-            if(appLinkData != null) { //inicio desde un link
-                String routineId = appLinkData.getLastPathSegment();
-                newActivity(preferences,routineId);
-            }else{
+//            if(appLinkData != null) { //inicio desde un link
+//                String routineId = appLinkData.getLastPathSegment();
+//                newActivity(preferences,routineId);
+//            }else{
                 Intent intent;
                 if(preferences.getAuthToken() != null){
                     intent = new Intent(LoadingActivity.this, MainActivity.class);
@@ -40,7 +40,7 @@ public class LoadingActivity extends AppCompatActivity {
                     intent = new Intent(LoadingActivity.this, LoginActivity.class);
                 }
                 startActivity(intent);
-            }
+            //}
 
     }
 
