@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = navHostFragment.getNavController();
         Uri uri = getIntent().getData();
         if(uri != null) {
+            Log.e("Id del uri: ",uri.getLastPathSegment());
             Bundle bundle = new Bundle();
             bundle.putString("RoutineId",uri.getLastPathSegment());
 //            bundle.putInt("RoutineId",Integer.parseInt(uri.getLastPathSegment()));
