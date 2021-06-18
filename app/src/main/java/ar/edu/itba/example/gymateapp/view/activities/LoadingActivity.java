@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDeepLink;
 import androidx.navigation.NavDeepLinkBuilder;
+import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -53,6 +54,7 @@ public class LoadingActivity extends AppCompatActivity {
                     .createTaskStackBuilder()
                     .startActivities();
             return;
+
         }
         Intent auxIntent = new Intent(LoadingActivity.this, LoginActivity.class);
         putAndStart(routineId, auxIntent);
