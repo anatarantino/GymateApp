@@ -96,20 +96,6 @@ public class LoginFragment extends Fragment {
         viewModel.getToken().observe(getViewLifecycleOwner(), authToken -> {
             if (authToken != null) {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
-//                Bundle aux = getArguments();
-//                if(aux != null){
-//                    if (aux.get("RoutineId") != null) {
-//                        Bundle bundle = new Bundle();
-//                        bundle.putInt("routineId", Integer.parseInt(aux.getString("RoutineId")));
-//                        new NavDeepLinkBuilder(requireActivity())
-//                                .setComponentName(MainActivity.class)
-//                                .setGraph(R.navigation.mobile_navigation)
-//                                .setDestination(R.id.routine_detail)
-//                                .setArguments(bundle).createTaskStackBuilder().startActivities();
-//                    }
-//                } else {
-//                    startActivity(intent);
-//                }
                 startActivity(intent);
                 requireActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 requireActivity().finish();
