@@ -102,7 +102,7 @@ public class RoutineDetailFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (getArguments() != null) {
-            routineId = Integer.parseInt(getArguments().getString("routineId"));
+            routineId = Integer.parseInt(getArguments().getString("RoutineId"));
         }
 
         routinesViewModel = new ViewModelProvider(getActivity()).get(RoutinesViewModel.class);
