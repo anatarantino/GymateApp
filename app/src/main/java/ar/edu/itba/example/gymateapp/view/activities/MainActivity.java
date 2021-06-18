@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("Id del uri: ",uri.getLastPathSegment());
             Bundle bundle = new Bundle();
             bundle.putString("RoutineId",uri.getLastPathSegment());
+            //bundle.putString("RoutineId",uri.getLastPathSegment());
 //            bundle.putInt("RoutineId",Integer.parseInt(uri.getLastPathSegment()));
             Log.e("mainAct","entre!! con el id: " + bundle.getBundle("RoutineId"));
             navController.navigate(R.id.action_navigation_home_to_routineDetailFragment,bundle);
