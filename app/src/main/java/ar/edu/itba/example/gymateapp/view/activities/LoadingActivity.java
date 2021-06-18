@@ -28,21 +28,15 @@ public class LoadingActivity extends AppCompatActivity {
         AppPreferences preferences = new AppPreferences(this.getApplication());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-            Intent appLinkIntent = getIntent();
-            Uri appLinkData = appLinkIntent.getData();
-//            if(appLinkData != null) { //inicio desde un link
-//                String routineId = appLinkData.getLastPathSegment();
-//                newActivity(preferences,routineId);
-//            }else{
-                Intent intent;
-                if(preferences.getAuthToken() != null){
-                    intent = new Intent(LoadingActivity.this, MainActivity.class);
-                }else {
-                    intent = new Intent(LoadingActivity.this, LoginActivity.class);
-                }
-                startActivity(intent);
-            //}
+        Intent appLinkIntent = getIntent();
 
+        Intent intent;
+        if(preferences.getAuthToken() != null){
+            intent = new Intent(LoadingActivity.this, MainActivity.class);
+        }else {
+            intent = new Intent(LoadingActivity.this, LoginActivity.class);
+        }
+        startActivity(intent);
     }
 
     private void newActivity(AppPreferences preferences, String routineId) {
